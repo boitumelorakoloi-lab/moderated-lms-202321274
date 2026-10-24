@@ -1,0 +1,12 @@
+# build output
+build/
+cmake-build-*/
+.vs/
+.vscode/
+
+# runtime data - never commit learners' data (Data Protection Act, 2011)
+*.db
+*.db-wal
+*.db-shm
+submissions/
+demo_files/
