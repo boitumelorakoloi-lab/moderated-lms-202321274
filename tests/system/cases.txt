@@ -1,0 +1,12 @@
+ST-01_login|UC-01 Log in: main flow, E wrong password / unknown user, FR-03 lock-out
+ST-02_submit_resubmit|UC-17 main flow + A1 resubmit (UC-19), UC-16 view states
+ST-03_submit_late|UC-17 A2 submit late (UC-20) with penalty warning, BR-04 no resubmit of late work
+ST-04_bad_files|UC-17 E1 / UC-18 validate file: wrong type, empty, over 10 MB, missing; cancel
+ST-05_mark|UC-08 mark submission: E1 out-of-range mark and blank feedback, UC-09 penalty, A1 re-mark needs reason
+ST-06_extension|UC-07 grant extension: invalid date, blank reason, BR-03 rules, student sees new deadline
+ST-07_moderate_release|UC-11 moderate (approve), UC-13 return, UC-12 adjust, UC-14 release (FR-19), UC-15 audit, UC-21 view mark
+ST-08_admin|UC-03/04/05 manage users, departments, courses, enrolment, deactivation (FR-04 to FR-06)
+ST-09_role_isolation|FR-01/FR-02/NFR-08: each role sees only its own menu and data
+ST-10_change_password|UC-02 change password (FR-26): wrong current, mismatch, too short, success
+ST-11_backup_restore|FR-25 back up and restore; a file that is not a backup is refused
+ST-12_robustness|NFR-07 bad input never crashes the program; input ending exits cleanly

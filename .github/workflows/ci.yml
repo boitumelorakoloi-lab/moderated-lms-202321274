@@ -1,0 +1,58 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake g++ pkg-config libsqlite3-dev libsodium-dev libgtest-dev
+
+      - name: Configure
+        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build
+        run: cmake --build build -j
+
+      - name: Unit and integration tests
+        run: ctest --test-dir build -L "unit|integration" --output-on-failure
+
+      - name: System tests
+        run: ctest --test-dir build -L system --output-on-failure
+
+  coverage:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake g++ pkg-config libsqlite3-dev libsodium-dev libgtest-dev gcovr
+
+      - name: Build with coverage
+        run: |
+          cmake -S . -B build-cov -DCMAKE_BUILD_TYPE=Debug -DLMS_COVERAGE=ON
+          cmake --build build-cov -j
+
+      - name: Run tests
+        run: ctest --test-dir build-cov -L "unit|integration" --output-on-failure
+
+      - name: Coverage of the business-logic layer (target 70%)
+        run: |
+          mkdir -p coverage
+          gcovr -r . build-cov --filter 'src/services/' --filter 'src/domain/' \
+                --html-details coverage/index.html --print-summary --fail-under-line 70
+
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: coverage/

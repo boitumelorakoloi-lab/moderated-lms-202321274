@@ -1,0 +1,5 @@
+# NFR-07 bad input never crashes the program; input ending exits cleanly
+That is not one of the options.
+Please enter a whole number from 1 to 1000000000.
+Please type y or n.
+Input closed. Goodbye.

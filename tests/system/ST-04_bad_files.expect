@@ -1,0 +1,8 @@
+# UC-17 E1 / UC-18 validate file: wrong type, empty, over 10 MB, missing; cancel
+Only .pdf, .docx, .txt and .zip files are accepted.
+The file is empty.
+The file is bigger than 10 MB.
+The file was not found: missing.pdf
+Nothing was submitted.
+No marks have been released to you yet.
+!Receipt:

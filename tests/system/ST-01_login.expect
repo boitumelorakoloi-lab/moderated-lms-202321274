@@ -1,0 +1,7 @@
+# UC-01 Log in: main flow, E wrong password / unknown user, FR-03 lock-out
+ERROR: Wrong username or password.
+Too many wrong passwords. The account is locked for 15 minutes.
+This account is locked after 5 wrong passwords
+Student menu - Thabo Nthako
+Goodbye.
+!Student menu - Palesa Mohapi

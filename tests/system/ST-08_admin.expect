@@ -1,0 +1,17 @@
+# UC-03/04/05 manage users, departments, courses, enrolment, deactivation (FR-04 to FR-06)
+The username must be 3 to 30 characters long.
+The username 'stu.thabo' is already taken.
+The password must be at least 8 characters long.
+Student created with ID 7.
+A department called 'Sciences' already exists.
+Mr T. Mokoena does not have the Head of Department role.
+Department created with ID 3.
+Course created with ID 3.
+Thabo Nthako is not a lecturer.
+Neo Ramone is already enrolled in this course.
+You cannot deactivate your own account.
+The account is deactivated and cannot log in.
+Deactivated
+This account has been deactivated. Please see the administrator.
+Student menu - Neo Ramone
+ENG-F4      English Form 4
