@@ -1,0 +1,33 @@
+Internal ctest changing into directory: /home/claude/moderated-lms/build
+Test project /home/claude/moderated-lms/build
+      Start 82: System.ST-01_login
+ 1/12 Test #82: System.ST-01_login ...............   Passed    1.12 sec
+      Start 83: System.ST-02_submit_resubmit
+ 2/12 Test #83: System.ST-02_submit_resubmit .....   Passed    0.69 sec
+      Start 84: System.ST-03_submit_late
+ 3/12 Test #84: System.ST-03_submit_late .........   Passed    0.68 sec
+      Start 85: System.ST-04_bad_files
+ 4/12 Test #85: System.ST-04_bad_files ...........   Passed    0.70 sec
+      Start 86: System.ST-05_mark
+ 5/12 Test #86: System.ST-05_mark ................   Passed    0.76 sec
+      Start 87: System.ST-06_extension
+ 6/12 Test #87: System.ST-06_extension ...........   Passed    0.71 sec
+      Start 88: System.ST-07_moderate_release
+ 7/12 Test #88: System.ST-07_moderate_release ....   Passed    1.15 sec
+      Start 89: System.ST-08_admin
+ 8/12 Test #89: System.ST-08_admin ...............   Passed    0.98 sec
+      Start 90: System.ST-09_role_isolation
+ 9/12 Test #90: System.ST-09_role_isolation ......   Passed    0.85 sec
+      Start 91: System.ST-10_change_password
+10/12 Test #91: System.ST-10_change_password .....   Passed    1.19 sec
+      Start 92: System.ST-11_backup_restore
+11/12 Test #92: System.ST-11_backup_restore ......   Passed    0.85 sec
+      Start 93: System.ST-12_robustness
+12/12 Test #93: System.ST-12_robustness ..........   Passed    0.76 sec
+
+100% tests passed, 0 tests failed out of 12
+
+Label Time Summary:
+system    =  10.44 sec*proc (12 tests)
+
+Total Test time (real) =  10.45 sec

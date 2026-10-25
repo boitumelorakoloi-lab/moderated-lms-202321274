@@ -1,0 +1,41 @@
+Demo data created. Every demo account uses the password Password1
+  admin, hod.molapo, lect.mokoena, stu.thabo, stu.lerato, stu.palesa
+  Sample file to submit: demo_files/my_homework.txt
+Moderated Learning Management System v1.0
+
+=== Log in ===
+Username (blank to quit): Password: ERROR: Wrong username or password.
+
+=== Log in ===
+Username (blank to quit): Password: ERROR: Wrong username or password.
+
+=== Log in ===
+Username (blank to quit): Password: ERROR: Wrong username or password.
+
+=== Log in ===
+Username (blank to quit): Password: ERROR: Wrong username or password.
+
+=== Log in ===
+Username (blank to quit): Password: ERROR: Wrong username or password.
+
+=== Log in ===
+Username (blank to quit): Password: ERROR: Wrong username or password.
+
+=== Log in ===
+Username (blank to quit): Password: ERROR: Too many wrong passwords. The account is locked for 15 minutes.
+
+=== Log in ===
+Username (blank to quit): Password: ERROR: This account is locked after 5 wrong passwords. Try again after 2026-10-25 19:38.
+
+=== Log in ===
+Username (blank to quit): Password: 
+=== Student menu - Thabo Nthako ===
+  1. My courses and assignments
+  2. Submit an assignment
+  3. My released marks and feedback
+  P. Change my password
+  0. Exit this menu
+Choose an option: You have been logged out.
+
+=== Log in ===
+Username (blank to quit): Goodbye.

@@ -1,0 +1,95 @@
+Demo data created. Every demo account uses the password Password1
+  admin, hod.molapo, lect.mokoena, stu.thabo, stu.lerato, stu.palesa
+  Sample file to submit: demo_files/my_homework.txt
+Moderated Learning Management System v1.0
+
+=== Log in ===
+Username (blank to quit): Password: 
+=== Administrator menu - System Administrator ===
+  Users:        1. List users     2. Create user     3. Edit name
+                4. Reset password 5. Deactivate user
+  Courses:      6. List departments and courses
+                7. Create department  8. Set department HoD
+                9. Create course     10. Assign lecturer  11. Enrol student
+  Audit/data:  12. View audit log    13. Back up data     14. Restore data
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== Back up data ===
+Backup file name (e.g. backup-2026-10-30.db): Backup saved to backup1.db. Copy it to a USB stick or another PC.
+
+=== Administrator menu - System Administrator ===
+  Users:        1. List users     2. Create user     3. Edit name
+                4. Reset password 5. Deactivate user
+  Courses:      6. List departments and courses
+                7. Create department  8. Set department HoD
+                9. Create course     10. Assign lecturer  11. Enrol student
+  Audit/data:  12. View audit log    13. Back up data     14. Restore data
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== Create user ===
+  1. Student  2. Lecturer  3. Head of Department  4. Administrator
+Role: Username: Full name: First password (at least 8 characters): Student created with ID 7.
+
+=== Administrator menu - System Administrator ===
+  Users:        1. List users     2. Create user     3. Edit name
+                4. Reset password 5. Deactivate user
+  Courses:      6. List departments and courses
+                7. Create department  8. Set department HoD
+                9. Create course     10. Assign lecturer  11. Enrol student
+  Audit/data:  12. View audit log    13. Back up data     14. Restore data
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== Restore data ===
+WARNING: this replaces ALL current data with the backup.
+Backup file to restore: Are you sure? (y/n): ERROR: The database action failed - nothing was changed. Please try again.
+(Details: 'demo_files/my_homework.txt' is not an LMS backup file.)
+
+=== Administrator menu - System Administrator ===
+  Users:        1. List users     2. Create user     3. Edit name
+                4. Reset password 5. Deactivate user
+  Courses:      6. List departments and courses
+                7. Create department  8. Set department HoD
+                9. Create course     10. Assign lecturer  11. Enrol student
+  Audit/data:  12. View audit log    13. Back up data     14. Restore data
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== Restore data ===
+WARNING: this replaces ALL current data with the backup.
+Backup file to restore: Are you sure? (y/n): Data restored. Everyone should log out and log in again.
+
+=== Administrator menu - System Administrator ===
+  Users:        1. List users     2. Create user     3. Edit name
+                4. Reset password 5. Deactivate user
+  Courses:      6. List departments and courses
+                7. Create department  8. Set department HoD
+                9. Create course     10. Assign lecturer  11. Enrol student
+  Audit/data:  12. View audit log    13. Back up data     14. Restore data
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== Users ===
+  ID   Username          Name                    Role                Status
+  1    admin             System Administrator    Administrator       Active
+  2    hod.molapo        Mrs P. Molapo           Head of Department  Active
+  3    lect.mokoena      Mr T. Mokoena           Lecturer            Active
+  5    stu.lerato        Lerato Sekhonyana       Student             Active
+  6    stu.palesa        Palesa Mohapi           Student             Active
+  4    stu.thabo         Thabo Nthako            Student             Active
+
+=== Administrator menu - System Administrator ===
+  Users:        1. List users     2. Create user     3. Edit name
+                4. Reset password 5. Deactivate user
+  Courses:      6. List departments and courses
+                7. Create department  8. Set department HoD
+                9. Create course     10. Assign lecturer  11. Enrol student
+  Audit/data:  12. View audit log    13. Back up data     14. Restore data
+  P. Change my password
+  0. Exit this menu
+Choose an option: You have been logged out.
+
+=== Log in ===
+Username (blank to quit): Goodbye.

@@ -1,0 +1,57 @@
+Demo data created. Every demo account uses the password Password1
+  admin, hod.molapo, lect.mokoena, stu.thabo, stu.lerato, stu.palesa
+  Sample file to submit: demo_files/my_homework.txt
+Moderated Learning Management System v1.0
+
+=== Log in ===
+Username (blank to quit): Password: 
+=== Student menu - Thabo Nthako ===
+  1. My courses and assignments
+  2. Submit an assignment
+  3. My released marks and feedback
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== Submit an assignment ===
+Assignment ID: Path of your file (.pdf, .docx, .txt or .zip, max 10 MB): Your deadline: 2026-10-27 19:23
+On time.
+Hand in this file now? (y/n): Receipt: submission 1, version 1, handed in at 2026-10-25 19:23.
+
+=== Student menu - Thabo Nthako ===
+  1. My courses and assignments
+  2. Submit an assignment
+  3. My released marks and feedback
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== Submit an assignment ===
+Assignment ID: Path of your file (.pdf, .docx, .txt or .zip, max 10 MB): Your deadline: 2026-10-27 19:23
+This will replace your earlier file (version 1) for marking.
+Hand in this file now? (y/n): Receipt: submission 1, version 2, handed in at 2026-10-25 19:23.
+
+=== Student menu - Thabo Nthako ===
+  1. My courses and assignments
+  2. Submit an assignment
+  3. My released marks and feedback
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== My courses ===
+  MATH-F4     Mathematics Form 4
+  PHYS-F4     Physical Science Form 4
+
+=== My assignments ===
+  ID   Course    Title                     Deadline            Max  State
+  2    MATH-F4   Trigonometry homework     2026-10-24 13:23    20   Not submitted
+  1    MATH-F4   Algebra test 1            2026-10-27 19:23    50   Submitted
+
+=== Student menu - Thabo Nthako ===
+  1. My courses and assignments
+  2. Submit an assignment
+  3. My released marks and feedback
+  P. Change my password
+  0. Exit this menu
+Choose an option: You have been logged out.
+
+=== Log in ===
+Username (blank to quit): Goodbye.
