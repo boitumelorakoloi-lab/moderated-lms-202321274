@@ -1,0 +1,7 @@
+# UC-07 grant extension: invalid date, blank reason, BR-03 rules, student sees new deadline
+That is not a valid date and time.
+ERROR: This cannot be blank.
+The new deadline must be after the normal deadline.
+Extension saved. The student's deadline is now 2099-01-01 10:00.
+2099-01-01 10:00 *
+(* = your personal extended deadline)

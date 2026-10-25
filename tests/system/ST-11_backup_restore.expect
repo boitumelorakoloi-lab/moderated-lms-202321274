@@ -1,0 +1,7 @@
+# FR-25 back up and restore; a file that is not a backup is refused
+Backup saved to backup1.db.
+Student created with ID 7.
+is not an LMS backup file.
+Data restored.
+Thabo Nthako
+!Temp Person
