@@ -1,0 +1,84 @@
+Demo data created. Every demo account uses the password Password1
+  admin, hod.molapo, lect.mokoena, stu.thabo, stu.lerato, stu.palesa
+  Sample file to submit: demo_files/my_homework.txt
+Moderated Learning Management System v1.0
+
+=== Log in ===
+Username (blank to quit): Password: 
+=== Lecturer menu - Mr T. Mokoena ===
+  1. My courses
+  2. Create an assignment
+  3. List assignments for a course
+  4. Give a student an extension
+  5. Mark submissions
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== Give an extension ===
+Assignment ID: Student ID: New deadline for this student (YYYY-MM-DD HH:MM): ERROR: That is not a valid date and time. Example: 2026-10-30 14:00
+New deadline for this student (YYYY-MM-DD HH:MM): Reason: ERROR: This cannot be blank.
+Reason: ERROR: The new deadline must be after the normal deadline.
+
+=== Lecturer menu - Mr T. Mokoena ===
+  1. My courses
+  2. Create an assignment
+  3. List assignments for a course
+  4. Give a student an extension
+  5. Mark submissions
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== Give an extension ===
+Assignment ID: Student ID: New deadline for this student (YYYY-MM-DD HH:MM): Reason: Extension saved. The student's deadline is now 2099-01-01 10:00.
+
+=== Lecturer menu - Mr T. Mokoena ===
+  1. My courses
+  2. Create an assignment
+  3. List assignments for a course
+  4. Give a student an extension
+  5. Mark submissions
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== Give an extension ===
+Assignment ID: Student ID: New deadline for this student (YYYY-MM-DD HH:MM): Reason: Extension saved. The student's deadline is now 2099-01-01 10:00.
+
+=== Lecturer menu - Mr T. Mokoena ===
+  1. My courses
+  2. Create an assignment
+  3. List assignments for a course
+  4. Give a student an extension
+  5. Mark submissions
+  P. Change my password
+  0. Exit this menu
+Choose an option: You have been logged out.
+
+=== Log in ===
+Username (blank to quit): Password: 
+=== Student menu - Palesa Mohapi ===
+  1. My courses and assignments
+  2. Submit an assignment
+  3. My released marks and feedback
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== My courses ===
+  MATH-F4     Mathematics Form 4
+  PHYS-F4     Physical Science Form 4
+
+=== My assignments ===
+  ID   Course    Title                     Deadline            Max  State
+  2    MATH-F4   Trigonometry homework     2099-01-01 10:00 *  20   Not submitted
+  1    MATH-F4   Algebra test 1            2026-10-27 19:23    50   Not submitted
+  (* = your personal extended deadline)
+
+=== Student menu - Palesa Mohapi ===
+  1. My courses and assignments
+  2. Submit an assignment
+  3. My released marks and feedback
+  P. Change my password
+  0. Exit this menu
+Choose an option: You have been logged out.
+
+=== Log in ===
+Username (blank to quit): Goodbye.

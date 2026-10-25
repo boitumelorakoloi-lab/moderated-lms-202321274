@@ -107,11 +107,26 @@ A sample file to submit is created at `demo_files/my_homework.txt`.
 ## Running the tests
 
 ```bash
-ctest --test-dir build --output-on-failure
+ctest --test-dir build --output-on-failure            # all 93 tests
+ctest --test-dir build -L "unit|integration"          # GoogleTest tests only (81)
+ctest --test-dir build -L system                      # scripted console tests only (12)
 ```
 
-The same build and tests run on every push through GitHub Actions
-(`.github/workflows/ci.yml`).
+The system tests in `tests/system/` run the real program: `<ID>.in` holds the keystrokes and
+`<ID>.expect` lists text that must (or, with `!`, must not) appear in the output.
+
+**Coverage** (GCC/Clang, needs `gcovr`):
+
+```bash
+cmake -S . -B build-cov -DLMS_COVERAGE=ON -DCMAKE_BUILD_TYPE=Debug
+cmake --build build-cov
+ctest --test-dir build-cov -L "unit|integration"
+gcovr -r . build-cov --filter src/services/ --filter src/domain/ --print-summary
+```
+
+GitHub Actions (`.github/workflows/ci.yml`) builds the project and runs every test on each push
+and pull request, and a second job checks that business-logic line coverage stays at or above
+70%. Saved results are in `docs/test-results/`.
 
 ---
 
@@ -129,5 +144,5 @@ src/
   domain/                 User hierarchy, UserFactory, Assignment, Submission, Mark,
                           ILatePenaltyPolicy / TenPercentPerDayPolicy, exceptions
   data/                   Database (RAII), repository interfaces, SQLite repositories
-tests/                    GoogleTest unit and integration tests
+tests/                    GoogleTest tests (unit, integration, acceptance) + system/ scripted tests
 ```

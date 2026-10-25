@@ -1,0 +1,252 @@
+Demo data created. Every demo account uses the password Password1
+  admin, hod.molapo, lect.mokoena, stu.thabo, stu.lerato, stu.palesa
+  Sample file to submit: demo_files/my_homework.txt
+Moderated Learning Management System v1.0
+
+=== Log in ===
+Username (blank to quit): Password: 
+=== Administrator menu - System Administrator ===
+  Users:        1. List users     2. Create user     3. Edit name
+                4. Reset password 5. Deactivate user
+  Courses:      6. List departments and courses
+                7. Create department  8. Set department HoD
+                9. Create course     10. Assign lecturer  11. Enrol student
+  Audit/data:  12. View audit log    13. Back up data     14. Restore data
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== Create user ===
+  1. Student  2. Lecturer  3. Head of Department  4. Administrator
+Role: Username: Full name: First password (at least 8 characters): ERROR: The username must be 3 to 30 characters long.
+
+=== Administrator menu - System Administrator ===
+  Users:        1. List users     2. Create user     3. Edit name
+                4. Reset password 5. Deactivate user
+  Courses:      6. List departments and courses
+                7. Create department  8. Set department HoD
+                9. Create course     10. Assign lecturer  11. Enrol student
+  Audit/data:  12. View audit log    13. Back up data     14. Restore data
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== Create user ===
+  1. Student  2. Lecturer  3. Head of Department  4. Administrator
+Role: Username: Full name: First password (at least 8 characters): ERROR: The username 'stu.thabo' is already taken.
+
+=== Administrator menu - System Administrator ===
+  Users:        1. List users     2. Create user     3. Edit name
+                4. Reset password 5. Deactivate user
+  Courses:      6. List departments and courses
+                7. Create department  8. Set department HoD
+                9. Create course     10. Assign lecturer  11. Enrol student
+  Audit/data:  12. View audit log    13. Back up data     14. Restore data
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== Create user ===
+  1. Student  2. Lecturer  3. Head of Department  4. Administrator
+Role: Username: Full name: First password (at least 8 characters): ERROR: The password must be at least 8 characters long.
+
+=== Administrator menu - System Administrator ===
+  Users:        1. List users     2. Create user     3. Edit name
+                4. Reset password 5. Deactivate user
+  Courses:      6. List departments and courses
+                7. Create department  8. Set department HoD
+                9. Create course     10. Assign lecturer  11. Enrol student
+  Audit/data:  12. View audit log    13. Back up data     14. Restore data
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== Create user ===
+  1. Student  2. Lecturer  3. Head of Department  4. Administrator
+Role: Username: Full name: First password (at least 8 characters): Student created with ID 7.
+
+=== Administrator menu - System Administrator ===
+  Users:        1. List users     2. Create user     3. Edit name
+                4. Reset password 5. Deactivate user
+  Courses:      6. List departments and courses
+                7. Create department  8. Set department HoD
+                9. Create course     10. Assign lecturer  11. Enrol student
+  Audit/data:  12. View audit log    13. Back up data     14. Restore data
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== Create department ===
+Department name: HoD user ID (blank for none yet): ERROR: A department called 'Sciences' already exists.
+
+=== Administrator menu - System Administrator ===
+  Users:        1. List users     2. Create user     3. Edit name
+                4. Reset password 5. Deactivate user
+  Courses:      6. List departments and courses
+                7. Create department  8. Set department HoD
+                9. Create course     10. Assign lecturer  11. Enrol student
+  Audit/data:  12. View audit log    13. Back up data     14. Restore data
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== Create department ===
+Department name: HoD user ID (blank for none yet): ERROR: Mr T. Mokoena does not have the Head of Department role.
+
+=== Administrator menu - System Administrator ===
+  Users:        1. List users     2. Create user     3. Edit name
+                4. Reset password 5. Deactivate user
+  Courses:      6. List departments and courses
+                7. Create department  8. Set department HoD
+                9. Create course     10. Assign lecturer  11. Enrol student
+  Audit/data:  12. View audit log    13. Back up data     14. Restore data
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== Create department ===
+Department name: HoD user ID (blank for none yet): Department created with ID 3.
+
+=== Administrator menu - System Administrator ===
+  Users:        1. List users     2. Create user     3. Edit name
+                4. Reset password 5. Deactivate user
+  Courses:      6. List departments and courses
+                7. Create department  8. Set department HoD
+                9. Create course     10. Assign lecturer  11. Enrol student
+  Audit/data:  12. View audit log    13. Back up data     14. Restore data
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== Create course ===
+Course code (e.g. MATH-F4): Title: Department ID: Course created with ID 3.
+
+=== Administrator menu - System Administrator ===
+  Users:        1. List users     2. Create user     3. Edit name
+                4. Reset password 5. Deactivate user
+  Courses:      6. List departments and courses
+                7. Create department  8. Set department HoD
+                9. Create course     10. Assign lecturer  11. Enrol student
+  Audit/data:  12. View audit log    13. Back up data     14. Restore data
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== Assign lecturer to course ===
+Lecturer user ID: Course ID: ERROR: Thabo Nthako is not a lecturer.
+
+=== Administrator menu - System Administrator ===
+  Users:        1. List users     2. Create user     3. Edit name
+                4. Reset password 5. Deactivate user
+  Courses:      6. List departments and courses
+                7. Create department  8. Set department HoD
+                9. Create course     10. Assign lecturer  11. Enrol student
+  Audit/data:  12. View audit log    13. Back up data     14. Restore data
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== Assign lecturer to course ===
+Lecturer user ID: Course ID: Saved.
+
+=== Administrator menu - System Administrator ===
+  Users:        1. List users     2. Create user     3. Edit name
+                4. Reset password 5. Deactivate user
+  Courses:      6. List departments and courses
+                7. Create department  8. Set department HoD
+                9. Create course     10. Assign lecturer  11. Enrol student
+  Audit/data:  12. View audit log    13. Back up data     14. Restore data
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== Enrol student in course ===
+Student user ID: Course ID: Saved.
+
+=== Administrator menu - System Administrator ===
+  Users:        1. List users     2. Create user     3. Edit name
+                4. Reset password 5. Deactivate user
+  Courses:      6. List departments and courses
+                7. Create department  8. Set department HoD
+                9. Create course     10. Assign lecturer  11. Enrol student
+  Audit/data:  12. View audit log    13. Back up data     14. Restore data
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== Enrol student in course ===
+Student user ID: Course ID: ERROR: Neo Ramone is already enrolled in this course.
+
+=== Administrator menu - System Administrator ===
+  Users:        1. List users     2. Create user     3. Edit name
+                4. Reset password 5. Deactivate user
+  Courses:      6. List departments and courses
+                7. Create department  8. Set department HoD
+                9. Create course     10. Assign lecturer  11. Enrol student
+  Audit/data:  12. View audit log    13. Back up data     14. Restore data
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== Deactivate user ===
+User ID: ERROR: You cannot deactivate your own account.
+
+=== Administrator menu - System Administrator ===
+  Users:        1. List users     2. Create user     3. Edit name
+                4. Reset password 5. Deactivate user
+  Courses:      6. List departments and courses
+                7. Create department  8. Set department HoD
+                9. Create course     10. Assign lecturer  11. Enrol student
+  Audit/data:  12. View audit log    13. Back up data     14. Restore data
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== Deactivate user ===
+User ID: The account is deactivated and cannot log in. Its records are kept.
+
+=== Administrator menu - System Administrator ===
+  Users:        1. List users     2. Create user     3. Edit name
+                4. Reset password 5. Deactivate user
+  Courses:      6. List departments and courses
+                7. Create department  8. Set department HoD
+                9. Create course     10. Assign lecturer  11. Enrol student
+  Audit/data:  12. View audit log    13. Back up data     14. Restore data
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== Users ===
+  ID   Username          Name                    Role                Status
+  1    admin             System Administrator    Administrator       Active
+  2    hod.molapo        Mrs P. Molapo           Head of Department  Active
+  3    lect.mokoena      Mr T. Mokoena           Lecturer            Active
+  5    stu.lerato        Lerato Sekhonyana       Student             Active
+  7    stu.neo           Neo Ramone              Student             Active
+  6    stu.palesa        Palesa Mohapi           Student             Deactivated
+  4    stu.thabo         Thabo Nthako            Student             Active
+
+=== Administrator menu - System Administrator ===
+  Users:        1. List users     2. Create user     3. Edit name
+                4. Reset password 5. Deactivate user
+  Courses:      6. List departments and courses
+                7. Create department  8. Set department HoD
+                9. Create course     10. Assign lecturer  11. Enrol student
+  Audit/data:  12. View audit log    13. Back up data     14. Restore data
+  P. Change my password
+  0. Exit this menu
+Choose an option: You have been logged out.
+
+=== Log in ===
+Username (blank to quit): Password: ERROR: This account has been deactivated. Please see the administrator.
+
+=== Log in ===
+Username (blank to quit): Password: 
+=== Student menu - Neo Ramone ===
+  1. My courses and assignments
+  2. Submit an assignment
+  3. My released marks and feedback
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== My courses ===
+  ENG-F4      English Form 4
+
+=== My assignments ===
+No assignments yet.
+
+=== Student menu - Neo Ramone ===
+  1. My courses and assignments
+  2. Submit an assignment
+  3. My released marks and feedback
+  P. Change my password
+  0. Exit this menu
+Choose an option: You have been logged out.
+
+=== Log in ===
+Username (blank to quit): Goodbye.

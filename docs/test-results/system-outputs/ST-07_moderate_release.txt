@@ -1,0 +1,274 @@
+Demo data created. Every demo account uses the password Password1
+  admin, hod.molapo, lect.mokoena, stu.thabo, stu.lerato, stu.palesa
+  Sample file to submit: demo_files/my_homework.txt
+Moderated Learning Management System v1.0
+
+=== Log in ===
+Username (blank to quit): Password: 
+=== Student menu - Thabo Nthako ===
+  1. My courses and assignments
+  2. Submit an assignment
+  3. My released marks and feedback
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== Submit an assignment ===
+Assignment ID: Path of your file (.pdf, .docx, .txt or .zip, max 10 MB): Your deadline: 2026-10-24 13:23
+WARNING: The deadline has passed. This work will be 2 day(s) late and will lose marks (10% of the maximum per day, 0 after 3 days).
+Hand in this file now? (y/n): Receipt: submission 1, version 1, handed in at 2026-10-25 19:23.
+
+=== Student menu - Thabo Nthako ===
+  1. My courses and assignments
+  2. Submit an assignment
+  3. My released marks and feedback
+  P. Change my password
+  0. Exit this menu
+Choose an option: You have been logged out.
+
+=== Log in ===
+Username (blank to quit): Password: 
+=== Student menu - Lerato Sekhonyana ===
+  1. My courses and assignments
+  2. Submit an assignment
+  3. My released marks and feedback
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== Submit an assignment ===
+Assignment ID: Path of your file (.pdf, .docx, .txt or .zip, max 10 MB): Your deadline: 2026-10-24 13:23
+WARNING: The deadline has passed. This work will be 2 day(s) late and will lose marks (10% of the maximum per day, 0 after 3 days).
+Hand in this file now? (y/n): Receipt: submission 2, version 1, handed in at 2026-10-25 19:23.
+
+=== Student menu - Lerato Sekhonyana ===
+  1. My courses and assignments
+  2. Submit an assignment
+  3. My released marks and feedback
+  P. Change my password
+  0. Exit this menu
+Choose an option: You have been logged out.
+
+=== Log in ===
+Username (blank to quit): Password: 
+=== Lecturer menu - Mr T. Mokoena ===
+  1. My courses
+  2. Create an assignment
+  3. List assignments for a course
+  4. Give a student an extension
+  5. Mark submissions
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== Mark submissions ===
+Assignment ID:   Sub  Student  State      Late  Raw   Final  File
+  1    4        Late       2d    -     -      submissions/a2_s4_v1_1792948992.txt
+  2    5        Late       2d    -     -      submissions/a2_s5_v1_1792948992.txt
+Submission to mark (blank to go back): Raw mark (0-20): Feedback: Save this mark? (y/n): Saved. Final mark after any late penalty: 14.0 / 20.
+
+=== Lecturer menu - Mr T. Mokoena ===
+  1. My courses
+  2. Create an assignment
+  3. List assignments for a course
+  4. Give a student an extension
+  5. Mark submissions
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== Mark submissions ===
+Assignment ID:   Sub  Student  State      Late  Raw   Final  File
+  1    4        Marked     2d    18    14.0   submissions/a2_s4_v1_1792948992.txt
+  2    5        Late       2d    -     -      submissions/a2_s5_v1_1792948992.txt
+Submission to mark (blank to go back): Raw mark (0-20): Feedback: Save this mark? (y/n): Saved. Final mark after any late penalty: 8.0 / 20.
+
+=== Lecturer menu - Mr T. Mokoena ===
+  1. My courses
+  2. Create an assignment
+  3. List assignments for a course
+  4. Give a student an extension
+  5. Mark submissions
+  P. Change my password
+  0. Exit this menu
+Choose an option: You have been logged out.
+
+=== Log in ===
+Username (blank to quit): Password: 
+=== Head of Department menu - Mrs P. Molapo ===
+  1. Assignments in my department
+  2. Moderate marks for an assignment
+  3. Release marks for an assignment
+  4. View the audit log for a submission
+  5. Open my lecturer menu (my own teaching; exit it to come back here)
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== Release marks ===
+Assignment ID: Students will see these marks straight away. Release now? (y/n): ERROR: 2 mark(s) still need approval.
+
+=== Head of Department menu - Mrs P. Molapo ===
+  1. Assignments in my department
+  2. Moderate marks for an assignment
+  3. Release marks for an assignment
+  4. View the audit log for a submission
+  5. Open my lecturer menu (my own teaching; exit it to come back here)
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== Moderate marks ===
+Assignment ID:   Sub  Student  State      Late  Raw  Pen.  Final  Extension
+  1    4        Marked     2d    18   4.0   14.0   -
+        Feedback: Good
+  2    5        Marked     2d    12   4.0   8.0    -
+        Feedback: Fair
+Submission to review (blank to stop):   1. Approve
+  2. Adjust the mark
+  3. Return to the lecturer
+  0. Cancel
+Action: Approved.
+  Sub  Student  State      Late  Raw  Pen.  Final  Extension
+  1    4        Moderated  2d    18   4.0   14.0   -
+        Feedback: Good
+  2    5        Marked     2d    12   4.0   8.0    -
+        Feedback: Fair
+Submission to review (blank to stop):   1. Approve
+  2. Adjust the mark
+  3. Return to the lecturer
+  0. Cancel
+Action: Comment for the lecturer: Returned to the lecturer.
+  Sub  Student  State      Late  Raw  Pen.  Final  Extension
+  1    4        Moderated  2d    18   4.0   14.0   -
+        Feedback: Good
+  2    5        Returned   2d    12   4.0   8.0    -
+        Feedback: Fair
+Nothing is waiting for you - the rest is still with the lecturer.
+
+=== Head of Department menu - Mrs P. Molapo ===
+  1. Assignments in my department
+  2. Moderate marks for an assignment
+  3. Release marks for an assignment
+  4. View the audit log for a submission
+  5. Open my lecturer menu (my own teaching; exit it to come back here)
+  P. Change my password
+  0. Exit this menu
+Choose an option: You have been logged out.
+
+=== Log in ===
+Username (blank to quit): Password: 
+=== Lecturer menu - Mr T. Mokoena ===
+  1. My courses
+  2. Create an assignment
+  3. List assignments for a course
+  4. Give a student an extension
+  5. Mark submissions
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== Mark submissions ===
+Assignment ID:   Sub  Student  State      Late  Raw   Final  File
+  2    5        Returned   2d    12    8.0    submissions/a2_s5_v1_1792948992.txt
+        HoD comment: Please recheck Q2
+Submission to mark (blank to go back): Raw mark (0-20): Feedback: Reason for changing the mark: Save this mark? (y/n): Saved. Final mark after any late penalty: 10.0 / 20.
+
+=== Lecturer menu - Mr T. Mokoena ===
+  1. My courses
+  2. Create an assignment
+  3. List assignments for a course
+  4. Give a student an extension
+  5. Mark submissions
+  P. Change my password
+  0. Exit this menu
+Choose an option: You have been logged out.
+
+=== Log in ===
+Username (blank to quit): Password: 
+=== Head of Department menu - Mrs P. Molapo ===
+  1. Assignments in my department
+  2. Moderate marks for an assignment
+  3. Release marks for an assignment
+  4. View the audit log for a submission
+  5. Open my lecturer menu (my own teaching; exit it to come back here)
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== Moderate marks ===
+Assignment ID:   Sub  Student  State      Late  Raw  Pen.  Final  Extension
+  1    4        Moderated  2d    18   4.0   14.0   -
+        Feedback: Good
+  2    5        Marked     2d    14   4.0   10.0   -
+        Feedback: Fair, Q2 rechecked
+Submission to review (blank to stop):   1. Approve
+  2. Adjust the mark
+  3. Return to the lecturer
+  0. Cancel
+Action: New raw mark: Reason for the change: Adjusted and approved. New final mark: 12.0
+  Sub  Student  State      Late  Raw  Pen.  Final  Extension
+  1    4        Moderated  2d    18   4.0   14.0   -
+        Feedback: Good
+  2    5        Moderated  2d    16   4.0   12.0   -
+        Feedback: Fair, Q2 rechecked
+Every mark is approved. You can now release them (option 3).
+
+=== Head of Department menu - Mrs P. Molapo ===
+  1. Assignments in my department
+  2. Moderate marks for an assignment
+  3. Release marks for an assignment
+  4. View the audit log for a submission
+  5. Open my lecturer menu (my own teaching; exit it to come back here)
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== Release marks ===
+Assignment ID: Students will see these marks straight away. Release now? (y/n): Marks released.
+
+=== Head of Department menu - Mrs P. Molapo ===
+  1. Assignments in my department
+  2. Moderate marks for an assignment
+  3. Release marks for an assignment
+  4. View the audit log for a submission
+  5. Open my lecturer menu (my own teaching; exit it to come back here)
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== Audit log ===
+Submission ID:   When              Who       Action      Old  New  Reason
+  2026-10-25 19:23  User 3    MARK        -    12   
+  2026-10-25 19:23  User 2    RETURN      12   12   Please recheck Q2
+  2026-10-25 19:23  User 3    REMARK      12   14   Rechecked Q2
+  2026-10-25 19:23  User 2    HOD_ADJUST  14   16   Rubric misapplied
+  2026-10-25 19:23  User 2    RELEASE     16   16   
+
+=== Head of Department menu - Mrs P. Molapo ===
+  1. Assignments in my department
+  2. Moderate marks for an assignment
+  3. Release marks for an assignment
+  4. View the audit log for a submission
+  5. Open my lecturer menu (my own teaching; exit it to come back here)
+  P. Change my password
+  0. Exit this menu
+Choose an option: You have been logged out.
+
+=== Log in ===
+Username (blank to quit): Password: 
+=== Student menu - Lerato Sekhonyana ===
+  1. My courses and assignments
+  2. Submit an assignment
+  3. My released marks and feedback
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== My released marks ===
+
+  Trigonometry homework
+    Raw mark:    16 / 20
+    Days late:   2 (penalty 4.0)
+    Final mark:  12.0 / 20
+    Feedback:    Fair, Q2 rechecked
+
+=== Student menu - Lerato Sekhonyana ===
+  1. My courses and assignments
+  2. Submit an assignment
+  3. My released marks and feedback
+  P. Change my password
+  0. Exit this menu
+Choose an option: You have been logged out.
+
+=== Log in ===
+Username (blank to quit): Goodbye.

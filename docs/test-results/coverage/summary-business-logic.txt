@@ -1,0 +1,31 @@
+------------------------------------------------------------------------------
+                           GCC Code Coverage Report
+Directory: .
+------------------------------------------------------------------------------
+File                                         Lines     Exec  Cover   Missing
+------------------------------------------------------------------------------
+src/domain/Assignment.cpp                       13       13   100%
+src/domain/Assignment.h                          7        7   100%
+src/domain/Entities.h                           37       36    97%   18
+src/domain/Exceptions.h                          1        1   100%
+src/domain/ILatePenaltyPolicy.h                  1        1   100%
+src/domain/Mark.h                               22       22   100%
+src/domain/Submission.cpp                       31       30    96%   50
+src/domain/Submission.h                         16       16   100%
+src/domain/TenPercentPerDayPolicy.cpp           13       13   100%
+src/domain/TenPercentPerDayPolicy.h              1        1   100%
+src/domain/Time.cpp                             33       32    97%   52
+src/domain/Types.cpp                            46       42    91%   15,33,45,67
+src/domain/User.cpp                             33       33   100%
+src/domain/User.h                               16       16   100%
+src/domain/UserFactory.cpp                      11       10    90%   19
+src/services/AdminService.cpp                  133      132    99%   20
+src/services/AssignmentService.cpp              75       71    94%   15,48,89,107
+src/services/AuthService.cpp                    46       44    95%   16,81
+src/services/MarkingService.cpp                 52       50    96%   14,40
+src/services/MarkView.cpp                       18       17    94%   19
+src/services/ModerationService.cpp             105      100    95%   16,44,102,135,146
+src/services/SubmissionService.cpp             106      100    94%   35,54,76-77,120,145
+------------------------------------------------------------------------------
+TOTAL                                          816      787    96%
+------------------------------------------------------------------------------

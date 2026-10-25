@@ -1,0 +1,71 @@
+Demo data created. Every demo account uses the password Password1
+  admin, hod.molapo, lect.mokoena, stu.thabo, stu.lerato, stu.palesa
+  Sample file to submit: demo_files/my_homework.txt
+Moderated Learning Management System v1.0
+
+=== Log in ===
+Username (blank to quit): Password: 
+=== Student menu - Thabo Nthako ===
+  1. My courses and assignments
+  2. Submit an assignment
+  3. My released marks and feedback
+  P. Change my password
+  0. Exit this menu
+Choose an option: ERROR: That is not one of the options.
+
+=== Student menu - Thabo Nthako ===
+  1. My courses and assignments
+  2. Submit an assignment
+  3. My released marks and feedback
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== My released marks ===
+No marks have been released to you yet.
+
+=== Student menu - Thabo Nthako ===
+  1. My courses and assignments
+  2. Submit an assignment
+  3. My released marks and feedback
+  P. Change my password
+  0. Exit this menu
+Choose an option: You have been logged out.
+
+=== Log in ===
+Username (blank to quit): Password: 
+=== Lecturer menu - Mr T. Mokoena ===
+  1. My courses
+  2. Create an assignment
+  3. List assignments for a course
+  4. Give a student an extension
+  5. Mark submissions
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== Create an assignment ===
+Course ID: Title: Deadline (YYYY-MM-DD HH:MM): Maximum mark (1-100): ERROR: You do not teach this course.
+
+=== Lecturer menu - Mr T. Mokoena ===
+  1. My courses
+  2. Create an assignment
+  3. List assignments for a course
+  4. Give a student an extension
+  5. Mark submissions
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== Mark submissions ===
+Assignment ID: There is no work to mark for this assignment.
+
+=== Lecturer menu - Mr T. Mokoena ===
+  1. My courses
+  2. Create an assignment
+  3. List assignments for a course
+  4. Give a student an extension
+  5. Mark submissions
+  P. Change my password
+  0. Exit this menu
+Choose an option: You have been logged out.
+
+=== Log in ===
+Username (blank to quit): Goodbye.
