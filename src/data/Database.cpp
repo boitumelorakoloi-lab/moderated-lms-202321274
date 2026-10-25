@@ -38,11 +38,13 @@ Database::~Database() {
 }
 
 void Database::configure() {
-    // Foreign keys are off by default in SQLite. WAL plus a busy timeout lets several
-    // users work at once without "database is locked" errors (NFR-02, risk R2).
-    executeScript("PRAGMA foreign_keys = ON;");
-    executeScript("PRAGMA journal_mode = WAL;");
+    // WAL plus a busy timeout lets several users work at once without "database is
+    // locked" errors (NFR-02, risk R2). The timeout must be set FIRST: setting WAL mode
+    // needs a lock, and without the timeout a connection opened while someone else is
+    // saving gives up at once instead of waiting (defect D-09, found by CI).
     sqlite3_busy_timeout(db_, 5000);
+    executeScript("PRAGMA foreign_keys = ON;");  // off by default in SQLite
+    executeScript("PRAGMA journal_mode = WAL;");
 }
 
 void Database::ensureSchema() {
