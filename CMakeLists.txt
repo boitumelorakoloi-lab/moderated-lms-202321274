@@ -132,3 +132,23 @@ if(LMS_BUILD_TESTS)
         set_tests_properties("System.${caseName}" PROPERTIES LABELS "system" TIMEOUT 180)
     endforeach()
 endif()
+
+# ---- Packaging (Phase 7) -----------------------------------------------------
+# cmake --install build            installs bin/lms and the guides
+# cd build && cpack -G DEB         makes moderated-lms_<version>_amd64.deb for Ubuntu
+# packaging/build-windows.sh       makes a stand-alone Windows zip (see docs/INSTALL.md)
+include(GNUInstallDirs)
+install(TARGETS lms RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+install(FILES README.md RELEASE_NOTES.md docs/INSTALL.md docs/USER_MANUAL.md
+        DESTINATION ${CMAKE_INSTALL_DOCDIR})
+
+set(CPACK_PACKAGE_NAME "moderated-lms")
+set(CPACK_PACKAGE_VENDOR "Boitumelo Rakoloi (202321274)")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Moderated Learning Management System for a secondary school")
+set(CPACK_PACKAGE_CONTACT "Boitumelo Rakoloi")
+set(CPACK_PACKAGING_INSTALL_PREFIX "/usr")
+set(CPACK_DEBIAN_FILE_NAME DEB-DEFAULT)
+set(CPACK_DEBIAN_PACKAGE_DEPENDS "libsqlite3-0 (>= 3.24), libsodium23 (>= 1.0.18)")
+set(CPACK_DEBIAN_PACKAGE_SECTION "education")
+set(CPACK_GENERATOR "DEB;TGZ")
+include(CPack)
