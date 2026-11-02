@@ -1,7 +1,7 @@
 Demo data created. Every demo account uses the password Password1
   admin, hod.molapo, lect.mokoena, stu.thabo, stu.lerato, stu.palesa
   Sample file to submit: demo_files/my_homework.txt
-Moderated Learning Management System v1.0
+Moderated Learning Management System v1.1
 
 === Log in ===
 Username (blank to quit): Password: 
@@ -11,6 +11,7 @@ Username (blank to quit): Password:
   3. List assignments for a course
   4. Give a student an extension
   5. Mark submissions
+  6. Extend the deadline for the whole class
   P. Change my password
   0. Exit this menu
 Choose an option: 
@@ -25,6 +26,7 @@ Reason: ERROR: The new deadline must be after the normal deadline.
   3. List assignments for a course
   4. Give a student an extension
   5. Mark submissions
+  6. Extend the deadline for the whole class
   P. Change my password
   0. Exit this menu
 Choose an option: 
@@ -37,6 +39,7 @@ Assignment ID: Student ID: New deadline for this student (YYYY-MM-DD HH:MM): Rea
   3. List assignments for a course
   4. Give a student an extension
   5. Mark submissions
+  6. Extend the deadline for the whole class
   P. Change my password
   0. Exit this menu
 Choose an option: 
@@ -49,6 +52,7 @@ Assignment ID: Student ID: New deadline for this student (YYYY-MM-DD HH:MM): Rea
   3. List assignments for a course
   4. Give a student an extension
   5. Mark submissions
+  6. Extend the deadline for the whole class
   P. Change my password
   0. Exit this menu
 Choose an option: You have been logged out.
@@ -69,8 +73,10 @@ Choose an option:
 === My assignments ===
   ID   Course    Title                     Deadline            Max  State
   2    MATH-F4   Trigonometry homework     2099-01-01 10:00 *  20   Not submitted
-  1    MATH-F4   Algebra test 1            2026-10-27 23:43    50   Not submitted
-  (* = your personal extended deadline)
+  1    MATH-F4   Algebra test 1            2026-11-04 01:01    50   Not submitted
+
+  * Extended deadlines:
+    Trigonometry homework: personal extension from 2026-10-31 19:01 to 2099-01-01 10:00 - Doctors note
 
 === Student menu - Palesa Mohapi ===
   1. My courses and assignments

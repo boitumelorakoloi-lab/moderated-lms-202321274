@@ -34,6 +34,7 @@ public:
 private:
     void configure();
     void ensureSchema();
+    bool hasTable(const std::string& name);
 
     sqlite3* db_ = nullptr;
 };

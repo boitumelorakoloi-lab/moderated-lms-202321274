@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.18)
-project(ModeratedLMS VERSION 1.0.0 LANGUAGES CXX)
+project(ModeratedLMS VERSION 1.1.0 LANGUAGES CXX)
 
 # ---- Language and warnings (Coding Standard, rule B1) ------------------------
 set(CMAKE_CXX_STANDARD 17)
@@ -112,6 +112,7 @@ if(LMS_BUILD_TESTS)
         tests/test_repositories.cpp
         tests/test_end_to_end.cpp
         tests/test_nonfunctional.cpp
+        tests/test_class_extension.cpp
     )
     target_link_libraries(lms_tests PRIVATE lms_core GTest::gtest_main)
     include(GoogleTest)

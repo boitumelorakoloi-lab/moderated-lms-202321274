@@ -42,11 +42,12 @@ private:
     int departmentId_;
 };
 
-// An individual extension for one student on one assignment (FR-08, BR-03).
+// An extension of the deadline on one assignment (FR-08, BR-03). Since v1.1 (CR1, FR-27) it can
+// be for one student or, when studentId is empty, for every student in the course (BR-06).
 class Extension {
 public:
-    Extension(int assignmentId, int studentId, TimePoint newDeadline, std::string reason,
-              int grantedBy)
+    Extension(int assignmentId, std::optional<int> studentId, TimePoint newDeadline,
+              std::string reason, int grantedBy)
         : assignmentId_(assignmentId),
           studentId_(studentId),
           newDeadline_(newDeadline),
@@ -54,14 +55,15 @@ public:
           grantedBy_(grantedBy) {}
 
     int assignmentId() const { return assignmentId_; }
-    int studentId() const { return studentId_; }
+    const std::optional<int>& studentId() const { return studentId_; }  // empty = whole class
+    bool forWholeClass() const { return !studentId_.has_value(); }
     TimePoint newDeadline() const { return newDeadline_; }
     const std::string& reason() const { return reason_; }
     int grantedBy() const { return grantedBy_; }
 
 private:
     int assignmentId_;
-    int studentId_;
+    std::optional<int> studentId_;
     TimePoint newDeadline_;
     std::string reason_;
     int grantedBy_;

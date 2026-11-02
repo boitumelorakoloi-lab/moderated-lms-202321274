@@ -95,14 +95,14 @@ TEST_F(AssignmentServiceTest, StudentOverview) {
     const auto rows = assignments.overviewForStudent(s1());
     ASSERT_EQ(rows.size(), 2u);
     EXPECT_EQ(rows[0].courseCode, "MATH");
-    EXPECT_TRUE(rows[0].hasExtension);
+    EXPECT_TRUE(rows[0].extension.has_value());
     EXPECT_EQ(rows[0].effectiveDeadline, kNow + hours(24));
     EXPECT_EQ(rows[0].status, SubmissionStatus::Submitted);  // on time thanks to the extension
-    EXPECT_FALSE(rows[1].hasExtension);
+    EXPECT_FALSE(rows[1].extension.has_value());
     EXPECT_FALSE(rows[1].status.has_value());  // not submitted
 
     const auto s2rows = assignments.overviewForStudent(s2());
-    EXPECT_FALSE(s2rows[0].hasExtension);  // extensions are per student
+    EXPECT_FALSE(s2rows[0].extension.has_value());  // extensions are per student
     EXPECT_EQ(assignments.listCoursesForStudent(s1()).size(), 1u);
 }
 

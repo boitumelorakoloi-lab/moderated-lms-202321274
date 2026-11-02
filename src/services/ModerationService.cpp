@@ -37,7 +37,8 @@ std::vector<MarkView> ModerationService::listForModeration(const HeadOfDepartmen
     std::vector<MarkView> rows;
     rows.reserve(subs.size());
     std::transform(subs.begin(), subs.end(), std::back_inserter(rows), [&](const Submission& s) {
-        return buildMarkView(s, assignment, courses_.findExtension(assignmentId, s.studentId()),
+        return buildMarkView(s, assignment,
+                             applicableExtension(courses_, assignmentId, s.studentId()),
                              marks_.find(s.id()), policy_);
     });
     return rows;
@@ -86,7 +87,7 @@ double ModerationService::adjust(const HeadOfDepartment& h, int submissionId, in
         d.mark, SubmissionStatus::Moderated,
         AuditEntry(submissionId, h.id(), now, "HOD_ADJUST", oldRaw, newRaw, trim(reason)));
     return buildMarkView(d.submission, d.assignment,
-                         courses_.findExtension(d.assignment.id(), d.submission.studentId()),
+                         applicableExtension(courses_, d.assignment.id(), d.submission.studentId()),
                          d.mark, policy_)
         .finalMark;
 }

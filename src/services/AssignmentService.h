@@ -16,7 +16,7 @@ struct StudentAssignmentRow {
     Assignment assignment;
     std::string courseCode;
     TimePoint effectiveDeadline;
-    bool hasExtension = false;
+    std::optional<Extension> extension;      // v1.1 (CR1): shown on the student's list
     std::optional<SubmissionStatus> status;  // nullopt = not submitted yet
 };
 
@@ -30,6 +30,12 @@ public:
                         const std::string& reason, TimePoint now);
     std::vector<Assignment> listForStudent(const Student& s);
 
+    // v1.1, CR1 (FR-27, BR-06): move the deadline for every student in the course. Returns
+    // how many late submissions are now on time.
+    int extendForClass(const Lecturer& l, int assignmentId, TimePoint newDeadline,
+                       const std::string& reason, TimePoint now);
+    std::optional<Extension> classExtension(const Lecturer& l, int assignmentId);
+
     // Added in Phase 4 for the list screens.
     std::vector<StudentAssignmentRow> overviewForStudent(const Student& s);
     std::vector<Course> listCoursesForStudent(const Student& s);
@@ -38,6 +44,7 @@ public:
 
 private:
     Assignment getAssignmentITeach(const Lecturer& l, int assignmentId);
+    std::vector<int> lateWorkCoveredBy(int assignmentId, TimePoint newDeadline);  // CR1
 
     ICourseRepository& courses_;
     ISubmissionRepository& submissions_;

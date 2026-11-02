@@ -6,7 +6,7 @@ File                                         Lines     Exec  Cover   Missing
 ------------------------------------------------------------------------------
 src/domain/Assignment.cpp                       13       13   100%
 src/domain/Assignment.h                          7        7   100%
-src/domain/Entities.h                           37       36    97%   18
+src/domain/Entities.h                           38       37    97%   18
 src/domain/Exceptions.h                          1        1   100%
 src/domain/ILatePenaltyPolicy.h                  1        1   100%
 src/domain/Mark.h                               22       22   100%
@@ -20,12 +20,15 @@ src/domain/User.cpp                             33       33   100%
 src/domain/User.h                               16       16   100%
 src/domain/UserFactory.cpp                      11       10    90%   19
 src/services/AdminService.cpp                  141      140    99%   20
-src/services/AssignmentService.cpp              80       74    92%   15,49,92,110,114,121
+src/services/AssignmentService.cpp             113      106    93%   16,50,97,148,166,170,177
 src/services/AuthService.cpp                    46       44    95%   16,83
 src/services/MarkingService.cpp                 60       59    98%   27
-src/services/MarkView.cpp                       18       17    94%   19
-src/services/ModerationService.cpp             108      102    94%   19,50-51,110,144,154
+src/services/MarkView.cpp                       25       24    96%   19
+src/services/ModerationService.cpp             108      102    94%   19,51-52,111,145,155
 src/services/SubmissionService.cpp             107      101    94%   35,54,77-78,122,147
 ------------------------------------------------------------------------------
-TOTAL                                          859      828    96%
+TOTAL                                          900      868    96%
 ------------------------------------------------------------------------------
+lines: 96.4% (868 out of 900)
+functions: 99.4% (169 out of 170)
+branches: 60.2% (967 out of 1607)

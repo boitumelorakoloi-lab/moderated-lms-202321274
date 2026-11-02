@@ -1,6 +1,6 @@
 # User Manual
 
-Moderated Learning Management System · release 1.0.0
+Moderated Learning Management System · release 1.1.0
 
 This manual has one part for each kind of user. Read **Part 1** first, then your own part.
 
@@ -57,8 +57,9 @@ scrambled code (hash).
 The **State** column shows where your work is: `Not submitted`, `Submitted`, `Late`, `Marked`,
 `Returned`, `Moderated` or `Released`. You can only see a mark once it is `Released`.
 
-A deadline with a `*` is **your personal extended deadline**: your lecturer has given you more
-time.
+A deadline with a `*` has been **extended**. Under the list, *Extended deadlines* shows for each
+one whether it is a **whole-class** extension or a **personal** one, the old and the new
+deadline, and the lecturer's reason. If you have both, the later deadline counts.
 
 ### Handing in work (option 2)
 
@@ -91,20 +92,30 @@ the feedback.
 |---|---|
 | 1. My courses | The courses you teach, with their IDs |
 | 2. Create an assignment | Title, deadline and maximum mark (1-100) |
-| 3. List assignments for a course | Assignments with deadline and whether marks are released |
+| 3. List assignments for a course | Assignments with deadline, any whole-class extension, and whether marks are released |
 | 4. Give a student an extension | A later deadline for one student |
 | 5. Mark submissions | Mark, re-mark, and see work returned by the HoD |
+| 6. Extend the deadline for the whole class | A later deadline for every student on one assignment |
 
 ### Creating an assignment (option 2)
 
 Type the course ID (from option 1), a title, the deadline and the maximum mark.
 
-### Extensions (option 4)
+### Extensions
 
-Type the assignment ID, the student's ID, the new deadline and a
+**One student (option 4):** type the assignment ID, the student's ID, the new deadline and a
 reason. The new deadline must be after the normal one. You cannot give an extension once the
 work has been marked. If the student's late work is covered by the new deadline, it becomes
 on time.
+
+**Whole class (option 6):** type the assignment ID, the new deadline and a reason - students see
+the reason on their list, so keep it short and suitable (for example *Exam week clash*).
+
+- The new deadline must be after the normal deadline, and later than any earlier whole-class
+  extension (it can only move later, never earlier).
+- It is refused once marking has started on that assignment. Use individual extensions then.
+- Late work that the new deadline covers becomes on time, and the program tells you how many.
+- A student who already has a later personal extension keeps it.
 
 ### Marking (option 5)
 
@@ -132,7 +143,7 @@ it and it goes back to the HoD. You cannot change a mark after the HoD has appro
 ### Moderating (option 2)
 
 Type the assignment ID. For each submission you see the raw mark, days late, penalty, final mark,
-feedback and any extension. Type a submission
+feedback and any extension (`class` in front means a whole-class extension). Type a submission
 ID, then choose:
 
 1. **Approve** - the mark is correct.
@@ -188,4 +199,5 @@ Files that are not LMS backups are refused and nothing is changed.
 | `Late work can only be handed in once` | You already handed in late work for this assignment |
 | `A reason is required ...` | Mark changes, adjustments, returns and extensions need a reason |
 | `N mark(s) still need approval.` | Release is only possible when all marks are approved |
+| `Marking has already started, so the class deadline can no longer be moved.` | Use individual extensions |
 | `You are not allowed to ...` / `You do not teach ...` | The action is not part of your role |

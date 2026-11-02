@@ -1,7 +1,7 @@
 Demo data created. Every demo account uses the password Password1
   admin, hod.molapo, lect.mokoena, stu.thabo, stu.lerato, stu.palesa
   Sample file to submit: demo_files/my_homework.txt
-Moderated Learning Management System v1.0
+Moderated Learning Management System v1.1
 
 === Log in ===
 Username (blank to quit): Password: 
@@ -39,6 +39,7 @@ Username (blank to quit): Password:
   3. List assignments for a course
   4. Give a student an extension
   5. Mark submissions
+  6. Extend the deadline for the whole class
   P. Change my password
   0. Exit this menu
 Choose an option: 
@@ -51,6 +52,7 @@ Course ID: Title: Deadline (YYYY-MM-DD HH:MM): Maximum mark (1-100): ERROR: You 
   3. List assignments for a course
   4. Give a student an extension
   5. Mark submissions
+  6. Extend the deadline for the whole class
   P. Change my password
   0. Exit this menu
 Choose an option: 
@@ -63,6 +65,7 @@ Assignment ID: There is no work to mark for this assignment.
   3. List assignments for a course
   4. Give a student an extension
   5. Mark submissions
+  6. Extend the deadline for the whole class
   P. Change my password
   0. Exit this menu
 Choose an option: You have been logged out.

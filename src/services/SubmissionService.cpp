@@ -61,7 +61,7 @@ CheckResult SubmissionService::check(const Student& s, int assignmentId, const s
     if (!courses_.isEnrolled(s.id(), assignment->courseId())) {
         throw AccessDeniedException("You are not enrolled in the course for this assignment.");
     }
-    const auto ext = courses_.findExtension(assignmentId, s.id());
+    const auto ext = applicableExtension(courses_, assignmentId, s.id());
 
     CheckResult r;
     r.deadline = assignment->effectiveDeadline(ext);
@@ -153,7 +153,7 @@ std::vector<StudentResult> SubmissionService::myResults(const Student& s) {
         if (!sub || sub->status() != SubmissionStatus::Released) {
             continue;
         }
-        results.push_back({a, buildMarkView(*sub, a, courses_.findExtension(a.id(), s.id()),
+        results.push_back({a, buildMarkView(*sub, a, applicableExtension(courses_, a.id(), s.id()),
                                             marks_.find(sub->id()), policy_)});
     }
     return results;

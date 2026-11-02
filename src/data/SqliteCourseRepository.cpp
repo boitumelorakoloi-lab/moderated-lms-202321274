@@ -112,7 +112,7 @@ void SqliteCourseRepository::saveExtension(const Extension& e) {
                  "new_deadline = excluded.new_deadline, reason = excluded.reason, "
                  "granted_by = excluded.granted_by, granted_at = excluded.granted_at");
     st.bind(1, e.assignmentId())
-        .bind(2, e.studentId())
+        .bindOptional(2, e.studentId())
         .bindTime(3, e.newDeadline())
         .bind(4, e.reason())
         .bind(5, e.grantedBy())
@@ -192,6 +192,42 @@ std::vector<Assignment> SqliteCourseRepository::listAssignmentsForCourse(int cou
                           .c_str());
     st.bind(1, courseId);
     return readAssignments(st);
+}
+
+// ---------------------------------------------------------------- v1.1 (CR1)
+
+std::optional<Extension> SqliteCourseRepository::findClassExtension(int assignmentId) {
+    Statement st(db_,
+                 "SELECT new_deadline, reason, granted_by FROM class_extension "
+                 "WHERE assignment_id = ?1");
+    st.bind(1, assignmentId);
+    if (!st.step()) return std::nullopt;
+    return Extension(assignmentId, std::nullopt, st.getTime(0), st.getText(1), st.getInt(2));
+}
+
+void SqliteCourseRepository::saveClassExtension(const Extension& e,
+                                                const std::vector<int>& nowOnTime) {
+    Transaction tx(db_);  // the extension and the status changes are saved together (NFR-07)
+    Statement save(db_,
+                   "INSERT INTO class_extension (assignment_id, new_deadline, reason, granted_by, "
+                   "granted_at) VALUES (?1, ?2, ?3, ?4, ?5) "
+                   "ON CONFLICT (assignment_id) DO UPDATE SET "
+                   "new_deadline = excluded.new_deadline, reason = excluded.reason, "
+                   "granted_by = excluded.granted_by, granted_at = excluded.granted_at");
+    save.bind(1, e.assignmentId())
+        .bindTime(2, e.newDeadline())
+        .bind(3, e.reason())
+        .bind(4, e.grantedBy())
+        .bindTime(5, std::chrono::system_clock::now());
+    save.run();
+    for (const int submissionId : nowOnTime) {
+        Statement st(db_,
+                     "UPDATE submission SET status = 'SUBMITTED' "
+                     "WHERE submission_id = ?1 AND status = 'LATE'");
+        st.bind(1, submissionId);
+        st.run();
+    }
+    tx.commit();
 }
 
 }  // namespace lms

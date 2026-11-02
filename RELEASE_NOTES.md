@@ -7,6 +7,41 @@ breaking existing data.
 
 ---
 
+## v1.1.0 - 2 November 2026
+
+**Change request CR1:** *"A lecturer should be able to extend the deadline for a whole class, not
+just an individual student, and extensions should be shown on the student's assignment list."*
+
+### New
+
+- **Whole-class extensions** (FR-27, BR-06). Lecturer menu option 6 moves an assignment's
+  deadline for every student in the course, with a reason. It can only move later, is refused
+  once marking has started, and turns covered late work back into on-time work.
+- **Extensions on the student's assignment list** (FR-09 as changed). Under the list, students
+  see each extended deadline, whether it is personal or whole-class, the old and new deadline and
+  the reason.
+- Lecturers see any whole-class extension in *List assignments for a course*, and HoDs see
+  `class` in front of whole-class extensions when moderating.
+
+### Changed
+
+- When a student has both a personal and a whole-class extension, the **later** deadline counts,
+  so nobody is worse off than the rest of the class.
+- Database schema v1.1: new table `class_extension`. A v1.0 database is upgraded automatically the
+  first time v1.1 opens it; no data is changed or lost.
+
+### Quality
+
+- 104 automated tests pass (91 unit/integration, 13 system), including 10 new CR1 tests
+  (UT-19, IT-80 to IT-88) and one new system test (ST-13). Every v1.0 test still passes.
+- cppcheck and clang-tidy: 0 findings. Business-logic line coverage 96.4%.
+
+### Upgrade
+
+Back up first, then install the new package and start the program once (Installation Guide, A6).
+
+---
+
 ## v1.0.0 - 2 November 2026
 
 First release for the school.

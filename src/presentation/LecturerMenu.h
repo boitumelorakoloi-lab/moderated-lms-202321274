@@ -21,6 +21,7 @@ private:
     void createAssignment();  // UC-06
     void listAssignments();
     void grantExtension();   // UC-07
+    void extendForClass();   // UC-07 A2, CR1 (v1.1)
     void markSubmissions();  // UC-08
 
     Lecturer& lecturer_;

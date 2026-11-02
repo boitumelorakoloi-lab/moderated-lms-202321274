@@ -1,0 +1,169 @@
+Demo data created. Every demo account uses the password Password1
+  admin, hod.molapo, lect.mokoena, stu.thabo, stu.lerato, stu.palesa
+  Sample file to submit: demo_files/my_homework.txt
+Moderated Learning Management System v1.1
+
+=== Log in ===
+Username (blank to quit): Password: 
+=== Student menu - Thabo Nthako ===
+  1. My courses and assignments
+  2. Submit an assignment
+  3. My released marks and feedback
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== Submit an assignment ===
+Assignment ID: Path of your file (.pdf, .docx, .txt or .zip, max 10 MB): Your deadline: 2026-10-31 19:01
+WARNING: The deadline has passed. This work will be 2 day(s) late and will lose marks (10% of the maximum per day, 0 after 3 days).
+Hand in this file now? (y/n): Receipt: submission 1, version 1, handed in at 2026-11-02 01:01.
+
+=== Student menu - Thabo Nthako ===
+  1. My courses and assignments
+  2. Submit an assignment
+  3. My released marks and feedback
+  P. Change my password
+  0. Exit this menu
+Choose an option: You have been logged out.
+
+=== Log in ===
+Username (blank to quit): Password: 
+=== Lecturer menu - Mr T. Mokoena ===
+  1. My courses
+  2. Create an assignment
+  3. List assignments for a course
+  4. Give a student an extension
+  5. Mark submissions
+  6. Extend the deadline for the whole class
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== Extend the deadline for the whole class ===
+Assignment ID: New deadline for every student (YYYY-MM-DD HH:MM): Reason (students will see it): ERROR: The new deadline must be after the normal deadline.
+
+=== Lecturer menu - Mr T. Mokoena ===
+  1. My courses
+  2. Create an assignment
+  3. List assignments for a course
+  4. Give a student an extension
+  5. Mark submissions
+  6. Extend the deadline for the whole class
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== Extend the deadline for the whole class ===
+Assignment ID: New deadline for every student (YYYY-MM-DD HH:MM): Reason (students will see it): ERROR: There is no assignment with ID 99.
+
+=== Lecturer menu - Mr T. Mokoena ===
+  1. My courses
+  2. Create an assignment
+  3. List assignments for a course
+  4. Give a student an extension
+  5. Mark submissions
+  6. Extend the deadline for the whole class
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== Extend the deadline for the whole class ===
+Assignment ID: New deadline for every student (YYYY-MM-DD HH:MM): Reason (students will see it): ERROR: This cannot be blank.
+Reason (students will see it): Class extension saved. Every student's deadline is now at least 2099-01-01 10:00.
+1 late submission(s) are now on time.
+
+=== Lecturer menu - Mr T. Mokoena ===
+  1. My courses
+  2. Create an assignment
+  3. List assignments for a course
+  4. Give a student an extension
+  5. Mark submissions
+  6. Extend the deadline for the whole class
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== Extend the deadline for the whole class ===
+Assignment ID: New deadline for every student (YYYY-MM-DD HH:MM): Reason (students will see it): ERROR: The class already has an extension to 2099-01-01 10:00. A new one must be later.
+
+=== Lecturer menu - Mr T. Mokoena ===
+  1. My courses
+  2. Create an assignment
+  3. List assignments for a course
+  4. Give a student an extension
+  5. Mark submissions
+  6. Extend the deadline for the whole class
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== Assignments ===
+Course ID:   ID   Title                       Deadline          Class extension   Max  Released
+  2    Trigonometry homework       2026-10-31 19:01  2099-01-01 10:00  20   No
+  1    Algebra test 1              2026-11-04 01:01  -                 50   No
+
+=== Lecturer menu - Mr T. Mokoena ===
+  1. My courses
+  2. Create an assignment
+  3. List assignments for a course
+  4. Give a student an extension
+  5. Mark submissions
+  6. Extend the deadline for the whole class
+  P. Change my password
+  0. Exit this menu
+Choose an option: You have been logged out.
+
+=== Log in ===
+Username (blank to quit): Password: 
+=== Student menu - Thabo Nthako ===
+  1. My courses and assignments
+  2. Submit an assignment
+  3. My released marks and feedback
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== My courses ===
+  MATH-F4     Mathematics Form 4
+  PHYS-F4     Physical Science Form 4
+
+=== My assignments ===
+  ID   Course    Title                     Deadline            Max  State
+  2    MATH-F4   Trigonometry homework     2099-01-01 10:00 *  20   Submitted
+  1    MATH-F4   Algebra test 1            2026-11-04 01:01    50   Not submitted
+
+  * Extended deadlines:
+    Trigonometry homework: whole-class extension from 2026-10-31 19:01 to 2099-01-01 10:00 - Exam week clash
+
+=== Student menu - Thabo Nthako ===
+  1. My courses and assignments
+  2. Submit an assignment
+  3. My released marks and feedback
+  P. Change my password
+  0. Exit this menu
+Choose an option: You have been logged out.
+
+=== Log in ===
+Username (blank to quit): Password: 
+=== Student menu - Lerato Sekhonyana ===
+  1. My courses and assignments
+  2. Submit an assignment
+  3. My released marks and feedback
+  P. Change my password
+  0. Exit this menu
+Choose an option: 
+=== My courses ===
+  MATH-F4     Mathematics Form 4
+  PHYS-F4     Physical Science Form 4
+
+=== My assignments ===
+  ID   Course    Title                     Deadline            Max  State
+  2    MATH-F4   Trigonometry homework     2099-01-01 10:00 *  20   Not submitted
+  1    MATH-F4   Algebra test 1            2026-11-04 01:01    50   Not submitted
+
+  * Extended deadlines:
+    Trigonometry homework: whole-class extension from 2026-10-31 19:01 to 2099-01-01 10:00 - Exam week clash
+
+=== Student menu - Lerato Sekhonyana ===
+  1. My courses and assignments
+  2. Submit an assignment
+  3. My released marks and feedback
+  P. Change my password
+  0. Exit this menu
+Choose an option: You have been logged out.
+
+=== Log in ===
+Username (blank to quit): Goodbye.

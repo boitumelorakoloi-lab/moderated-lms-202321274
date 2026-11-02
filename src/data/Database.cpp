@@ -47,19 +47,42 @@ void Database::configure() {
     executeScript("PRAGMA journal_mode = WAL;");
 }
 
-void Database::ensureSchema() {
-    Statement check(
-        *this, "SELECT COUNT(*) FROM sqlite_master WHERE type = 'table' AND name = 'app_user'");
+namespace {
+// v1.0 -> v1.1 upgrade (CR1). Must match the class_extension table in db/schema.sql.
+const char* const kUpgradeToV11 = R"SQL(
+CREATE TABLE IF NOT EXISTS class_extension (
+    assignment_id INTEGER PRIMARY KEY REFERENCES assignment(assignment_id) ON DELETE CASCADE,
+    new_deadline  INTEGER NOT NULL,
+    reason        TEXT    NOT NULL CHECK (length(trim(reason)) > 0),
+    granted_by    INTEGER NOT NULL REFERENCES app_user(user_id),
+    granted_at    INTEGER NOT NULL
+);)SQL";
+}  // namespace
+
+bool Database::hasTable(const std::string& name) {
+    Statement check(*this, "SELECT COUNT(*) FROM sqlite_master WHERE type = 'table' AND name = ?1");
+    check.bind(1, name);
     check.step();
-    if (check.getInt(0) == 0) {
-        executeScript("BEGIN;");
-        try {
-            executeScript(kSchemaSql);
-            executeScript("COMMIT;");
-        } catch (...) {
-            sqlite3_exec(db_, "ROLLBACK;", nullptr, nullptr, nullptr);
-            throw;
+    return check.getInt(0) > 0;
+}
+
+void Database::ensureSchema() {
+    if (hasTable("app_user") && hasTable("class_extension")) {
+        return;  // already a v1.1 database (the normal case)
+    }
+    executeScript("BEGIN IMMEDIATE;");  // look again under the lock: another user may have won
+    try {
+        if (!hasTable("app_user")) {
+            executeScript(kSchemaSql);  // a new file gets the full schema
+        } else if (!hasTable("class_extension")) {
+            // A v1.0 file keeps all its data and only gets the new table (the change is
+            // additive, so nothing has to be copied or converted).
+            executeScript(kUpgradeToV11);
         }
+        executeScript("COMMIT;");
+    } catch (...) {
+        sqlite3_exec(db_, "ROLLBACK;", nullptr, nullptr, nullptr);
+        throw;
     }
 }
 

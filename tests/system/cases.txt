@@ -10,3 +10,4 @@ ST-09_role_isolation|FR-01/FR-02/NFR-08: each role sees only its own menu and da
 ST-10_change_password|UC-02 change password (FR-26): wrong current, mismatch, too short, success
 ST-11_backup_restore|FR-25 back up and restore; a file that is not a backup is refused
 ST-12_robustness|NFR-07 bad input never crashes the program; input ending exits cleanly
+ST-13_class_extension|CR1 (v1.1): UC-07 A2 whole-class extension - bad date, unknown assignment, blank reason, late work now on time, no earlier re-extension; both students see it on their list

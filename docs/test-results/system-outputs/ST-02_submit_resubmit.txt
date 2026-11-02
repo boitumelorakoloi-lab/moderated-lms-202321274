@@ -1,7 +1,7 @@
 Demo data created. Every demo account uses the password Password1
   admin, hod.molapo, lect.mokoena, stu.thabo, stu.lerato, stu.palesa
   Sample file to submit: demo_files/my_homework.txt
-Moderated Learning Management System v1.0
+Moderated Learning Management System v1.1
 
 === Log in ===
 Username (blank to quit): Password: 
@@ -13,9 +13,9 @@ Username (blank to quit): Password:
   0. Exit this menu
 Choose an option: 
 === Submit an assignment ===
-Assignment ID: Path of your file (.pdf, .docx, .txt or .zip, max 10 MB): Your deadline: 2026-10-27 23:43
+Assignment ID: Path of your file (.pdf, .docx, .txt or .zip, max 10 MB): Your deadline: 2026-11-04 01:00
 On time.
-Hand in this file now? (y/n): Receipt: submission 1, version 1, handed in at 2026-10-25 23:43.
+Hand in this file now? (y/n): Receipt: submission 1, version 1, handed in at 2026-11-02 01:00.
 
 === Student menu - Thabo Nthako ===
   1. My courses and assignments
@@ -25,9 +25,9 @@ Hand in this file now? (y/n): Receipt: submission 1, version 1, handed in at 202
   0. Exit this menu
 Choose an option: 
 === Submit an assignment ===
-Assignment ID: Path of your file (.pdf, .docx, .txt or .zip, max 10 MB): Your deadline: 2026-10-27 23:43
+Assignment ID: Path of your file (.pdf, .docx, .txt or .zip, max 10 MB): Your deadline: 2026-11-04 01:00
 This will replace your earlier file (version 1) for marking.
-Hand in this file now? (y/n): Receipt: submission 1, version 2, handed in at 2026-10-25 23:43.
+Hand in this file now? (y/n): Receipt: submission 1, version 2, handed in at 2026-11-02 01:00.
 
 === Student menu - Thabo Nthako ===
   1. My courses and assignments
@@ -42,8 +42,8 @@ Choose an option:
 
 === My assignments ===
   ID   Course    Title                     Deadline            Max  State
-  2    MATH-F4   Trigonometry homework     2026-10-24 17:43    20   Not submitted
-  1    MATH-F4   Algebra test 1            2026-10-27 23:43    50   Submitted
+  2    MATH-F4   Trigonometry homework     2026-10-31 19:00    20   Not submitted
+  1    MATH-F4   Algebra test 1            2026-11-04 01:00    50   Submitted
 
 === Student menu - Thabo Nthako ===
   1. My courses and assignments
