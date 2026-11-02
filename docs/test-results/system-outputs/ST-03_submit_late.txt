@@ -13,9 +13,9 @@ Username (blank to quit): Password:
   0. Exit this menu
 Choose an option: 
 === Submit an assignment ===
-Assignment ID: Path of your file (.pdf, .docx, .txt or .zip, max 10 MB): Your deadline: 2026-10-24 13:23
+Assignment ID: Path of your file (.pdf, .docx, .txt or .zip, max 10 MB): Your deadline: 2026-10-24 17:43
 WARNING: The deadline has passed. This work will be 2 day(s) late and will lose marks (10% of the maximum per day, 0 after 3 days).
-Hand in this file now? (y/n): Receipt: submission 1, version 1, handed in at 2026-10-25 19:23.
+Hand in this file now? (y/n): Receipt: submission 1, version 1, handed in at 2026-10-25 23:43.
 
 === Student menu - Thabo Nthako ===
   1. My courses and assignments
@@ -25,7 +25,7 @@ Hand in this file now? (y/n): Receipt: submission 1, version 1, handed in at 202
   0. Exit this menu
 Choose an option: 
 === Submit an assignment ===
-Assignment ID: Path of your file (.pdf, .docx, .txt or .zip, max 10 MB): Your deadline: 2026-10-24 13:23
+Assignment ID: Path of your file (.pdf, .docx, .txt or .zip, max 10 MB): Your deadline: 2026-10-24 17:43
 ERROR: Late work can only be handed in once - resubmission not allowed.
 
 === Student menu - Thabo Nthako ===
@@ -41,8 +41,8 @@ Choose an option:
 
 === My assignments ===
   ID   Course    Title                     Deadline            Max  State
-  2    MATH-F4   Trigonometry homework     2026-10-24 13:23    20   Late
-  1    MATH-F4   Algebra test 1            2026-10-27 19:23    50   Not submitted
+  2    MATH-F4   Trigonometry homework     2026-10-24 17:43    20   Late
+  1    MATH-F4   Algebra test 1            2026-10-27 23:43    50   Not submitted
 
 === Student menu - Thabo Nthako ===
   1. My courses and assignments

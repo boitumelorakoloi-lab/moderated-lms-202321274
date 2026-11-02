@@ -32,7 +32,8 @@ int AssignmentService::createAssignment(const Lecturer& l, int courseId, const s
 Assignment AssignmentService::getAssignmentITeach(const Lecturer& l, int assignmentId) {
     auto assignment = courses_.findAssignment(assignmentId);
     if (!assignment) {
-        throw ValidationException("There is no assignment with ID " + std::to_string(assignmentId) + ".");
+        throw ValidationException("There is no assignment with ID " + std::to_string(assignmentId) +
+                                  ".");
     }
     if (!courses_.teaches(l.id(), assignment->courseId())) {
         throw AccessDeniedException("You do not teach the course this assignment belongs to.");
@@ -63,11 +64,13 @@ void AssignmentService::grantExtension(const Lecturer& l, int assignmentId, int 
     if (submission) {
         const SubmissionStatus st = submission->status();
         if (st != SubmissionStatus::Submitted && st != SubmissionStatus::Late) {
-            throw ValidationException("This work has already been marked, so no extension can be given.");
+            throw ValidationException(
+                "This work has already been marked, so no extension can be given.");
         }
         const bool coversWork = submission->latest().submittedAt() <= newDeadline;
         if (st == SubmissionStatus::Submitted && !coversWork) {
-            throw ValidationException("That deadline is earlier than the work that was already handed in.");
+            throw ValidationException(
+                "That deadline is earlier than the work that was already handed in.");
         }
     } else if (newDeadline <= now) {
         // Nothing handed in yet, so a deadline in the past would be of no use to the student.
@@ -107,15 +110,21 @@ std::vector<StudentAssignmentRow> AssignmentService::overviewForStudent(const St
 }
 
 std::vector<Course> AssignmentService::listCoursesForStudent(const Student& s) {
+    if (!s.can(Permission::SubmitWork)) {
+        throw AccessDeniedException("Only students have a course list.");
+    }
     return courses_.listCoursesForStudent(s.id());
 }
 
 std::vector<Course> AssignmentService::listMyCourses(const Lecturer& l) {
+    if (!l.can(Permission::CreateAssignment)) {
+        throw AccessDeniedException("Only lecturers have a teaching list.");
+    }
     return courses_.listCoursesForLecturer(l.id());
 }
 
 std::vector<Assignment> AssignmentService::listForCourse(const Lecturer& l, int courseId) {
-    if (!courses_.teaches(l.id(), courseId)) {
+    if (!l.can(Permission::CreateAssignment) || !courses_.teaches(l.id(), courseId)) {
         throw AccessDeniedException("You do not teach this course.");
     }
     return courses_.listAssignmentsForCourse(courseId);

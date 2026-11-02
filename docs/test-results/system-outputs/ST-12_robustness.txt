@@ -47,7 +47,7 @@ Choose an option:
 === Submit an assignment ===
 Assignment ID: ERROR: Please enter a whole number from 1 to 1000000000.
 Assignment ID: ERROR: Please enter a whole number from 1 to 1000000000.
-Assignment ID: Path of your file (.pdf, .docx, .txt or .zip, max 10 MB): Your deadline: 2026-10-27 19:23
+Assignment ID: Path of your file (.pdf, .docx, .txt or .zip, max 10 MB): Your deadline: 2026-10-27 23:44
 On time.
 Hand in this file now? (y/n): ERROR: Please type y or n.
 Hand in this file now? (y/n): 

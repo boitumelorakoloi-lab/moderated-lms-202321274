@@ -55,7 +55,8 @@ CheckResult SubmissionService::check(const Student& s, int assignmentId, const s
     }
     const auto assignment = courses_.findAssignment(assignmentId);
     if (!assignment) {
-        throw ValidationException("There is no assignment with ID " + std::to_string(assignmentId) + ".");
+        throw ValidationException("There is no assignment with ID " + std::to_string(assignmentId) +
+                                  ".");
     }
     if (!courses_.isEnrolled(s.id(), assignment->courseId())) {
         throw AccessDeniedException("You are not enrolled in the course for this assignment.");
@@ -90,8 +91,9 @@ CheckResult SubmissionService::check(const Student& s, int assignmentId, const s
     } else if (!existing) {
         r.result = SubmissionCheck::Late;  // A2: late work is accepted (C3)
         r.daysLate = policy_.daysLate(now, r.deadline);
-        r.message = "The deadline has passed. This work will be " + std::to_string(r.daysLate) +
-                    " day(s) late and will lose marks (10% of the maximum per day, 0 after 3 days).";
+        r.message =
+            "The deadline has passed. This work will be " + std::to_string(r.daysLate) +
+            " day(s) late and will lose marks (10% of the maximum per day, 0 after 3 days).";
     } else {
         r.result = SubmissionCheck::Rejected;  // E2
         r.message = "Deadline passed - resubmission not allowed.";
@@ -110,9 +112,9 @@ int SubmissionService::submit(const Student& s, int assignmentId, const std::str
 
     // Copy the file into the submissions/ folder with a name that cannot clash.
     const fs::path source(trim(path));
-    const std::string storedName = "a" + std::to_string(assignmentId) + "_s" + std::to_string(s.id()) +
-                                   "_v" + std::to_string(r.nextVersion) + "_" +
-                                   std::to_string(toUnix(now)) + source.extension().string();
+    const std::string storedName = "a" + std::to_string(assignmentId) + "_s" +
+                                   std::to_string(s.id()) + "_v" + std::to_string(r.nextVersion) +
+                                   "_" + std::to_string(toUnix(now)) + source.extension().string();
     const fs::path target = fs::path(storageFolder_) / storedName;
     std::error_code ec;
     fs::create_directories(storageFolder_, ec);

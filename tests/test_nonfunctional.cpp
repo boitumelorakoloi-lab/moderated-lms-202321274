@@ -24,7 +24,8 @@ protected:
 
     void SetUp() override {
         folder = fs::temp_directory_path() /
-                 (std::string("lms_nfr_") + ::testing::UnitTest::GetInstance()->current_test_info()->name());
+                 (std::string("lms_nfr_") +
+                  ::testing::UnitTest::GetInstance()->current_test_info()->name());
         fs::remove_all(folder);
         fs::create_directories(folder);
         path = (folder / "load.db").string();
@@ -45,18 +46,20 @@ TEST_F(NonFunctional, Nfr01PerformanceWith800Students) {
     SqliteMarkRepository marks(db);
     TenPercentPerDayPolicy policy;
 
-    const int hodId = users.add(*UserFactory::create(Role::HeadOfDepartment, 0, "hod", "H", testHash()));
+    const int hodId =
+        users.add(*UserFactory::create(Role::HeadOfDepartment, 0, "hod", "H", testHash()));
     const int lectId = users.add(*UserFactory::create(Role::Lecturer, 0, "lect", "L", testHash()));
     const int dept = courses.addDepartment(Department(0, "Sciences", hodId));
     std::vector<int> courseIds, assignmentIds, studentIds;
     {
         Transaction tx(db);
         for (int c = 0; c < 5; ++c) {
-            courseIds.push_back(courses.addCourse(Course(0, "C" + std::to_string(c), "Course", dept)));
+            courseIds.push_back(
+                courses.addCourse(Course(0, "C" + std::to_string(c), "Course", dept)));
             courses.assignLecturer(lectId, courseIds.back());
             for (int k = 0; k < 5; ++k) {
-                assignmentIds.push_back(courses.addAssignment(
-                    Assignment(0, courseIds.back(), "A", kNow, 50, lectId)));
+                assignmentIds.push_back(
+                    courses.addAssignment(Assignment(0, courseIds.back(), "A", kNow, 50, lectId)));
             }
         }
         for (int s = 0; s < 800; ++s) {
@@ -66,16 +69,23 @@ TEST_F(NonFunctional, Nfr01PerformanceWith800Students) {
         }
         for (int a : assignmentIds) {
             for (int s : studentIds) {
-                Statement ins(db, "INSERT INTO submission (assignment_id, student_id, status) VALUES (?1, ?2, 'MARKED')");
+                Statement ins(db,
+                              "INSERT INTO submission (assignment_id, student_id, status) VALUES "
+                              "(?1, ?2, 'MARKED')");
                 ins.bind(1, a).bind(2, s);
                 ins.run();
                 const int subId = static_cast<int>(db.lastInsertId());
-                Statement ver(db, "INSERT INTO submission_version (submission_id, version_no, stored_path, "
-                                  "original_name, size_bytes, submitted_at) VALUES (?1, 1, ?2, 'w.pdf', 100, ?3)");
+                Statement ver(
+                    db,
+                    "INSERT INTO submission_version (submission_id, version_no, stored_path, "
+                    "original_name, size_bytes, submitted_at) VALUES (?1, 1, ?2, 'w.pdf', 100, "
+                    "?3)");
                 ver.bind(1, subId).bind(2, "p" + std::to_string(subId)).bindTime(3, kNow);
                 ver.run();
-                Statement mk(db, "INSERT INTO mark (submission_id, raw_mark, feedback, marked_by, marked_at) "
-                                 "VALUES (?1, 30, 'Ok', ?2, ?3)");
+                Statement mk(
+                    db,
+                    "INSERT INTO mark (submission_id, raw_mark, feedback, marked_by, marked_at) "
+                    "VALUES (?1, 30, 'Ok', ?2, ?3)");
                 mk.bind(1, subId).bind(2, lectId).bindTime(3, kNow);
                 mk.run();
             }
@@ -104,7 +114,8 @@ TEST_F(NonFunctional, Nfr01PerformanceWith800Students) {
 
     auto hod = users.findById(hodId);
     t = std::chrono::steady_clock::now();
-    const auto rows = moderation.listForModeration(static_cast<HeadOfDepartment&>(*hod), assignmentIds[0]);
+    const auto rows =
+        moderation.listForModeration(static_cast<HeadOfDepartment&>(*hod), assignmentIds[0]);
     const double moderationTime = secondsSince(t);
     EXPECT_EQ(rows.size(), 800u);
 
@@ -134,7 +145,8 @@ TEST_F(NonFunctional, Nfr02TwentyConcurrentUsers) {
         Database db(path);
         SqliteUserRepository users(db);
         SqliteCourseRepository courses(db);
-        const int lect = users.add(*UserFactory::create(Role::Lecturer, 0, "lect", "L", testHash()));
+        const int lect =
+            users.add(*UserFactory::create(Role::Lecturer, 0, "lect", "L", testHash()));
         const int dept = courses.addDepartment(Department(0, "D", std::nullopt));
         const int c = courses.addCourse(Course(0, "C", "Course", dept));
         for (int i = 0; i < kSavesEach; ++i) {
@@ -156,8 +168,8 @@ TEST_F(NonFunctional, Nfr02TwentyConcurrentUsers) {
                 SqliteSubmissionRepository repo(db);
                 for (int a : assignmentIds) {
                     Submission s(0, a, studentIds[u], SubmissionStatus::Submitted);
-                    s.addVersion(SubmissionVersion(1, "p_" + std::to_string(u) + "_" + std::to_string(a),
-                                                   "w.pdf", 100, kNow));
+                    s.addVersion(SubmissionVersion(
+                        1, "p_" + std::to_string(u) + "_" + std::to_string(a), "w.pdf", 100, kNow));
                     repo.addSubmission(s);
                 }
             } catch (const std::exception& e) {
@@ -173,8 +185,8 @@ TEST_F(NonFunctional, Nfr02TwentyConcurrentUsers) {
     Statement count(db, "SELECT COUNT(*) FROM submission_version");
     count.step();
     EXPECT_EQ(count.getInt(0), kUsers * kSavesEach);
-    std::cout << "[ NFR-02 ] " << kUsers << " concurrent users, " << count.getInt(0)
-              << " saves, " << failures.load() << " failures\n";
+    std::cout << "[ NFR-02 ] " << kUsers << " concurrent users, " << count.getInt(0) << " saves, "
+              << failures.load() << " failures\n";
 }
 
 }  // namespace lms::test

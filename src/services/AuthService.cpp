@@ -40,18 +40,20 @@ std::unique_ptr<User> AuthService::login(const std::string& username, const std:
         throw AccessDeniedException("This account is locked after " +
                                     std::to_string(User::kMaxFailedAttempts) +
                                     " wrong passwords. Try again after " +
-                                    formatTime(*user->lockedUntil()) + ".");
+                                    formatTime(user->lockedUntil().value_or(now)) + ".");
     }
     if (!verifyPassword(user->passwordHash(), password)) {
         user->recordFailedLogin(now);
         users_.update(*user);
         if (user->isLocked(now)) {
-            throw AccessDeniedException("Too many wrong passwords. The account is locked for 15 minutes.");
+            throw AccessDeniedException(
+                "Too many wrong passwords. The account is locked for 15 minutes.");
         }
         throw ValidationException(kWrongLogin);
     }
     if (!user->isActive()) {
-        throw AccessDeniedException("This account has been deactivated. Please see the administrator.");
+        throw AccessDeniedException(
+            "This account has been deactivated. Please see the administrator.");
     }
     user->setLoginState(0, std::nullopt);  // a good login clears the count
     users_.update(*user);

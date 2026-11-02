@@ -53,7 +53,7 @@ Assignment ID: Path of your file (.pdf, .docx, .txt or .zip, max 10 MB): ERROR: 
   0. Exit this menu
 Choose an option: 
 === Submit an assignment ===
-Assignment ID: Path of your file (.pdf, .docx, .txt or .zip, max 10 MB): Your deadline: 2026-10-27 19:23
+Assignment ID: Path of your file (.pdf, .docx, .txt or .zip, max 10 MB): Your deadline: 2026-10-27 23:43
 On time.
 Hand in this file now? (y/n): Nothing was submitted.
 

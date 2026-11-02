@@ -27,6 +27,24 @@ jobs:
       - name: System tests
         run: ctest --test-dir build -L system --output-on-failure
 
+  static-analysis:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cppcheck clang-format
+
+      - name: cppcheck (fails on any finding)
+        run: |
+          cppcheck --std=c++17 --enable=warning,style,performance,portability \
+                   --inline-suppr --suppress=missingIncludeSystem --error-exitcode=1 -q -I src src
+
+      - name: Formatting matches .clang-format (Coding Standard L1-L4)
+        run: find src tests -name '*.cpp' -o -name '*.h' | xargs clang-format --dry-run --Werror
+
   coverage:
     runs-on: ubuntu-24.04
     steps:

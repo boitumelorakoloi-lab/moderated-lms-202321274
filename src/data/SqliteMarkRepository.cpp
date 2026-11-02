@@ -79,7 +79,8 @@ void SqliteMarkRepository::saveChange(const Mark& m, SubmissionStatus status, co
 
 std::vector<AuditEntry> SqliteMarkRepository::listAudit(int submissionId) {
     Statement st(db_, (std::string(kSelectAudit) +
-                       "WHERE a.submission_id = ?1 ORDER BY a.changed_at, a.audit_id").c_str());
+                       "WHERE a.submission_id = ?1 ORDER BY a.changed_at, a.audit_id")
+                          .c_str());
     st.bind(1, submissionId);
     return readAudit(st);
 }

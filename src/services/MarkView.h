@@ -20,8 +20,8 @@ struct MarkView {
     TimePoint effectiveDeadline;
     int daysLate = 0;
     int maxMark = 0;
-    double penalty = 0.0;     // raw - final (0 when not marked)
-    double finalMark = 0.0;   // worked out by the Strategy, never stored (SDD 5.2)
+    double penalty = 0.0;    // raw - final (0 when not marked)
+    double finalMark = 0.0;  // worked out by the Strategy, never stored (SDD 5.2)
 };
 
 // Builds a row. Used by MarkingService, ModerationService and SubmissionService so the

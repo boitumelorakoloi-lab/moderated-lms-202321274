@@ -20,8 +20,8 @@ public:
     void approve(const HeadOfDepartment& h, int submissionId, TimePoint now);
     double adjust(const HeadOfDepartment& h, int submissionId, int newRaw,
                   const std::string& reason, TimePoint now);
-    void returnForRemarking(const HeadOfDepartment& h, int submissionId,
-                            const std::string& comment, TimePoint now);
+    void returnForRemarking(const HeadOfDepartment& h, int submissionId, const std::string& comment,
+                            TimePoint now);
     void release(const HeadOfDepartment& h, int assignmentId, TimePoint now);
     std::vector<AuditEntry> viewAuditLog(const User& u, int submissionId);
 

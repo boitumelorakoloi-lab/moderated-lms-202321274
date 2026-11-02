@@ -2,6 +2,9 @@
 // (SDD Figures 6 and 7).
 #include "services/ModerationService.h"
 
+#include <algorithm>
+#include <iterator>
+
 #include "domain/Exceptions.h"
 
 namespace lms {
@@ -17,7 +20,8 @@ Assignment ModerationService::checkDepartment(const HeadOfDepartment& h, int ass
     }
     const auto assignment = courses_.findAssignment(assignmentId);
     if (!assignment) {
-        throw ValidationException("There is no assignment with ID " + std::to_string(assignmentId) + ".");
+        throw ValidationException("There is no assignment with ID " + std::to_string(assignmentId) +
+                                  ".");
     }
     const auto course = courses_.findCourse(assignment->courseId());
     if (!course || h.departmentId() == 0 || course->departmentId() != h.departmentId()) {
@@ -29,19 +33,22 @@ Assignment ModerationService::checkDepartment(const HeadOfDepartment& h, int ass
 std::vector<MarkView> ModerationService::listForModeration(const HeadOfDepartment& h,
                                                            int assignmentId) {
     const Assignment assignment = checkDepartment(h, assignmentId);
+    const auto subs = submissions_.listForAssignment(assignmentId);
     std::vector<MarkView> rows;
-    for (const Submission& s : submissions_.listForAssignment(assignmentId)) {
-        rows.push_back(buildMarkView(s, assignment,
-                                     courses_.findExtension(assignmentId, s.studentId()),
-                                     marks_.find(s.id()), policy_));
-    }
+    rows.reserve(subs.size());
+    std::transform(subs.begin(), subs.end(), std::back_inserter(rows), [&](const Submission& s) {
+        return buildMarkView(s, assignment, courses_.findExtension(assignmentId, s.studentId()),
+                             marks_.find(s.id()), policy_);
+    });
     return rows;
 }
 
-ModerationService::Loaded ModerationService::loadMarked(const HeadOfDepartment& h, int submissionId) {
+ModerationService::Loaded ModerationService::loadMarked(const HeadOfDepartment& h,
+                                                        int submissionId) {
     const auto submission = submissions_.findById(submissionId);
     if (!submission) {
-        throw ValidationException("There is no submission with ID " + std::to_string(submissionId) + ".");
+        throw ValidationException("There is no submission with ID " + std::to_string(submissionId) +
+                                  ".");
     }
     const Assignment assignment = checkDepartment(h, submission->assignmentId());
     const auto mark = marks_.find(submissionId);
@@ -75,11 +82,12 @@ double ModerationService::adjust(const HeadOfDepartment& h, int submissionId, in
     d.submission.transitionTo(SubmissionStatus::Moderated);
     d.mark.setRawMark(newRaw);
     d.mark.setModerated(h.id(), now);
-    marks_.saveChange(d.mark, SubmissionStatus::Moderated,
-                      AuditEntry(submissionId, h.id(), now, "HOD_ADJUST", oldRaw, newRaw, trim(reason)));
+    marks_.saveChange(
+        d.mark, SubmissionStatus::Moderated,
+        AuditEntry(submissionId, h.id(), now, "HOD_ADJUST", oldRaw, newRaw, trim(reason)));
     return buildMarkView(d.submission, d.assignment,
-                         courses_.findExtension(d.assignment.id(), d.submission.studentId()), d.mark,
-                         policy_)
+                         courses_.findExtension(d.assignment.id(), d.submission.studentId()),
+                         d.mark, policy_)
         .finalMark;
 }
 
@@ -121,7 +129,8 @@ std::vector<AuditEntry> ModerationService::viewAuditLog(const User& u, int submi
     }
     const auto submission = submissions_.findById(submissionId);
     if (!submission) {
-        throw ValidationException("There is no submission with ID " + std::to_string(submissionId) + ".");
+        throw ValidationException("There is no submission with ID " + std::to_string(submissionId) +
+                                  ".");
     }
     // An HoD only sees their own department; the administrator sees everything (FR-22).
     if (const auto* hod = dynamic_cast<const HeadOfDepartment*>(&u)) {
@@ -137,9 +146,8 @@ std::vector<Assignment> ModerationService::listAssignmentsInDepartment(const Hea
     std::vector<Assignment> result;
     for (const Course& c : courses_.listCourses()) {
         if (h.departmentId() != 0 && c.departmentId() == h.departmentId()) {
-            for (const Assignment& a : courses_.listAssignmentsForCourse(c.id())) {
-                result.push_back(a);
-            }
+            const auto list = courses_.listAssignmentsForCourse(c.id());
+            result.insert(result.end(), list.begin(), list.end());
         }
     }
     return result;

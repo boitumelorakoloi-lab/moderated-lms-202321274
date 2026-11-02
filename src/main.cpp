@@ -22,6 +22,8 @@ void printHelp() {
 }
 }  // namespace
 
+// The signature of main() is fixed by the C++ standard, so argv cannot be made const.
+// cppcheck-suppress constParameter
 int main(int argc, char* argv[]) {
     std::string dbPath = "lms.db";
     std::string filesFolder = "submissions";
@@ -60,7 +62,8 @@ int main(int argc, char* argv[]) {
         lms::MarkingService marking(courses, submissions, marks, policy);
         lms::ModerationService moderation(courses, submissions, marks, policy);
 
-        lms::Services services{auth, admin, assignmentService, submissionService, marking, moderation};
+        lms::Services services{auth,    admin,     assignmentService, submissionService,
+                               marking, moderation};
 
         if (seedDemo && !lms::DemoData::seed(services, users, "demo_files")) {
             std::cout << "The database already has accounts, so no demo data was added.\n";

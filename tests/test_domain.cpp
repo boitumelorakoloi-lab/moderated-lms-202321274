@@ -15,9 +15,9 @@ using S = SubmissionStatus;
 TEST(SubmissionState, AllowedArrows) {
     EXPECT_TRUE(Submission::canTransition(S::Submitted, S::Submitted));  // resubmit
     EXPECT_TRUE(Submission::canTransition(S::Submitted, S::Marked));
-    EXPECT_TRUE(Submission::canTransition(S::Late, S::Submitted));       // extension
+    EXPECT_TRUE(Submission::canTransition(S::Late, S::Submitted));  // extension
     EXPECT_TRUE(Submission::canTransition(S::Late, S::Marked));
-    EXPECT_TRUE(Submission::canTransition(S::Marked, S::Marked));        // change mark
+    EXPECT_TRUE(Submission::canTransition(S::Marked, S::Marked));  // change mark
     EXPECT_TRUE(Submission::canTransition(S::Marked, S::Returned));
     EXPECT_TRUE(Submission::canTransition(S::Marked, S::Moderated));
     EXPECT_TRUE(Submission::canTransition(S::Returned, S::Marked));
@@ -26,14 +26,14 @@ TEST(SubmissionState, AllowedArrows) {
 
 // UT-11: moves that are not on the diagram are refused.
 TEST(SubmissionState, ForbiddenArrows) {
-    EXPECT_FALSE(Submission::canTransition(S::Late, S::Late));           // BR-04
+    EXPECT_FALSE(Submission::canTransition(S::Late, S::Late));  // BR-04
     EXPECT_FALSE(Submission::canTransition(S::Submitted, S::Late));
     EXPECT_FALSE(Submission::canTransition(S::Submitted, S::Released));
-    EXPECT_FALSE(Submission::canTransition(S::Marked, S::Released));     // FR-19
+    EXPECT_FALSE(Submission::canTransition(S::Marked, S::Released));  // FR-19
     EXPECT_FALSE(Submission::canTransition(S::Returned, S::Moderated));
     EXPECT_FALSE(Submission::canTransition(S::Moderated, S::Marked));
     for (S to : {S::Submitted, S::Late, S::Marked, S::Returned, S::Moderated, S::Released}) {
-        EXPECT_FALSE(Submission::canTransition(S::Released, to));         // final state
+        EXPECT_FALSE(Submission::canTransition(S::Released, to));  // final state
     }
 }
 
@@ -70,7 +70,7 @@ TEST(Users, FactoryAndPermissions) {
     auto hod = UserFactory::create(Role::HeadOfDepartment, 1, "h", "H", "x", 7);
     ASSERT_NE(dynamic_cast<Lecturer*>(hod.get()), nullptr);  // an HoD is a Lecturer
     EXPECT_EQ(hod->role(), Role::HeadOfDepartment);
-    EXPECT_TRUE(hod->can(Permission::MarkSubmission));      // kept from Lecturer
+    EXPECT_TRUE(hod->can(Permission::MarkSubmission));  // kept from Lecturer
     EXPECT_TRUE(hod->can(Permission::ModerateMarks));
     EXPECT_TRUE(hod->can(Permission::ReleaseMarks));
     EXPECT_FALSE(hod->can(Permission::ManageUsers));

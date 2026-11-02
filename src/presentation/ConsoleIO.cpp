@@ -87,40 +87,55 @@ bool readYesNo(const std::string& prompt) {
     }
 }
 
+namespace {
+// Turns off echo while a password is typed and always turns it back on, even if an
+// exception is thrown (RAII, Coding Standard D6). Does nothing when input is not a console.
+class EchoOff {
+public:
+    EchoOff()
+#ifdef _WIN32
+        : in_(GetStdHandle(STD_INPUT_HANDLE))
+#endif
+    {
+#ifdef _WIN32
+        active_ = GetConsoleMode(in_, &oldMode_) != 0;
+        if (active_) SetConsoleMode(in_, oldMode_ & ~ENABLE_ECHO_INPUT);
+#else
+        active_ = isatty(STDIN_FILENO) != 0 && tcgetattr(STDIN_FILENO, &oldTerm_) == 0;
+        if (active_) {
+            termios noEcho = oldTerm_;
+            noEcho.c_lflag &= ~static_cast<tcflag_t>(ECHO);
+            tcsetattr(STDIN_FILENO, TCSANOW, &noEcho);
+        }
+#endif
+    }
+    ~EchoOff() {
+        if (!active_) return;
+#ifdef _WIN32
+        SetConsoleMode(in_, oldMode_);
+#else
+        tcsetattr(STDIN_FILENO, TCSANOW, &oldTerm_);
+#endif
+        std::cout << '\n';  // the Enter key was not echoed either
+    }
+    EchoOff(const EchoOff&) = delete;
+    EchoOff& operator=(const EchoOff&) = delete;
+
+private:
+    bool active_ = false;
+#ifdef _WIN32
+    HANDLE in_ = nullptr;
+    DWORD oldMode_ = 0;
+#else
+    termios oldTerm_{};
+#endif
+};
+}  // namespace
+
 // Hides what is typed when the program runs in a real console window.
 std::string readPassword(const std::string& prompt) {
-#ifdef _WIN32
-    HANDLE in = GetStdHandle(STD_INPUT_HANDLE);
-    DWORD oldMode = 0;
-    const bool isConsole = GetConsoleMode(in, &oldMode) != 0;
-    if (isConsole) SetConsoleMode(in, oldMode & ~ENABLE_ECHO_INPUT);
-#else
-    termios oldTerm{};
-    const bool isConsole = isatty(STDIN_FILENO) != 0 && tcgetattr(STDIN_FILENO, &oldTerm) == 0;
-    if (isConsole) {
-        termios noEcho = oldTerm;
-        noEcho.c_lflag &= ~static_cast<tcflag_t>(ECHO);
-        tcsetattr(STDIN_FILENO, TCSANOW, &noEcho);
-    }
-#endif
-    std::string password;
-    try {
-        password = readLine(prompt);
-    } catch (...) {
-#ifdef _WIN32
-        if (isConsole) SetConsoleMode(in, oldMode);
-#else
-        if (isConsole) tcsetattr(STDIN_FILENO, TCSANOW, &oldTerm);
-#endif
-        throw;
-    }
-#ifdef _WIN32
-    if (isConsole) SetConsoleMode(in, oldMode);
-#else
-    if (isConsole) tcsetattr(STDIN_FILENO, TCSANOW, &oldTerm);
-#endif
-    if (isConsole) std::cout << '\n';
-    return password;
+    EchoOff hidden;
+    return readLine(prompt);
 }
 
 TimePoint readDateTime(const std::string& prompt) {
@@ -151,6 +166,10 @@ std::string col(const std::string& text, std::size_t width) {
         return text.substr(0, width - 1) + " ";
     }
     return text + std::string(width - text.size(), ' ');
+}
+
+std::string orDash(const std::optional<int>& value) {
+    return value.has_value() ? std::to_string(*value) : "-";
 }
 
 std::string oneDecimal(double value) {

@@ -46,10 +46,10 @@ TEST_F(RepositoryTest, AuditLogIsAppendOnly) {
 
 // IT-63: foreign keys and the HoD-role trigger are enforced in the database itself.
 TEST_F(RepositoryTest, ConstraintsEnforced) {
-    EXPECT_THROW(courses.enrol(999, course), DatabaseException);           // no such user
+    EXPECT_THROW(courses.enrol(999, course), DatabaseException);                     // no such user
     EXPECT_THROW(courses.setDepartmentHod(sciences, s1().id()), DatabaseException);  // not HOD
     EXPECT_THROW(users.add(*UserFactory::create(Role::Student, 0, "STU1", "Dup", testHash())),
-                 DatabaseException);                                         // case-insensitive UNIQUE
+                 DatabaseException);  // case-insensitive UNIQUE
 }
 
 // IT-64: data persists in a real file, in WAL mode, and the schema is created only once.

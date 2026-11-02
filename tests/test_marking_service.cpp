@@ -20,7 +20,8 @@ TEST_F(MarkingServiceTest, RawMarkBoundaries) {
     EXPECT_THROW(marking.mark(lecturer(), sub, 51, "Ok", std::nullopt, kNow), ValidationException);
     EXPECT_FALSE(marks.find(sub).has_value());  // E1: nothing saved
     EXPECT_DOUBLE_EQ(marking.mark(lecturer(), sub, 0, "Nothing correct", std::nullopt, kNow), 0.0);
-    EXPECT_DOUBLE_EQ(marking.mark(lecturer(), sub, 50, "Perfect", std::string("Rechecked"), kNow), 50.0);
+    EXPECT_DOUBLE_EQ(marking.mark(lecturer(), sub, 50, "Perfect", std::string("Rechecked"), kNow),
+                     50.0);
 }
 
 // IT-41: written feedback is required (C8).
@@ -33,7 +34,8 @@ TEST_F(MarkingServiceTest, FeedbackRequired) {
 TEST_F(MarkingServiceTest, ChangeNeedsReasonAndIsAudited) {
     marking.mark(lecturer(), sub, 30, "Ok", std::nullopt, kNow);
     EXPECT_THROW(marking.mark(lecturer(), sub, 35, "Ok", std::nullopt, kNow), ValidationException);
-    EXPECT_THROW(marking.mark(lecturer(), sub, 35, "Ok", std::string("  "), kNow), ValidationException);
+    EXPECT_THROW(marking.mark(lecturer(), sub, 35, "Ok", std::string("  "), kNow),
+                 ValidationException);
     marking.mark(lecturer(), sub, 35, "Better", std::string("Missed page 2"), kNow + minutes(5));
 
     const auto log = marks.listAudit(sub);
@@ -52,16 +54,19 @@ TEST_F(MarkingServiceTest, ChangeNeedsReasonAndIsAudited) {
 
 // IT-43: late penalty is applied using the latest version's time (FR-15, UC-08 A2).
 TEST_F(MarkingServiceTest, PenaltyFromLatestVersion) {
-    const int late2 = submit().submit(s2(), a, goodFile, kNow + hours(30));        // 2 days
-    EXPECT_DOUBLE_EQ(marking.mark(lecturer(), late2, 38, "Ok", std::nullopt, kNow + hours(40)), 28.0);
+    const int late2 = submit().submit(s2(), a, goodFile, kNow + hours(30));  // 2 days
+    EXPECT_DOUBLE_EQ(marking.mark(lecturer(), late2, 38, "Ok", std::nullopt, kNow + hours(40)),
+                     28.0);
     const int b = assignments.createAssignment(lecturer(), course, "B", kNow, 20);
-    const int veryLate = submit().submit(s2(), b, goodFile, kNow + hours(80));     // 4 days
-    EXPECT_DOUBLE_EQ(marking.mark(lecturer(), veryLate, 20, "Good but late", std::nullopt, kNow), 0.0);
+    const int veryLate = submit().submit(s2(), b, goodFile, kNow + hours(80));  // 4 days
+    EXPECT_DOUBLE_EQ(marking.mark(lecturer(), veryLate, 20, "Good but late", std::nullopt, kNow),
+                     0.0);
 }
 
 // IT-44: only the course lecturer can mark; unknown submission refused.
 TEST_F(MarkingServiceTest, OnlyCourseLecturer) {
-    EXPECT_THROW(marking.mark(otherHod(), sub, 30, "Ok", std::nullopt, kNow), AccessDeniedException);
+    EXPECT_THROW(marking.mark(otherHod(), sub, 30, "Ok", std::nullopt, kNow),
+                 AccessDeniedException);
     EXPECT_THROW(marking.mark(lecturer(), 999, 30, "Ok", std::nullopt, kNow), ValidationException);
     EXPECT_THROW(marking.listToMark(otherHod(), a), AccessDeniedException);
     EXPECT_THROW(marking.listToMark(lecturer(), 999), ValidationException);

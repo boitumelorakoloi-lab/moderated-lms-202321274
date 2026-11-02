@@ -84,9 +84,9 @@ TEST_F(ModerationServiceTest, ReleaseRules) {
 
     const int sub2 = submit().submit(s2(), a, goodFile, kNow - hours(1));
     moderation.approve(hod(), sub, kNow);
-    EXPECT_THROW(moderation.release(hod(), a, kNow), ValidationException);      // sub2 not marked
+    EXPECT_THROW(moderation.release(hod(), a, kNow), ValidationException);  // sub2 not marked
     marking.mark(lecturer(), sub2, 20, "Ok", std::nullopt, kNow);
-    EXPECT_THROW(moderation.release(hod(), a, kNow), ValidationException);      // sub2 not approved
+    EXPECT_THROW(moderation.release(hod(), a, kNow), ValidationException);  // sub2 not approved
     moderation.approve(hod(), sub2, kNow);
     moderation.release(hod(), a, kNow + minutes(1));
 
@@ -94,7 +94,7 @@ TEST_F(ModerationServiceTest, ReleaseRules) {
     EXPECT_EQ(submissions.findById(sub2)->status(), SubmissionStatus::Released);
     EXPECT_EQ(courses.findAssignment(a)->releasedAt().value(), kNow + minutes(1));
     EXPECT_EQ(marks.listAudit(sub).back().action(), "RELEASE");
-    EXPECT_THROW(moderation.release(hod(), a, kNow), ValidationException);      // only once
+    EXPECT_THROW(moderation.release(hod(), a, kNow), ValidationException);  // only once
 }
 
 // IT-56: audit log access - HoD (own department), administrator yes; others no (FR-22).

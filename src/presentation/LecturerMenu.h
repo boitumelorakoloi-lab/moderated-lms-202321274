@@ -18,10 +18,10 @@ protected:
 
 private:
     void listMyCourses();
-    void createAssignment();      // UC-06
+    void createAssignment();  // UC-06
     void listAssignments();
-    void grantExtension();        // UC-07
-    void markSubmissions();       // UC-08
+    void grantExtension();   // UC-07
+    void markSubmissions();  // UC-08
 
     Lecturer& lecturer_;
     AssignmentService& assignments;
