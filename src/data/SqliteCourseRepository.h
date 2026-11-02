@@ -31,6 +31,9 @@ public:
     std::vector<Course> listCoursesForStudent(int studentId) override;
     std::vector<Assignment> listAssignmentsForCourse(int courseId) override;
 
+    std::optional<Extension> findClassExtension(int assignmentId) override;
+    void saveClassExtension(const Extension& e, const std::vector<int>& nowOnTime) override;
+
 private:
     Database& db_;
 };

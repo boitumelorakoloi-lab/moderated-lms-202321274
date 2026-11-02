@@ -5,11 +5,11 @@
       11      2     59      0      11 lms::HodMenu::showOptions@23-33@src/presentation/HodMenu.cpp
       21      6     70      1      21 lms::HodMenu::handle@35-55@src/presentation/HodMenu.cpp
       15      4    172      0      15 lms::HodMenu::listDepartmentAssignments@57-71@src/presentation/HodMenu.cpp
-      21      8    340      1      21 lms::HodMenu::printRows@73-93@src/presentation/HodMenu.cpp
-      54     14    398      0      54 lms::HodMenu::moderate@95-148@src/presentation/HodMenu.cpp
-      10      2     78      0      10 lms::HodMenu::releaseMarks@150-159@src/presentation/HodMenu.cpp
-      17      3    246      0      17 lms::HodMenu::viewAuditLog@161-177@src/presentation/HodMenu.cpp
-       4      1     25      0       5 lms::HodMenu::openLecturerMenu@179-183@src/presentation/HodMenu.cpp
+      22      9    357      1      22 lms::HodMenu::printRows@73-94@src/presentation/HodMenu.cpp
+      54     14    398      0      54 lms::HodMenu::moderate@96-149@src/presentation/HodMenu.cpp
+      10      2     78      0      10 lms::HodMenu::releaseMarks@151-160@src/presentation/HodMenu.cpp
+      17      3    246      0      17 lms::HodMenu::viewAuditLog@162-178@src/presentation/HodMenu.cpp
+       4      1     25      0       5 lms::HodMenu::openLecturerMenu@180-184@src/presentation/HodMenu.cpp
        1      1     24      2       1 lms::RoleMenu::RoleMenu@11-11@src/presentation/RoleMenu.cpp
       33     11    205      0      33 lms::RoleMenu::run@13-45@src/presentation/RoleMenu.cpp
       12      2     88      0      12 lms::RoleMenu::changePassword@47-58@src/presentation/RoleMenu.cpp
@@ -49,17 +49,19 @@
        6      1     44      4       6 lms::StudentMenu::StudentMenu@12-17@src/presentation/StudentMenu.cpp
        6      1     34      0       6 lms::StudentMenu::showOptions@19-24@src/presentation/StudentMenu.cpp
       15      4     50      1      15 lms::StudentMenu::handle@26-40@src/presentation/StudentMenu.cpp
-      31      9    349      0      32 lms::StudentMenu::viewCoursesAndAssignments@42-73@src/presentation/StudentMenu.cpp
-      26      4    227      0      27 lms::StudentMenu::submitAssignment@75-101@src/presentation/StudentMenu.cpp
-      21      5    200      0      21 lms::StudentMenu::viewReleasedMarks@103-123@src/presentation/StudentMenu.cpp
+      27      7    328      0      28 lms::StudentMenu::viewCoursesAndAssignments@42-69@src/presentation/StudentMenu.cpp
+      17      5    139      1      17 lms::StudentMenu::printExtensions@72-88@src/presentation/StudentMenu.cpp
+      26      4    227      0      27 lms::StudentMenu::submitAssignment@90-116@src/presentation/StudentMenu.cpp
+      21      5    200      0      21 lms::StudentMenu::viewReleasedMarks@118-138@src/presentation/StudentMenu.cpp
        6      1     44      4       6 lms::LecturerMenu::LecturerMenu@13-18@src/presentation/LecturerMenu.cpp
-       8      1     40      0       8 lms::LecturerMenu::showOptions@20-27@src/presentation/LecturerMenu.cpp
-      21      6     70      1      21 lms::LecturerMenu::handle@29-49@src/presentation/LecturerMenu.cpp
-      13      3    135      0      13 lms::LecturerMenu::listMyCourses@51-63@src/presentation/LecturerMenu.cpp
-       9      1    105      0       9 lms::LecturerMenu::createAssignment@65-73@src/presentation/LecturerMenu.cpp
-      17      4    220      0      17 lms::LecturerMenu::listAssignments@75-91@src/presentation/LecturerMenu.cpp
-      10      1    111      0      10 lms::LecturerMenu::grantExtension@93-102@src/presentation/LecturerMenu.cpp
-      57     14    625      0      58 lms::LecturerMenu::markSubmissions@104-161@src/presentation/LecturerMenu.cpp
+       9      1     43      0       9 lms::LecturerMenu::showOptions@20-28@src/presentation/LecturerMenu.cpp
+      24      7     80      1      24 lms::LecturerMenu::handle@30-53@src/presentation/LecturerMenu.cpp
+      13      3    135      0      13 lms::LecturerMenu::listMyCourses@55-67@src/presentation/LecturerMenu.cpp
+       9      1    105      0       9 lms::LecturerMenu::createAssignment@69-77@src/presentation/LecturerMenu.cpp
+      19      5    268      0      19 lms::LecturerMenu::listAssignments@79-97@src/presentation/LecturerMenu.cpp
+      10      1    111      0      10 lms::LecturerMenu::grantExtension@99-108@src/presentation/LecturerMenu.cpp
+      13      2    118      0      13 lms::LecturerMenu::extendForClass@110-122@src/presentation/LecturerMenu.cpp
+      57     14    625      0      58 lms::LecturerMenu::markSubmissions@124-181@src/presentation/LecturerMenu.cpp
        2      1     23      2       2 lms::ConsoleApp::ConsoleApp@17-18@src/presentation/ConsoleApp.cpp
       32      7    219      0      32 lms::ConsoleApp::run@20-51@src/presentation/ConsoleApp.cpp
       28      5    184      1      28 lms::ConsoleApp::openMenuFor@54-81@src/presentation/ConsoleApp.cpp
@@ -78,8 +80,9 @@
       14      6    128      2      14 lms::MarkingService::listToMark@40-53@src/services/MarkingService.cpp
       31      5    293      6      35 lms::MarkingService::mark@55-89@src/services/MarkingService.cpp
       14      3    156      5      14 lms::buildMarkView@6-19@src/services/MarkView.cpp
-       8      2     62      1       8 lms::trim@21-28@src/services/MarkView.cpp
-       3      1     21      1       3 lms::isBlank@30-32@src/services/MarkView.cpp
+       8      4     69      3       8 lms::applicableExtension@21-28@src/services/MarkView.cpp
+       8      2     62      1       8 lms::trim@30-37@src/services/MarkView.cpp
+       3      1     21      1       3 lms::isBlank@39-41@src/services/MarkView.cpp
        3      1     33      3       3 lms::AdminService::AdminService@14-16@src/services/AdminService.cpp
        5      2     33      2       5 lms::AdminService::require@18-22@src/services/AdminService.cpp
        7      2     44      1       7 lms::AdminService::getUser@24-30@src/services/AdminService.cpp
@@ -98,15 +101,18 @@
       14      4    121      3      14 lms::AdminService::enrolStudent@178-191@src/services/AdminService.cpp
        7      2     52      2       7 lms::AdminService::backup@193-199@src/services/AdminService.cpp
        7      2     52      2       7 lms::AdminService::restore@201-207@src/services/AdminService.cpp
-       2      1     24      2       2 lms::AssignmentService::AssignmentService@9-10@src/services/AssignmentService.cpp
-      19      7    159      5      19 lms::AssignmentService::createAssignment@12-30@src/services/AssignmentService.cpp
-      11      3     78      2      11 lms::AssignmentService::getAssignmentITeach@32-42@src/services/AssignmentService.cpp
-      39     14    304      6      44 lms::AssignmentService::grantExtension@45-88@src/services/AssignmentService.cpp
-       6      2     43      1       6 lms::AssignmentService::listForStudent@90-95@src/services/AssignmentService.cpp
-      14      4    146      1      14 lms::AssignmentService::overviewForStudent@97-110@src/services/AssignmentService.cpp
-       6      2     43      1       6 lms::AssignmentService::listCoursesForStudent@112-117@src/services/AssignmentService.cpp
-       6      2     43      1       6 lms::AssignmentService::listMyCourses@119-124@src/services/AssignmentService.cpp
-       6      3     56      2       6 lms::AssignmentService::listForCourse@126-131@src/services/AssignmentService.cpp
+       2      1     24      2       2 lms::AssignmentService::AssignmentService@10-11@src/services/AssignmentService.cpp
+      19      7    159      5      19 lms::AssignmentService::createAssignment@13-31@src/services/AssignmentService.cpp
+      11      3     78      2      11 lms::AssignmentService::getAssignmentITeach@33-43@src/services/AssignmentService.cpp
+      39     14    304      6      44 lms::AssignmentService::grantExtension@46-89@src/services/AssignmentService.cpp
+      26      8    211      5      29 lms::AssignmentService::extendForClass@94-122@src/services/AssignmentService.cpp
+      15      6    105      2      16 lms::AssignmentService::lateWorkCoveredBy@125-140@src/services/AssignmentService.cpp
+       3      1     31      2       3 lms::AssignmentService::classExtension@142-144@src/services/AssignmentService.cpp
+       6      2     43      1       6 lms::AssignmentService::listForStudent@146-151@src/services/AssignmentService.cpp
+      14      4    142      1      14 lms::AssignmentService::overviewForStudent@153-166@src/services/AssignmentService.cpp
+       6      2     43      1       6 lms::AssignmentService::listCoursesForStudent@168-173@src/services/AssignmentService.cpp
+       6      2     43      1       6 lms::AssignmentService::listMyCourses@175-180@src/services/AssignmentService.cpp
+       6      3     56      2       6 lms::AssignmentService::listForCourse@182-187@src/services/AssignmentService.cpp
        8      1     58      5       8 lms::SubmissionService::SubmissionService@17-24@src/services/SubmissionService.cpp
       23     10    214      1      23 lms::SubmissionService::validateFile@27-49@src/services/SubmissionService.cpp
       48     14    387      4      52 lms::SubmissionService::check@51-102@src/services/SubmissionService.cpp
@@ -114,14 +120,14 @@
       15      5    149      1      16 lms::SubmissionService::myResults@145-160@src/services/SubmissionService.cpp
        3      1     43      4       3 lms::ModerationService::ModerationService@12-14@src/services/ModerationService.cpp
       15      6    119      2      15 lms::ModerationService::checkDepartment@17-31@src/services/ModerationService.cpp
-      12      1    128      2      12 lms::ModerationService::listForModeration@33-44@src/services/ModerationService.cpp
-      15      4    118      2      15 lms::ModerationService::loadMarked@46-60@src/services/ModerationService.cpp
-       8      1    101      3       8 lms::ModerationService::approve@62-69@src/services/ModerationService.cpp
-      22      4    216      5      22 lms::ModerationService::adjust@71-92@src/services/ModerationService.cpp
-      12      2    121      4      12 lms::ModerationService::returnForRemarking@94-105@src/services/ModerationService.cpp
-      17      5    140      3      17 lms::ModerationService::release@108-124@src/services/ModerationService.cpp
-      14      4    107      2      15 lms::ModerationService::viewAuditLog@126-140@src/services/ModerationService.cpp
-      13      5    119      1      13 lms::ModerationService::listAssignmentsInDepartment@142-154@src/services/ModerationService.cpp
+      13      1    128      2      13 lms::ModerationService::listForModeration@33-45@src/services/ModerationService.cpp
+      15      4    118      2      15 lms::ModerationService::loadMarked@47-61@src/services/ModerationService.cpp
+       8      1    101      3       8 lms::ModerationService::approve@63-70@src/services/ModerationService.cpp
+      22      4    216      5      22 lms::ModerationService::adjust@72-93@src/services/ModerationService.cpp
+      12      2    121      4      12 lms::ModerationService::returnForRemarking@95-106@src/services/ModerationService.cpp
+      17      5    140      3      17 lms::ModerationService::release@109-125@src/services/ModerationService.cpp
+      14      4    107      2      15 lms::ModerationService::viewAuditLog@127-141@src/services/ModerationService.cpp
+      13      5    119      1      13 lms::ModerationService::listAssignmentsInDepartment@143-155@src/services/ModerationService.cpp
        1      1      8      0       1 lms::Database::handle@25-25@src/data/Database.h
        1      1     13      1       1 lms::SqliteMarkRepository::SqliteMarkRepository@11-11@src/data/SqliteMarkRepository.h
        4      1     62      1       4 lms::readAssignment@12-15@src/data/SqliteCourseRepository.cpp
@@ -147,6 +153,8 @@
        8      1     34      1       8 lms::SqliteCourseRepository::listCoursesForLecturer@171-178@src/data/SqliteCourseRepository.cpp
        8      1     34      1       8 lms::SqliteCourseRepository::listCoursesForStudent@180-187@src/data/SqliteCourseRepository.cpp
        7      1     47      1       7 lms::SqliteCourseRepository::listAssignmentsForCourse@189-195@src/data/SqliteCourseRepository.cpp
+       8      2     72      1       8 lms::SqliteCourseRepository::findClassExtension@199-206@src/data/SqliteCourseRepository.cpp
+      24      2    146      2      24 lms::SqliteCourseRepository::saveClassExtension@208-231@src/data/SqliteCourseRepository.cpp
        3      1     44      1       3 lms::readSubmission@10-12@src/data/SqliteSubmissionRepository.cpp
       10      2     85      1      10 lms::SqliteSubmissionRepository::loadVersions@15-24@src/data/SqliteSubmissionRepository.cpp
       10      2     79      2      10 lms::SqliteSubmissionRepository::find@26-35@src/data/SqliteSubmissionRepository.cpp
@@ -174,36 +182,37 @@
       13      3     87      1      13 lms::Database::Database@20-32@src/data/Database.cpp
        5      2     20      0       5 lms::Database::~Database@34-38@src/data/Database.cpp
        5      1     24      0       9 lms::Database::configure@40-48@src/data/Database.cpp
-      15      3     74      0      15 lms::Database::ensureSchema@50-64@src/data/Database.cpp
-       3      1     14      0       3 lms::Database::lastInsertId@66-68@src/data/Database.cpp
-       8      3     69      1       8 lms::Database::executeScript@70-77@src/data/Database.cpp
-      11      3     73      2      11 lms::copyDatabase@81-91@src/data/Database.cpp
-      14      3     80      1      14 lms::Database::backupTo@94-107@src/data/Database.cpp
-      28      6    162      1      29 lms::Database::restoreFrom@109-137@src/data/Database.cpp
-       5      2     56      2       5 lms::Statement::Statement@141-145@src/data/Database.cpp
-       3      1     12      0       3 lms::Statement::~Statement@147-149@src/data/Database.cpp
-       4      2     40      2       4 lms::Statement::bind@151-154@src/data/Database.cpp
-       4      2     42      2       4 lms::Statement::bind@156-159@src/data/Database.cpp
-       7      2     64      2       7 lms::Statement::bind@161-167@src/data/Database.cpp
-       3      1     27      2       3 lms::Statement::bind@169-171@src/data/Database.cpp
-       4      2     35      1       4 lms::Statement::bindNull@173-176@src/data/Database.cpp
-       3      2     39      2       3 lms::Statement::bindOptional@178-180@src/data/Database.cpp
-       3      2     41      2       3 lms::Statement::bindOptional@182-184@src/data/Database.cpp
-       3      1     23      2       3 lms::Statement::bindTime@186-188@src/data/Database.cpp
-       3      2     39      2       3 lms::Statement::bindOptionalTime@190-192@src/data/Database.cpp
-       6      3     44      0       6 lms::Statement::step@194-199@src/data/Database.cpp
-       4      2     15      0       5 lms::Statement::run@201-205@src/data/Database.cpp
-       3      1     18      1       3 lms::Statement::getInt@207-209@src/data/Database.cpp
-       3      1     18      1       3 lms::Statement::getInt64@211-213@src/data/Database.cpp
-       4      2     49      1       4 lms::Statement::getText@215-218@src/data/Database.cpp
-       3      1     20      1       3 lms::Statement::isNull@220-222@src/data/Database.cpp
-       4      2     28      1       4 lms::Statement::getOptionalInt@224-227@src/data/Database.cpp
-       4      2     28      1       4 lms::Statement::getOptionalText@229-232@src/data/Database.cpp
-       3      1     19      1       3 lms::Statement::getTime@234-236@src/data/Database.cpp
-       4      2     28      1       4 lms::Statement::getOptionalTime@238-241@src/data/Database.cpp
-       3      1     22      1       3 lms::Transaction::Transaction@245-247@src/data/Database.cpp
-       5      2     31      0       5 lms::Transaction::~Transaction@249-253@src/data/Database.cpp
-       4      1     18      0       4 lms::Transaction::commit@255-258@src/data/Database.cpp
+       6      1     47      1       6 lms::Database::hasTable@62-67@src/data/Database.cpp
+      17      6     88      0      19 lms::Database::ensureSchema@69-87@src/data/Database.cpp
+       3      1     14      0       3 lms::Database::lastInsertId@89-91@src/data/Database.cpp
+       8      3     69      1       8 lms::Database::executeScript@93-100@src/data/Database.cpp
+      11      3     73      2      11 lms::copyDatabase@104-114@src/data/Database.cpp
+      14      3     80      1      14 lms::Database::backupTo@117-130@src/data/Database.cpp
+      28      6    162      1      29 lms::Database::restoreFrom@132-160@src/data/Database.cpp
+       5      2     56      2       5 lms::Statement::Statement@164-168@src/data/Database.cpp
+       3      1     12      0       3 lms::Statement::~Statement@170-172@src/data/Database.cpp
+       4      2     40      2       4 lms::Statement::bind@174-177@src/data/Database.cpp
+       4      2     42      2       4 lms::Statement::bind@179-182@src/data/Database.cpp
+       7      2     64      2       7 lms::Statement::bind@184-190@src/data/Database.cpp
+       3      1     27      2       3 lms::Statement::bind@192-194@src/data/Database.cpp
+       4      2     35      1       4 lms::Statement::bindNull@196-199@src/data/Database.cpp
+       3      2     39      2       3 lms::Statement::bindOptional@201-203@src/data/Database.cpp
+       3      2     41      2       3 lms::Statement::bindOptional@205-207@src/data/Database.cpp
+       3      1     23      2       3 lms::Statement::bindTime@209-211@src/data/Database.cpp
+       3      2     39      2       3 lms::Statement::bindOptionalTime@213-215@src/data/Database.cpp
+       6      3     44      0       6 lms::Statement::step@217-222@src/data/Database.cpp
+       4      2     15      0       5 lms::Statement::run@224-228@src/data/Database.cpp
+       3      1     18      1       3 lms::Statement::getInt@230-232@src/data/Database.cpp
+       3      1     18      1       3 lms::Statement::getInt64@234-236@src/data/Database.cpp
+       4      2     49      1       4 lms::Statement::getText@238-241@src/data/Database.cpp
+       3      1     20      1       3 lms::Statement::isNull@243-245@src/data/Database.cpp
+       4      2     28      1       4 lms::Statement::getOptionalInt@247-250@src/data/Database.cpp
+       4      2     28      1       4 lms::Statement::getOptionalText@252-255@src/data/Database.cpp
+       3      1     19      1       3 lms::Statement::getTime@257-259@src/data/Database.cpp
+       4      2     28      1       4 lms::Statement::getOptionalTime@261-264@src/data/Database.cpp
+       3      1     22      1       3 lms::Transaction::Transaction@268-270@src/data/Database.cpp
+       5      2     31      0       5 lms::Transaction::~Transaction@272-276@src/data/Database.cpp
+       4      1     18      0       4 lms::Transaction::commit@278-281@src/data/Database.cpp
        1      1     13      1       1 lms::SqliteCourseRepository::SqliteCourseRepository@11-11@src/data/SqliteCourseRepository.h
       15      5    135      6      15 lms::UserFactory::create@6-20@src/domain/UserFactory.cpp
        2      1     40      3       2 lms::Department::Department@15-16@src/domain/Entities.h
@@ -215,20 +224,21 @@
        1      1      9      0       1 lms::Course::code@34-34@src/domain/Entities.h
        1      1      9      0       1 lms::Course::title@35-35@src/domain/Entities.h
        1      1      9      0       1 lms::Course::departmentId@36-36@src/domain/Entities.h
-       7      1     51      5       7 lms::Extension::Extension@48-54@src/domain/Entities.h
-       1      1      9      0       1 lms::Extension::assignmentId@56-56@src/domain/Entities.h
-       1      1      9      0       1 lms::Extension::studentId@57-57@src/domain/Entities.h
-       1      1      9      0       1 lms::Extension::newDeadline@58-58@src/domain/Entities.h
-       1      1      9      0       1 lms::Extension::reason@59-59@src/domain/Entities.h
-       1      1      9      0       1 lms::Extension::grantedBy@60-60@src/domain/Entities.h
-      10      1     89      7      10 lms::AuditEntry::AuditEntry@73-82@src/domain/Entities.h
-       1      1      9      0       1 lms::AuditEntry::submissionId@84-84@src/domain/Entities.h
-       1      1      9      0       1 lms::AuditEntry::changedBy@85-85@src/domain/Entities.h
-       1      1      9      0       1 lms::AuditEntry::changedAt@86-86@src/domain/Entities.h
-       1      1      9      0       1 lms::AuditEntry::action@87-87@src/domain/Entities.h
-       1      1      9      0       1 lms::AuditEntry::oldMark@88-88@src/domain/Entities.h
-       1      1      9      0       1 lms::AuditEntry::newMark@89-89@src/domain/Entities.h
-       1      1      9      0       1 lms::AuditEntry::reason@90-90@src/domain/Entities.h
+       7      1     56      5       7 lms::Extension::Extension@49-55@src/domain/Entities.h
+       1      1      9      0       1 lms::Extension::assignmentId@57-57@src/domain/Entities.h
+       1      1      9      0       1 lms::Extension::studentId@58-58@src/domain/Entities.h
+       1      1     14      0       1 lms::Extension::forWholeClass@59-59@src/domain/Entities.h
+       1      1      9      0       1 lms::Extension::newDeadline@60-60@src/domain/Entities.h
+       1      1      9      0       1 lms::Extension::reason@61-61@src/domain/Entities.h
+       1      1      9      0       1 lms::Extension::grantedBy@62-62@src/domain/Entities.h
+      10      1     89      7      10 lms::AuditEntry::AuditEntry@75-84@src/domain/Entities.h
+       1      1      9      0       1 lms::AuditEntry::submissionId@86-86@src/domain/Entities.h
+       1      1      9      0       1 lms::AuditEntry::changedBy@87-87@src/domain/Entities.h
+       1      1      9      0       1 lms::AuditEntry::changedAt@88-88@src/domain/Entities.h
+       1      1      9      0       1 lms::AuditEntry::action@89-89@src/domain/Entities.h
+       1      1      9      0       1 lms::AuditEntry::oldMark@90-90@src/domain/Entities.h
+       1      1      9      0       1 lms::AuditEntry::newMark@91-91@src/domain/Entities.h
+       1      1      9      0       1 lms::AuditEntry::reason@92-92@src/domain/Entities.h
        5      1     59      4       5 lms::User::User@8-12@src/domain/User.cpp
        3      2     22      1       3 lms::User::isLocked@14-16@src/domain/User.cpp
        7      2     30      1       7 lms::User::recordFailedLogin@18-24@src/domain/User.cpp
@@ -314,18 +324,18 @@
 ==============================================================
 NLOC    Avg.NLOC  AvgCCN  Avg.token  function_cnt    file
 --------------------------------------------------------------
-    170      17.9     4.6      160.7         9     src/presentation/HodMenu.cpp
+    171      18.0     4.7      162.6         9     src/presentation/HodMenu.cpp
      52      15.3     4.7      105.7         3     src/presentation/RoleMenu.cpp
      31       0.0     0.0        0.0         0     src/presentation/AdminMenu.h
      27       0.0     0.0        0.0         0     src/presentation/ConsoleApp.h
-     22       0.0     0.0        0.0         0     src/presentation/LecturerMenu.h
+     23       0.0     0.0        0.0         0     src/presentation/LecturerMenu.h
     205      11.6     2.6      102.9        17     src/presentation/AdminMenu.cpp
     139       7.2     2.9       51.2        16     src/presentation/ConsoleIO.cpp
-    112      17.5     4.0      150.7         6     src/presentation/StudentMenu.cpp
+    125      16.9     3.9      146.0         7     src/presentation/StudentMenu.cpp
      17       0.0     0.0        0.0         0     src/presentation/RoleMenu.h
-    149      17.6     3.9      168.8         8     src/presentation/LecturerMenu.cpp
+    168      17.8     3.9      169.9         9     src/presentation/LecturerMenu.cpp
      99      21.8     4.2      149.5         4     src/presentation/ConsoleApp.cpp
-     20       0.0     0.0        0.0         0     src/presentation/StudentMenu.h
+     21       0.0     0.0        0.0         0     src/presentation/StudentMenu.h
       9       0.0     0.0        0.0         0     src/presentation/DemoData.h
      24       1.0     1.0       12.0         1     src/presentation/ConsoleIO.h
      26       0.0     0.0        0.0         0     src/presentation/HodMenu.h
@@ -333,30 +343,30 @@ NLOC    Avg.NLOC  AvgCCN  Avg.token  function_cnt    file
      16       0.0     0.0        0.0         0     src/services/AuthService.h
      73      10.3     2.5       71.0         6     src/services/AuthService.cpp
      77      14.2     4.0      124.4         5     src/services/MarkingService.cpp
-     31       0.0     0.0        0.0         0     src/services/AssignmentService.h
-     28       8.3     2.0       79.7         3     src/services/MarkView.cpp
+     35       0.0     0.0        0.0         0     src/services/AssignmentService.h
+     36       8.2     2.5       77.0         4     src/services/MarkView.cpp
     185       9.8     2.7       83.4        18     src/services/AdminService.cpp
      36       0.0     0.0        0.0         0     src/services/SubmissionService.h
-    114      12.1     4.2       99.6         9     src/services/AssignmentService.cpp
+    159      12.8     4.4      103.2        12     src/services/AssignmentService.cpp
      23       0.0     0.0        0.0         0     src/services/MarkingService.h
     140      25.8     7.2      233.8         5     src/services/SubmissionService.cpp
-    137      13.1     3.3      121.2        10     src/services/ModerationService.cpp
+    138      13.2     3.3      121.2        10     src/services/ModerationService.cpp
      36       0.0     0.0        0.0         0     src/services/AdminService.h
      34       0.0     0.0        0.0         0     src/services/ModerationService.h
-     24       0.0     0.0        0.0         0     src/services/MarkView.h
-     65       1.0     1.0        8.0         1     src/data/Database.h
+     27       0.0     0.0        0.0         0     src/services/MarkView.h
+     66       1.0     1.0        8.0         1     src/data/Database.h
      13       1.0     1.0       13.0         1     src/data/SqliteMarkRepository.h
-     68       0.0     0.0        0.0         0     src/data/Repositories.h
-    168       7.0     1.3       54.9        23     src/data/SqliteCourseRepository.cpp
+     70       0.0     0.0        0.0         0     src/data/Repositories.h
+    200       7.7     1.4       59.2        25     src/data/SqliteCourseRepository.cpp
     121      10.4     1.5       75.3        11     src/data/SqliteSubmissionRepository.cpp
      15       1.0     1.0       13.0         1     src/data/SqliteUserRepository.h
      80      17.8     1.8      137.8         4     src/data/SqliteMarkRepository.cpp
      20       1.0     1.0       13.0         1     src/data/SqliteSubmissionRepository.h
      62       8.5     2.0       83.0         6     src/data/SqliteUserRepository.cpp
-    208       5.8     2.0       41.0        34     src/data/Database.cpp
-     29       1.0     1.0       13.0         1     src/data/SqliteCourseRepository.h
+    226       5.9     2.0       41.6        35     src/data/Database.cpp
+     31       1.0     1.0       13.0         1     src/data/SqliteCourseRepository.h
      18      15.0     5.0      135.0         1     src/domain/UserFactory.cpp
-     81       1.7     1.0       17.4        23     src/domain/Entities.h
+     82       1.7     1.0       17.5        24     src/domain/Entities.h
      45       4.6     2.3       36.7         9     src/domain/User.cpp
      24       1.0     1.0       18.0         1     src/domain/Exceptions.h
      28       0.0     0.0        0.0         0     src/domain/Types.h
@@ -380,4 +390,4 @@ No thresholds exceeded (cyclomatic_complexity > 15 or length > 1000 or nloc > 10
 ==========================================================================================
 Total nloc   Avg.NLOC  AvgCCN  Avg.token   Fun Cnt  Warning cnt   Fun Rt   nloc Rt
 ------------------------------------------------------------------------------------------
-      3654       8.4     2.4       69.3      309            0      0.00    0.00
+      3806       8.5     2.4       70.4      319            0      0.00    0.00

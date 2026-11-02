@@ -18,6 +18,15 @@ MarkView buildMarkView(const Submission& submission, const Assignment& assignmen
     return view;
 }
 
+std::optional<Extension> applicableExtension(ICourseRepository& courses, int assignmentId,
+                                             int studentId) {
+    auto own = courses.findExtension(assignmentId, studentId);
+    auto wholeClass = courses.findClassExtension(assignmentId);
+    if (!own) return wholeClass;
+    if (!wholeClass) return own;
+    return wholeClass->newDeadline() > own->newDeadline() ? wholeClass : own;
+}
+
 std::string trim(const std::string& text) {
     const auto first = text.find_first_not_of(" \t\r\n");
     if (first == std::string::npos) {

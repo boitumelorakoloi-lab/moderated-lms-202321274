@@ -23,7 +23,8 @@ void LecturerMenu::showOptions() const {
               << "  2. Create an assignment\n"
               << "  3. List assignments for a course\n"
               << "  4. Give a student an extension\n"
-              << "  5. Mark submissions\n";
+              << "  5. Mark submissions\n"
+              << "  6. Extend the deadline for the whole class\n";
 }
 
 bool LecturerMenu::handle(int choice) {
@@ -42,6 +43,9 @@ bool LecturerMenu::handle(int choice) {
             return true;
         case 5:
             markSubmissions();
+            return true;
+        case 6:
+            extendForClass();
             return true;
         default:
             return false;
@@ -81,10 +85,12 @@ void LecturerMenu::listAssignments() {
         return;
     }
     std::cout << "  " << io::col("ID", 5) << io::col("Title", 28) << io::col("Deadline", 18)
-              << io::col("Max", 5) << "Released\n";
+              << io::col("Class extension", 18) << io::col("Max", 5) << "Released\n";
     for (const Assignment& a : list) {
+        const auto ext = assignments.classExtension(lecturer_, a.id());
         std::cout << "  " << io::col(std::to_string(a.id()), 5) << io::col(a.title(), 28)
                   << io::col(formatTime(a.deadline()), 18)
+                  << io::col(ext ? formatTime(ext->newDeadline()) : "-", 18)
                   << io::col(std::to_string(a.maxMark()), 5)
                   << (a.releasedAt().has_value() ? "Yes" : "No") << '\n';
     }
@@ -99,6 +105,20 @@ void LecturerMenu::grantExtension() {
     assignments.grantExtension(lecturer_, assignmentId, studentId, newDeadline, reason,
                                std::chrono::system_clock::now());
     io::info("Extension saved. The student's deadline is now " + formatTime(newDeadline) + ".");
+}
+
+void LecturerMenu::extendForClass() {
+    io::heading("Extend the deadline for the whole class");
+    const int assignmentId = io::readInt("Assignment ID: ", 1, io::kMaxId);
+    const TimePoint newDeadline = io::readDateTime("New deadline for every student");
+    const std::string reason = io::readNonEmpty("Reason (students will see it): ");
+    const int nowOnTime = assignments.extendForClass(lecturer_, assignmentId, newDeadline, reason,
+                                                     std::chrono::system_clock::now());
+    io::info("Class extension saved. Every student's deadline is now at least " +
+             formatTime(newDeadline) + ".");
+    if (nowOnTime > 0) {
+        io::info(std::to_string(nowOnTime) + " late submission(s) are now on time.");
+    }
 }
 
 void LecturerMenu::markSubmissions() {

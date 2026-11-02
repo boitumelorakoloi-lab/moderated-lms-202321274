@@ -1,6 +1,6 @@
 # Installation Guide (for the school technician)
 
-Moderated Learning Management System · release 1.0.0
+Moderated Learning Management System · release 1.1.0
 
 This guide installs the LMS on one school computer, the **LMS PC**. Everybody uses the program
 on that PC: either at its own keyboard, or from other lab and staff PCs over the school network
@@ -11,7 +11,7 @@ deployment diagram is in the final report (section 8) and in `docs/uml/9-deploym
 |---|---|
 | LMS PC | Any 64-bit PC from the last 10 years: 4 GB RAM, 20 GB free disk |
 | Operating system | **Ubuntu 24.04 LTS** (recommended, up to 20 users at once) or Windows 10/11 (one user at a time) |
-| Package | `moderated-lms_1.0.0_amd64.deb` (Ubuntu) or `moderated-lms-1.0.0-windows.zip` (Windows), from the GitHub release page |
+| Package | `moderated-lms_1.1.0_amd64.deb` (Ubuntu) or `moderated-lms-1.1.0-windows.zip` (Windows), from the GitHub release page |
 | Time | About 30 minutes |
 | Skills | Typing commands in a terminal, creating a user account |
 
@@ -24,11 +24,11 @@ network (find it with `hostname -I`).
 
 ### A1. Install the program
 
-1. Copy `moderated-lms_1.0.0_amd64.deb` to the LMS PC (USB stick is fine).
+1. Copy `moderated-lms_1.1.0_amd64.deb` to the LMS PC (USB stick is fine).
 2. Open a terminal in that folder and run:
 
    ```bash
-   sudo apt install ./moderated-lms_1.0.0_amd64.deb
+   sudo apt install ./moderated-lms_1.1.0_amd64.deb
    ```
 
    `apt` also installs the two libraries the program needs (SQLite and libsodium). If the PC has
@@ -116,7 +116,14 @@ backup does **not** include the submitted files, which is why the line above als
 To restore, log in as the administrator and use option 14 with the backup file, then put the
 matching `submissions` folder back with `tar xzf`.
 
-### A6. Removing the program
+### A6. Upgrading from 1.0 to 1.1
+
+1. Make a backup (A5).
+2. `sudo apt install ./moderated-lms_1.1.0_amd64.deb`
+3. Start the program once. It adds the new `class_extension` table to the existing database on
+   its own; all existing users, marks and audit records are kept.
+
+### A7. Removing the program
 
 `sudo apt remove moderated-lms`. The data in `/srv/lms` is **not** deleted. Delete it only when
 the school's retention period is over: `sudo rm -rf /srv/lms`.
@@ -125,7 +132,7 @@ the school's retention period is over: `sudo rm -rf /srv/lms`.
 
 ## Part B - Windows 10/11 PC (one user at a time)
 
-1. Unzip `moderated-lms-1.0.0-windows.zip` to `C:\LMS`. Nothing else needs installing: `lms.exe`
+1. Unzip `moderated-lms-1.1.0-windows.zip` to `C:\LMS`. Nothing else needs installing: `lms.exe`
    contains SQLite and libsodium.
 2. Right-click `C:\LMS` → Properties → Security, and remove access for everyone except the
    administrator's Windows account, so other users of the PC cannot copy `lms.db`.

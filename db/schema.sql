@@ -1,4 +1,4 @@
--- Moderated LMS - SQLite schema v1.0 (Phase 3)
+-- Moderated LMS - SQLite schema v1.1 (v1.0 from Phase 3; class_extension added for CR1)
 -- Times are INTEGER Unix seconds (UTC) from the host clock.
 PRAGMA foreign_keys = ON;
 PRAGMA journal_mode = WAL;
@@ -64,6 +64,16 @@ CREATE TABLE extension (
     granted_by    INTEGER NOT NULL REFERENCES app_user(user_id),
     granted_at    INTEGER NOT NULL,
     UNIQUE (assignment_id, student_id)
+);
+
+-- v1.1 (CR1, FR-27, BR-06): one whole-class extension per assignment. A v1.0 database gets
+-- this table automatically when v1.1 opens it (Database::ensureSchema).
+CREATE TABLE class_extension (
+    assignment_id INTEGER PRIMARY KEY REFERENCES assignment(assignment_id) ON DELETE CASCADE,
+    new_deadline  INTEGER NOT NULL,
+    reason        TEXT    NOT NULL CHECK (length(trim(reason)) > 0),
+    granted_by    INTEGER NOT NULL REFERENCES app_user(user_id),
+    granted_at    INTEGER NOT NULL
 );
 
 CREATE TABLE submission (

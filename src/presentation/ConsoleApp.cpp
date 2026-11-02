@@ -19,7 +19,7 @@ ConsoleApp::ConsoleApp(Services services, IUserRepository& users)
 
 int ConsoleApp::run() {
     try {
-        std::cout << "Moderated Learning Management System v1.0\n";
+        std::cout << "Moderated Learning Management System v1.1\n";
         if (users_.listAll().empty()) {
             firstRunSetup();
         }

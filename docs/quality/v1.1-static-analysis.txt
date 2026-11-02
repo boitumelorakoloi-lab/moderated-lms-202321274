@@ -1,0 +1,7 @@
+v1.1 static analysis - 2026-11-02
+
+$ cppcheck --std=c++17 --enable=warning,style,performance,portability --inline-suppr --suppress=missingIncludeSystem -q -I src src
+(no findings)
+
+$ clang-tidy-18 -p build --checks=-*,bugprone-*,performance-*,clang-analyzer-*,-bugprone-easily-swappable-parameters src/**/*.cpp
+(no findings)

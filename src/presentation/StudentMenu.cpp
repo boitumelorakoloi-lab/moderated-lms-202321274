@@ -58,17 +58,32 @@ void StudentMenu::viewCoursesAndAssignments() {
     }
     std::cout << "  " << io::col("ID", 5) << io::col("Course", 10) << io::col("Title", 26)
               << io::col("Deadline", 20) << io::col("Max", 5) << "State\n";
-    bool anyExtension = false;
     for (const auto& r : rows) {
-        anyExtension = anyExtension || r.hasExtension;
-        std::string deadline = formatTime(r.effectiveDeadline) + (r.hasExtension ? " *" : "");
+        std::string deadline = formatTime(r.effectiveDeadline) + (r.extension ? " *" : "");
         std::cout << "  " << io::col(std::to_string(r.assignment.id()), 5)
                   << io::col(r.courseCode, 10) << io::col(r.assignment.title(), 26)
                   << io::col(deadline, 20) << io::col(std::to_string(r.assignment.maxMark()), 5)
                   << (r.status ? statusName(*r.status) : "Not submitted") << '\n';
     }
-    if (anyExtension) {
-        io::info("  (* = your personal extended deadline)");
+    printExtensions(rows);
+}
+
+// v1.1 (CR1): the list says which deadlines were extended, for whom, from when and why.
+void StudentMenu::printExtensions(const std::vector<StudentAssignmentRow>& rows) {
+    bool first = true;
+    for (const auto& r : rows) {
+        if (!r.extension) {
+            continue;
+        }
+        if (first) {
+            std::cout << "\n  * Extended deadlines:\n";
+            first = false;
+        }
+        std::cout << "    " << r.assignment.title() << ": "
+                  << (r.extension->forWholeClass() ? "whole-class" : "personal")
+                  << " extension from " << formatTime(r.assignment.deadline()) << " to "
+                  << formatTime(r.extension->newDeadline()) << " - " << r.extension->reason()
+                  << '\n';
     }
 }
 

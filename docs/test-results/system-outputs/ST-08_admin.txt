@@ -1,7 +1,7 @@
 Demo data created. Every demo account uses the password Password1
   admin, hod.molapo, lect.mokoena, stu.thabo, stu.lerato, stu.palesa
   Sample file to submit: demo_files/my_homework.txt
-Moderated Learning Management System v1.0
+Moderated Learning Management System v1.1
 
 === Log in ===
 Username (blank to quit): Password: 

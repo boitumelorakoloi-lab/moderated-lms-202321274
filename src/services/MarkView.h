@@ -5,6 +5,7 @@
 #include <optional>
 #include <string>
 
+#include "data/Repositories.h"
 #include "domain/Assignment.h"
 #include "domain/Entities.h"
 #include "domain/ILatePenaltyPolicy.h"
@@ -29,6 +30,11 @@ struct MarkView {
 MarkView buildMarkView(const Submission& submission, const Assignment& assignment,
                        const std::optional<Extension>& extension, const std::optional<Mark>& mark,
                        const ILatePenaltyPolicy& policy);
+
+// v1.1 (CR1, BR-06): the extension that applies to this student - their own or the whole-class
+// one, whichever ends later, so a student is never worse off than the rest of the class.
+std::optional<Extension> applicableExtension(ICourseRepository& courses, int assignmentId,
+                                             int studentId);
 
 // Shared input checks used by several services.
 std::string trim(const std::string& text);

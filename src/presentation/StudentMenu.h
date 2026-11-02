@@ -17,9 +17,10 @@ protected:
     bool handle(int choice) override;
 
 private:
-    void viewCoursesAndAssignments();  // UC-16
-    void submitAssignment();           // UC-17 to UC-20
-    void viewReleasedMarks();          // UC-21
+    void viewCoursesAndAssignments();                                            // UC-16
+    static void printExtensions(const std::vector<StudentAssignmentRow>& rows);  // CR1
+    void submitAssignment();                                                     // UC-17 to UC-20
+    void viewReleasedMarks();                                                    // UC-21
 
     Student& student_;
     SubmissionService& submissions;

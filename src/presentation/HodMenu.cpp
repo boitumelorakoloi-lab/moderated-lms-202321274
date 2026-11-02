@@ -82,7 +82,8 @@ void HodMenu::printRows(const std::vector<MarkView>& rows) const {
                   << io::col(v.mark ? std::to_string(v.mark->rawMark()) : "-", 5)
                   << io::col(v.mark ? io::oneDecimal(v.penalty) : "-", 6)
                   << io::col(v.mark ? io::oneDecimal(v.finalMark) : "-", 7)
-                  << (v.extension ? "to " + formatTime(v.extension->newDeadline()) + " (" +
+                  << (v.extension ? std::string(v.extension->forWholeClass() ? "class " : "") +
+                                        "to " + formatTime(v.extension->newDeadline()) + " (" +
                                         v.extension->reason() + ")"
                                   : "-")
                   << '\n';

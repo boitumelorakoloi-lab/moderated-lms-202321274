@@ -50,6 +50,12 @@ public:
     virtual std::vector<Course> listCoursesForLecturer(int lecturerId) = 0;
     virtual std::vector<Course> listCoursesForStudent(int studentId) = 0;
     virtual std::vector<Assignment> listAssignmentsForCourse(int courseId) = 0;
+
+    // v1.1, CR1 (FR-27, BR-06): the whole-class extension of an assignment.
+    virtual std::optional<Extension> findClassExtension(int assignmentId) = 0;
+    // Saves (or replaces) it and moves the listed Late submissions back to Submitted, all in
+    // one transaction.
+    virtual void saveClassExtension(const Extension& e, const std::vector<int>& nowOnTime) = 0;
 };
 
 class ISubmissionRepository {

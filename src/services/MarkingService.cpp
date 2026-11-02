@@ -45,7 +45,7 @@ std::vector<MarkView> MarkingService::listToMark(const Lecturer& l, int assignme
         if (st == SubmissionStatus::Submitted || st == SubmissionStatus::Late ||
             st == SubmissionStatus::Marked || st == SubmissionStatus::Returned) {
             rows.push_back(buildMarkView(s, assignment,
-                                         courses_.findExtension(assignmentId, s.studentId()),
+                                         applicableExtension(courses_, assignmentId, s.studentId()),
                                          marks_.find(s.id()), policy_));
         }
     }
@@ -83,7 +83,7 @@ double MarkingService::mark(const Lecturer& l, int submissionId, int raw,
                       AuditEntry(submissionId, l.id(), now, action, oldMark, raw, why));
 
     return buildMarkView(*submission, assignment,
-                         courses_.findExtension(assignment.id(), submission->studentId()), m,
+                         applicableExtension(courses_, assignment.id(), submission->studentId()), m,
                          policy_)
         .finalMark;
 }

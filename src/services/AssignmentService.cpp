@@ -2,6 +2,7 @@
 #include "services/AssignmentService.h"
 
 #include "domain/Exceptions.h"
+#include "domain/Time.h"
 #include "services/MarkView.h"
 
 namespace lms {
@@ -87,6 +88,61 @@ void AssignmentService::grantExtension(const Lecturer& l, int assignmentId, int 
     }
 }
 
+// BR-06 (CR1): only the course lecturer, with a reason, to a deadline after the normal one and
+// after any existing class extension, only before marking starts, and not in the past unless it
+// turns late work into on-time work.
+int AssignmentService::extendForClass(const Lecturer& l, int assignmentId, TimePoint newDeadline,
+                                      const std::string& reason, TimePoint now) {
+    if (!l.can(Permission::GrantExtension)) {
+        throw AccessDeniedException("You are not allowed to grant extensions.");
+    }
+    const Assignment assignment = getAssignmentITeach(l, assignmentId);
+    if (isBlank(reason)) {
+        throw ValidationException("A reason is required for an extension.");
+    }
+    if (newDeadline <= assignment.deadline()) {
+        throw ValidationException("The new deadline must be after the normal deadline.");
+    }
+    const auto current = courses_.findClassExtension(assignmentId);
+    if (current && newDeadline <= current->newDeadline()) {
+        // Students may already be planning around the class deadline, so it can only move later.
+        throw ValidationException("The class already has an extension to " +
+                                  formatTime(current->newDeadline()) +
+                                  ". A new one must be later.");
+    }
+
+    const std::vector<int> nowOnTime = lateWorkCoveredBy(assignmentId, newDeadline);
+    if (newDeadline <= now && nowOnTime.empty()) {
+        // A deadline in the past is only of use if it forgives work that was handed in late.
+        throw ValidationException("The new deadline has already passed.");
+    }
+    courses_.saveClassExtension(
+        Extension(assignmentId, std::nullopt, newDeadline, trim(reason), l.id()), nowOnTime);
+    return static_cast<int>(nowOnTime.size());
+}
+
+// The Late submissions a class deadline would make on time. Throws if marking has started.
+std::vector<int> AssignmentService::lateWorkCoveredBy(int assignmentId, TimePoint newDeadline) {
+    std::vector<int> ids;
+    for (const Submission& sub : submissions_.listForAssignment(assignmentId)) {
+        const SubmissionStatus st = sub.status();
+        if (st != SubmissionStatus::Submitted && st != SubmissionStatus::Late) {
+            throw ValidationException(
+                "Marking has already started, so the class deadline can no longer be moved. "
+                "Give individual extensions instead.");
+        }
+        // State machine: Late -> Submitted when the new deadline covers the work.
+        if (st == SubmissionStatus::Late && sub.latest().submittedAt() <= newDeadline) {
+            ids.push_back(sub.id());
+        }
+    }
+    return ids;
+}
+
+std::optional<Extension> AssignmentService::classExtension(const Lecturer& l, int assignmentId) {
+    return courses_.findClassExtension(getAssignmentITeach(l, assignmentId).id());
+}
+
 std::vector<Assignment> AssignmentService::listForStudent(const Student& s) {
     if (!s.can(Permission::SubmitWork)) {
         throw AccessDeniedException("Only students have an assignment list.");
@@ -97,10 +153,10 @@ std::vector<Assignment> AssignmentService::listForStudent(const Student& s) {
 std::vector<StudentAssignmentRow> AssignmentService::overviewForStudent(const Student& s) {
     std::vector<StudentAssignmentRow> rows;
     for (const Assignment& a : listForStudent(s)) {
-        const auto ext = courses_.findExtension(a.id(), s.id());
+        const auto ext = applicableExtension(courses_, a.id(), s.id());
         const auto course = courses_.findCourse(a.courseId());
-        StudentAssignmentRow row{a, course ? course->code() : "?", a.effectiveDeadline(ext),
-                                 ext.has_value(), std::nullopt};
+        StudentAssignmentRow row{a, course ? course->code() : "?", a.effectiveDeadline(ext), ext,
+                                 std::nullopt};
         if (auto sub = submissions_.find(a.id(), s.id())) {
             row.status = sub->status();
         }

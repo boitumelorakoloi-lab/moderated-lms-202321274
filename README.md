@@ -12,6 +12,9 @@ protects passwords with libsodium (Argon2id).
 - **Installation guide** (technician): [`docs/INSTALL.md`](docs/INSTALL.md)
 - **User manual** (each role): [`docs/USER_MANUAL.md`](docs/USER_MANUAL.md)
 - **Release notes**: [`RELEASE_NOTES.md`](RELEASE_NOTES.md)
+- Change request CR1 (v1.1): [`docs/maintenance/CR1.md`](docs/maintenance/CR1.md)
+- Final report appendices (traceability matrix, full test results, risk register, usability sheet): [`docs/appendices/`](docs/appendices/)
+- Planning diagrams (WBS, Gantt chart, stakeholder map): [`docs/planning/`](docs/planning/)
 
 ---
 
@@ -110,9 +113,9 @@ A sample file to submit is created at `demo_files/my_homework.txt`.
 ## Running the tests
 
 ```bash
-ctest --test-dir build --output-on-failure            # all 93 tests
-ctest --test-dir build -L "unit|integration"          # GoogleTest tests only (81)
-ctest --test-dir build -L system                      # scripted console tests only (12)
+ctest --test-dir build --output-on-failure            # all 104 tests
+ctest --test-dir build -L "unit|integration"          # GoogleTest tests only (91)
+ctest --test-dir build -L system                      # scripted console tests only (13)
 ```
 
 The system tests in `tests/system/` run the real program: `<ID>.in` holds the keystrokes and
@@ -139,7 +142,7 @@ and pull request, and a second job checks that business-logic line coverage stay
 CMakeLists.txt            build script
 db/schema.sql             SQLite schema (embedded into the program at build time)
 docs/                     coding standard, UML sources, install guide, user manual,
-                          test results, quality reports
+                          test results, quality reports, CR1 record
 packaging/                Windows zip build script and start-up scripts (.deb: cpack)
 RELEASE_NOTES.md          what changed in each release
 src/
