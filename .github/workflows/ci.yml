@@ -74,3 +74,41 @@ jobs:
         with:
           name: coverage-report
           path: coverage/
+
+  # Phase 7: build the release packages on every push; when a tag such as v1.0 is pushed,
+  # publish them on the GitHub Releases page together with the release notes.
+  package:
+    needs: build-and-test
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake g++ pkg-config libsqlite3-dev libsodium-dev mingw-w64 zip
+
+      - name: Ubuntu package (.deb)
+        run: |
+          cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DLMS_BUILD_TESTS=OFF
+          cmake --build build -j
+          (cd build && cpack -G DEB)
+          mkdir -p dist && cp build/*.deb dist/
+
+      - name: Windows package (.zip)
+        run: bash packaging/build-windows.sh
+
+      - name: Upload packages
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-packages
+          path: dist/
+
+      - name: Publish GitHub release (tags only)
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          body_path: RELEASE_NOTES.md
+          files: dist/*

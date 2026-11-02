@@ -10,3 +10,5 @@ cmake-build-*/
 *.db-shm
 submissions/
 demo_files/
+build-windows/
+dist/

@@ -9,6 +9,9 @@ protects passwords with libsodium (Argon2id).
 - Design documents: `docs/uml/` (draw.io sources) and the Software Design Document
 - Coding standard: [`docs/CODING_STANDARD.md`](docs/CODING_STANDARD.md)
 - Database schema: [`db/schema.sql`](db/schema.sql)
+- **Installation guide** (technician): [`docs/INSTALL.md`](docs/INSTALL.md)
+- **User manual** (each role): [`docs/USER_MANUAL.md`](docs/USER_MANUAL.md)
+- **Release notes**: [`RELEASE_NOTES.md`](RELEASE_NOTES.md)
 
 ---
 
@@ -135,7 +138,10 @@ and pull request, and a second job checks that business-logic line coverage stay
 ```
 CMakeLists.txt            build script
 db/schema.sql             SQLite schema (embedded into the program at build time)
-docs/                     coding standard and UML sources
+docs/                     coding standard, UML sources, install guide, user manual,
+                          test results, quality reports
+packaging/                Windows zip build script and start-up scripts (.deb: cpack)
+RELEASE_NOTES.md          what changed in each release
 src/
   main.cpp                creates the objects and wires them together
   presentation/           ConsoleApp, RoleMenu and the four role menus, ConsoleIO

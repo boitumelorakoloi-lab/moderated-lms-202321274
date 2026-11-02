@@ -8,7 +8,9 @@
 #include "domain/Time.h"
 
 #ifdef _WIN32
+#ifndef NOMINMAX  // MinGW already defines it
 #define NOMINMAX
+#endif
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 #else
