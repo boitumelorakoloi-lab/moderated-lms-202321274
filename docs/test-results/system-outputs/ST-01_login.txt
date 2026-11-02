@@ -25,7 +25,7 @@ Username (blank to quit): Password: ERROR: Wrong username or password.
 Username (blank to quit): Password: ERROR: Too many wrong passwords. The account is locked for 15 minutes.
 
 === Log in ===
-Username (blank to quit): Password: ERROR: This account is locked after 5 wrong passwords. Try again after 2026-10-25 19:38.
+Username (blank to quit): Password: ERROR: This account is locked after 5 wrong passwords. Try again after 2026-10-25 23:58.
 
 === Log in ===
 Username (blank to quit): Password: 

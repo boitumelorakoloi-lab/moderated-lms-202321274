@@ -24,8 +24,16 @@ TEST_F(AuthServiceTest, UsernameCaseAndSpaces) {
 // IT-03: wrong password and unknown user give the same message (no username guessing).
 TEST_F(AuthServiceTest, WrongPasswordAndUnknownUserSameMessage) {
     std::string a, b;
-    try { auth.login("stu1", "wrong", kNow); } catch (const ValidationException& e) { a = e.what(); }
-    try { auth.login("nobody", "wrong", kNow); } catch (const ValidationException& e) { b = e.what(); }
+    try {
+        auth.login("stu1", "wrong", kNow);
+    } catch (const ValidationException& e) {
+        a = e.what();
+    }
+    try {
+        auth.login("nobody", "wrong", kNow);
+    } catch (const ValidationException& e) {
+        b = e.what();
+    }
     EXPECT_FALSE(a.empty());
     EXPECT_EQ(a, b);
 }
@@ -46,7 +54,7 @@ TEST_F(AuthServiceTest, LockoutIsSavedAndExpires) {
     EXPECT_TRUE(users.findByUsername("stu2")->isLocked(kNow));               // stored
     EXPECT_THROW(auth.login("stu2", kPassword, kNow + minutes(14)), AccessDeniedException);
     EXPECT_NO_THROW(auth.login("stu2", kPassword, kNow + minutes(15)));
-    EXPECT_EQ(users.findByUsername("stu2")->failedAttempts(), 0);            // reset
+    EXPECT_EQ(users.findByUsername("stu2")->failedAttempts(), 0);  // reset
 }
 
 // IT-06: a good login resets the wrong-password count.

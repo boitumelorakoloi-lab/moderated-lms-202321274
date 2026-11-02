@@ -50,64 +50,64 @@ Running main() from ./googletest/src/gtest_main.cc
 
 [----------] 9 tests from AuthServiceTest
 [ RUN      ] AuthServiceTest.LoginReturnsRoleSubclass
-[       OK ] AuthServiceTest.LoginReturnsRoleSubclass (166 ms)
+[       OK ] AuthServiceTest.LoginReturnsRoleSubclass (220 ms)
 [ RUN      ] AuthServiceTest.UsernameCaseAndSpaces
-[       OK ] AuthServiceTest.UsernameCaseAndSpaces (161 ms)
+[       OK ] AuthServiceTest.UsernameCaseAndSpaces (222 ms)
 [ RUN      ] AuthServiceTest.WrongPasswordAndUnknownUserSameMessage
-[       OK ] AuthServiceTest.WrongPasswordAndUnknownUserSameMessage (89 ms)
+[       OK ] AuthServiceTest.WrongPasswordAndUnknownUserSameMessage (115 ms)
 [ RUN      ] AuthServiceTest.SqlInjectionIsJustText
-[       OK ] AuthServiceTest.SqlInjectionIsJustText (1 ms)
+[       OK ] AuthServiceTest.SqlInjectionIsJustText (3 ms)
 [ RUN      ] AuthServiceTest.LockoutIsSavedAndExpires
-[       OK ] AuthServiceTest.LockoutIsSavedAndExpires (526 ms)
+[       OK ] AuthServiceTest.LockoutIsSavedAndExpires (611 ms)
 [ RUN      ] AuthServiceTest.GoodLoginResetsCount
-[       OK ] AuthServiceTest.GoodLoginResetsCount (556 ms)
+[       OK ] AuthServiceTest.GoodLoginResetsCount (566 ms)
 [ RUN      ] AuthServiceTest.DeactivatedCannotLogIn
-[       OK ] AuthServiceTest.DeactivatedCannotLogIn (95 ms)
+[       OK ] AuthServiceTest.DeactivatedCannotLogIn (99 ms)
 [ RUN      ] AuthServiceTest.ChangePassword
-[       OK ] AuthServiceTest.ChangePassword (553 ms)
+[       OK ] AuthServiceTest.ChangePassword (715 ms)
 [ RUN      ] AuthServiceTest.PasswordsAreSaltedArgon2id
-[       OK ] AuthServiceTest.PasswordsAreSaltedArgon2id (158 ms)
-[----------] 9 tests from AuthServiceTest (2310 ms total)
+[       OK ] AuthServiceTest.PasswordsAreSaltedArgon2id (194 ms)
+[----------] 9 tests from AuthServiceTest (2750 ms total)
 
 [----------] 7 tests from AdminServiceTest
 [ RUN      ] AdminServiceTest.UsernameBoundaries
-[       OK ] AdminServiceTest.UsernameBoundaries (252 ms)
+[       OK ] AdminServiceTest.UsernameBoundaries (318 ms)
 [ RUN      ] AdminServiceTest.CreateUserRules
-[       OK ] AdminServiceTest.CreateUserRules (80 ms)
+[       OK ] AdminServiceTest.CreateUserRules (97 ms)
 [ RUN      ] AdminServiceTest.EditResetDeactivate
-[       OK ] AdminServiceTest.EditResetDeactivate (522 ms)
+[       OK ] AdminServiceTest.EditResetDeactivate (777 ms)
 [ RUN      ] AdminServiceTest.DepartmentRules
-[       OK ] AdminServiceTest.DepartmentRules (2 ms)
+[       OK ] AdminServiceTest.DepartmentRules (3 ms)
 [ RUN      ] AdminServiceTest.CourseRules
-[       OK ] AdminServiceTest.CourseRules (1 ms)
+[       OK ] AdminServiceTest.CourseRules (2 ms)
 [ RUN      ] AdminServiceTest.AssignAndEnrolRules
 [       OK ] AdminServiceTest.AssignAndEnrolRules (2 ms)
 [ RUN      ] AdminServiceTest.BackupAndRestore
-[       OK ] AdminServiceTest.BackupAndRestore (4 ms)
-[----------] 7 tests from AdminServiceTest (867 ms total)
+[       OK ] AdminServiceTest.BackupAndRestore (7 ms)
+[----------] 7 tests from AdminServiceTest (1210 ms total)
 
 [----------] 7 tests from AssignmentServiceTest
 [ RUN      ] AssignmentServiceTest.CreateAssignmentRules
-[       OK ] AssignmentServiceTest.CreateAssignmentRules (1 ms)
+[       OK ] AssignmentServiceTest.CreateAssignmentRules (2 ms)
 [ RUN      ] AssignmentServiceTest.ExtensionInputRules
-[       OK ] AssignmentServiceTest.ExtensionInputRules (1 ms)
+[       OK ] AssignmentServiceTest.ExtensionInputRules (3 ms)
 [ RUN      ] AssignmentServiceTest.OnlyCourseLecturer
-[       OK ] AssignmentServiceTest.OnlyCourseLecturer (1 ms)
+[       OK ] AssignmentServiceTest.OnlyCourseLecturer (2 ms)
 [ RUN      ] AssignmentServiceTest.ExpiredExtensionWithNoSubmission
-[       OK ] AssignmentServiceTest.ExpiredExtensionWithNoSubmission (1 ms)
+[       OK ] AssignmentServiceTest.ExpiredExtensionWithNoSubmission (2 ms)
 [ RUN      ] AssignmentServiceTest.ExtensionCoversLateWork
 [       OK ] AssignmentServiceTest.ExtensionCoversLateWork (2 ms)
 [ RUN      ] AssignmentServiceTest.ExtensionAfterMarkingOrTooEarly
 [       OK ] AssignmentServiceTest.ExtensionAfterMarkingOrTooEarly (2 ms)
 [ RUN      ] AssignmentServiceTest.StudentOverview
-[       OK ] AssignmentServiceTest.StudentOverview (2 ms)
-[----------] 7 tests from AssignmentServiceTest (14 ms total)
+[       OK ] AssignmentServiceTest.StudentOverview (3 ms)
+[----------] 7 tests from AssignmentServiceTest (19 ms total)
 
 [----------] 10 tests from SubmissionServiceTest
 [ RUN      ] SubmissionServiceTest.FileSizeBoundaries
 [       OK ] SubmissionServiceTest.FileSizeBoundaries (17 ms)
 [ RUN      ] SubmissionServiceTest.FileTypes
-[       OK ] SubmissionServiceTest.FileTypes (2 ms)
+[       OK ] SubmissionServiceTest.FileTypes (3 ms)
 [ RUN      ] SubmissionServiceTest.OnTimeAtDeadlineBoundary
 [       OK ] SubmissionServiceTest.OnTimeAtDeadlineBoundary (2 ms)
 [ RUN      ] SubmissionServiceTest.ResubmitKeepsVersions
@@ -121,10 +121,10 @@ Running main() from ./googletest/src/gtest_main.cc
 [ RUN      ] SubmissionServiceTest.Rejections
 [       OK ] SubmissionServiceTest.Rejections (2 ms)
 [ RUN      ] SubmissionServiceTest.FailedSaveRemovesCopiedFile
-[       OK ] SubmissionServiceTest.FailedSaveRemovesCopiedFile (1 ms)
+[       OK ] SubmissionServiceTest.FailedSaveRemovesCopiedFile (2 ms)
 [ RUN      ] SubmissionServiceTest.OnlyReleasedOwnResults
-[       OK ] SubmissionServiceTest.OnlyReleasedOwnResults (2 ms)
-[----------] 10 tests from SubmissionServiceTest (37 ms total)
+[       OK ] SubmissionServiceTest.OnlyReleasedOwnResults (3 ms)
+[----------] 10 tests from SubmissionServiceTest (40 ms total)
 
 [----------] 7 tests from MarkingServiceTest
 [ RUN      ] MarkingServiceTest.RawMarkBoundaries
@@ -134,20 +134,20 @@ Running main() from ./googletest/src/gtest_main.cc
 [ RUN      ] MarkingServiceTest.ChangeNeedsReasonAndIsAudited
 [       OK ] MarkingServiceTest.ChangeNeedsReasonAndIsAudited (2 ms)
 [ RUN      ] MarkingServiceTest.PenaltyFromLatestVersion
-[       OK ] MarkingServiceTest.PenaltyFromLatestVersion (3 ms)
+[       OK ] MarkingServiceTest.PenaltyFromLatestVersion (2 ms)
 [ RUN      ] MarkingServiceTest.OnlyCourseLecturer
 [       OK ] MarkingServiceTest.OnlyCourseLecturer (2 ms)
 [ RUN      ] MarkingServiceTest.ModeratedAndReturned
-[       OK ] MarkingServiceTest.ModeratedAndReturned (2 ms)
+[       OK ] MarkingServiceTest.ModeratedAndReturned (3 ms)
 [ RUN      ] MarkingServiceTest.ListToMark
-[       OK ] MarkingServiceTest.ListToMark (2 ms)
-[----------] 7 tests from MarkingServiceTest (17 ms total)
+[       OK ] MarkingServiceTest.ListToMark (3 ms)
+[----------] 7 tests from MarkingServiceTest (19 ms total)
 
 [----------] 7 tests from ModerationServiceTest
 [ RUN      ] ModerationServiceTest.OtherDepartmentRefused
-[       OK ] ModerationServiceTest.OtherDepartmentRefused (2 ms)
+[       OK ] ModerationServiceTest.OtherDepartmentRefused (3 ms)
 [ RUN      ] ModerationServiceTest.ListShowsEverything
-[       OK ] ModerationServiceTest.ListShowsEverything (2 ms)
+[       OK ] ModerationServiceTest.ListShowsEverything (3 ms)
 [ RUN      ] ModerationServiceTest.Approve
 [       OK ] ModerationServiceTest.Approve (2 ms)
 [ RUN      ] ModerationServiceTest.Adjust
@@ -155,39 +155,39 @@ Running main() from ./googletest/src/gtest_main.cc
 [ RUN      ] ModerationServiceTest.ReturnNeedsComment
 [       OK ] ModerationServiceTest.ReturnNeedsComment (2 ms)
 [ RUN      ] ModerationServiceTest.ReleaseRules
-[       OK ] ModerationServiceTest.ReleaseRules (2 ms)
+[       OK ] ModerationServiceTest.ReleaseRules (4 ms)
 [ RUN      ] ModerationServiceTest.AuditLogAccess
-[       OK ] ModerationServiceTest.AuditLogAccess (2 ms)
-[----------] 7 tests from ModerationServiceTest (17 ms total)
+[       OK ] ModerationServiceTest.AuditLogAccess (4 ms)
+[----------] 7 tests from ModerationServiceTest (23 ms total)
 
 [----------] 6 tests from RepositoryTest
 [ RUN      ] RepositoryTest.FailedSaveIsRolledBack
-[       OK ] RepositoryTest.FailedSaveIsRolledBack (2 ms)
+[       OK ] RepositoryTest.FailedSaveIsRolledBack (4 ms)
 [ RUN      ] RepositoryTest.TriggerStopsMarkAboveMaximum
-[       OK ] RepositoryTest.TriggerStopsMarkAboveMaximum (1 ms)
+[       OK ] RepositoryTest.TriggerStopsMarkAboveMaximum (2 ms)
 [ RUN      ] RepositoryTest.AuditLogIsAppendOnly
 [       OK ] RepositoryTest.AuditLogIsAppendOnly (2 ms)
 [ RUN      ] RepositoryTest.ConstraintsEnforced
-[       OK ] RepositoryTest.ConstraintsEnforced (1 ms)
+[       OK ] RepositoryTest.ConstraintsEnforced (2 ms)
 [ RUN      ] RepositoryTest.PersistsToFileInWalMode
-[       OK ] RepositoryTest.PersistsToFileInWalMode (8 ms)
+[       OK ] RepositoryTest.PersistsToFileInWalMode (19 ms)
 [ RUN      ] RepositoryTest.BadPathThrows
-[       OK ] RepositoryTest.BadPathThrows (1 ms)
-[----------] 6 tests from RepositoryTest (18 ms total)
+[       OK ] RepositoryTest.BadPathThrows (3 ms)
+[----------] 6 tests from RepositoryTest (35 ms total)
 
 [----------] 1 test from EndToEnd
 [ RUN      ] EndToEnd.SubmissionToReleasedMark
-[       OK ] EndToEnd.SubmissionToReleasedMark (81 ms)
-[----------] 1 test from EndToEnd (81 ms total)
+[       OK ] EndToEnd.SubmissionToReleasedMark (109 ms)
+[----------] 1 test from EndToEnd (109 ms total)
 
 [----------] 2 tests from NonFunctional
 [ RUN      ] NonFunctional.Nfr01PerformanceWith800Students
-[ NFR-01 ] login 0.0841556 s, student list 0.00101813 s, moderation list (800 rows) 0.0177888 s, marking list (800 rows) 0.0178174 s
-[       OK ] NonFunctional.Nfr01PerformanceWith800Students (829 ms)
+[ NFR-01 ] login 0.104742 s, student list 0.00194751 s, moderation list (800 rows) 0.0209966 s, marking list (800 rows) 0.0263467 s
+[       OK ] NonFunctional.Nfr01PerformanceWith800Students (909 ms)
 [ RUN      ] NonFunctional.Nfr02TwentyConcurrentUsers
 [ NFR-02 ] 20 concurrent users, 400 saves, 0 failures
-[       OK ] NonFunctional.Nfr02TwentyConcurrentUsers (1096 ms)
-[----------] 2 tests from NonFunctional (1925 ms total)
+[       OK ] NonFunctional.Nfr02TwentyConcurrentUsers (1197 ms)
+[----------] 2 tests from NonFunctional (2107 ms total)
 
 [----------] 12 tests from PenaltyPolicy/DaysLateBoundary
 [ RUN      ] PenaltyPolicy/DaysLateBoundary.CountsEachStarted24Hours/minus172800s_is_0_days
@@ -217,5 +217,5 @@ Running main() from ./googletest/src/gtest_main.cc
 [----------] 12 tests from PenaltyPolicy/DaysLateBoundary (0 ms total)
 
 [----------] Global test environment tear-down
-[==========] 81 tests from 17 test suites ran. (5289 ms total)
+[==========] 81 tests from 17 test suites ran. (6316 ms total)
 [  PASSED  ] 81 tests.

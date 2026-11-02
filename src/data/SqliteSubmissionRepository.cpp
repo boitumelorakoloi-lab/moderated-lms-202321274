@@ -24,8 +24,9 @@ void SqliteSubmissionRepository::loadVersions(Submission& s) {
 }
 
 std::optional<Submission> SqliteSubmissionRepository::find(int assignmentId, int studentId) {
-    Statement st(db_, (std::string(kSelectSubmission) +
-                       "WHERE assignment_id = ?1 AND student_id = ?2").c_str());
+    Statement st(
+        db_,
+        (std::string(kSelectSubmission) + "WHERE assignment_id = ?1 AND student_id = ?2").c_str());
     st.bind(1, assignmentId).bind(2, studentId);
     if (!st.step()) return std::nullopt;
     Submission s = readSubmission(st);
@@ -45,8 +46,9 @@ std::optional<Submission> SqliteSubmissionRepository::findById(int id) {
 std::vector<Submission> SqliteSubmissionRepository::listForAssignment(int assignmentId) {
     std::vector<Submission> result;
     {
-        Statement st(db_, (std::string(kSelectSubmission) +
-                           "WHERE assignment_id = ?1 ORDER BY student_id").c_str());
+        Statement st(
+            db_, (std::string(kSelectSubmission) + "WHERE assignment_id = ?1 ORDER BY student_id")
+                     .c_str());
         st.bind(1, assignmentId);
         while (st.step()) {
             result.push_back(readSubmission(st));
@@ -73,7 +75,8 @@ void SqliteSubmissionRepository::insertVersion(int submissionId, const Submissio
 
 int SqliteSubmissionRepository::addSubmission(const Submission& s) {
     Transaction tx(db_);
-    Statement st(db_, "INSERT INTO submission (assignment_id, student_id, status) VALUES (?1, ?2, ?3)");
+    Statement st(db_,
+                 "INSERT INTO submission (assignment_id, student_id, status) VALUES (?1, ?2, ?3)");
     st.bind(1, s.assignmentId()).bind(2, s.studentId()).bind(3, statusCode(s.status()));
     st.run();
     const int id = static_cast<int>(db_.lastInsertId());

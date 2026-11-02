@@ -12,8 +12,8 @@ namespace lms {
 
 class User {
 public:
-    static constexpr int kMaxFailedAttempts = 5;                     // FR-03
-    static constexpr std::chrono::minutes kLockDuration{15};         // FR-03
+    static constexpr int kMaxFailedAttempts = 5;              // FR-03
+    static constexpr std::chrono::minutes kLockDuration{15};  // FR-03
 
     User(int id, std::string username, std::string fullName, std::string passwordHash);
     virtual ~User() = default;

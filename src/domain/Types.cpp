@@ -7,10 +7,14 @@ namespace lms {
 
 std::string roleCode(Role role) {
     switch (role) {
-        case Role::Student: return "STUDENT";
-        case Role::Lecturer: return "LECTURER";
-        case Role::HeadOfDepartment: return "HOD";
-        case Role::Administrator: return "ADMIN";
+        case Role::Student:
+            return "STUDENT";
+        case Role::Lecturer:
+            return "LECTURER";
+        case Role::HeadOfDepartment:
+            return "HOD";
+        case Role::Administrator:
+            return "ADMIN";
     }
     return "STUDENT";
 }
@@ -25,22 +29,32 @@ Role roleFromCode(const std::string& code) {
 
 std::string roleName(Role role) {
     switch (role) {
-        case Role::Student: return "Student";
-        case Role::Lecturer: return "Lecturer";
-        case Role::HeadOfDepartment: return "Head of Department";
-        case Role::Administrator: return "Administrator";
+        case Role::Student:
+            return "Student";
+        case Role::Lecturer:
+            return "Lecturer";
+        case Role::HeadOfDepartment:
+            return "Head of Department";
+        case Role::Administrator:
+            return "Administrator";
     }
     return "";
 }
 
 std::string statusCode(SubmissionStatus status) {
     switch (status) {
-        case SubmissionStatus::Submitted: return "SUBMITTED";
-        case SubmissionStatus::Late: return "LATE";
-        case SubmissionStatus::Marked: return "MARKED";
-        case SubmissionStatus::Returned: return "RETURNED";
-        case SubmissionStatus::Moderated: return "MODERATED";
-        case SubmissionStatus::Released: return "RELEASED";
+        case SubmissionStatus::Submitted:
+            return "SUBMITTED";
+        case SubmissionStatus::Late:
+            return "LATE";
+        case SubmissionStatus::Marked:
+            return "MARKED";
+        case SubmissionStatus::Returned:
+            return "RETURNED";
+        case SubmissionStatus::Moderated:
+            return "MODERATED";
+        case SubmissionStatus::Released:
+            return "RELEASED";
     }
     return "SUBMITTED";
 }
@@ -57,12 +71,18 @@ SubmissionStatus statusFromCode(const std::string& code) {
 
 std::string statusName(SubmissionStatus status) {
     switch (status) {
-        case SubmissionStatus::Submitted: return "Submitted";
-        case SubmissionStatus::Late: return "Late";
-        case SubmissionStatus::Marked: return "Marked";
-        case SubmissionStatus::Returned: return "Returned";
-        case SubmissionStatus::Moderated: return "Moderated";
-        case SubmissionStatus::Released: return "Released";
+        case SubmissionStatus::Submitted:
+            return "Submitted";
+        case SubmissionStatus::Late:
+            return "Late";
+        case SubmissionStatus::Marked:
+            return "Marked";
+        case SubmissionStatus::Returned:
+            return "Returned";
+        case SubmissionStatus::Moderated:
+            return "Moderated";
+        case SubmissionStatus::Released:
+            return "Released";
     }
     return "";
 }

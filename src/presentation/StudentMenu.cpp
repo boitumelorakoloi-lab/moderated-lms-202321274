@@ -25,10 +25,17 @@ void StudentMenu::showOptions() const {
 
 bool StudentMenu::handle(int choice) {
     switch (choice) {
-        case 1: viewCoursesAndAssignments(); return true;
-        case 2: submitAssignment(); return true;
-        case 3: viewReleasedMarks(); return true;
-        default: return false;
+        case 1:
+            viewCoursesAndAssignments();
+            return true;
+        case 2:
+            submitAssignment();
+            return true;
+        case 3:
+            viewReleasedMarks();
+            return true;
+        default:
+            return false;
     }
 }
 
@@ -67,8 +74,9 @@ void StudentMenu::viewCoursesAndAssignments() {
 
 void StudentMenu::submitAssignment() {
     io::heading("Submit an assignment");
-    const int assignmentId = io::readInt("Assignment ID: ", 1, 1000000000);
-    const std::string path = io::readNonEmpty("Path of your file (.pdf, .docx, .txt or .zip, max 10 MB): ");
+    const int assignmentId = io::readInt("Assignment ID: ", 1, io::kMaxId);
+    const std::string path =
+        io::readNonEmpty("Path of your file (.pdf, .docx, .txt or .zip, max 10 MB): ");
 
     const CheckResult r =
         submissions.check(student_, assignmentId, path, std::chrono::system_clock::now());
@@ -108,7 +116,8 @@ void StudentMenu::viewReleasedMarks() {
             std::cout << "    Days late:   " << v.daysLate << " (penalty "
                       << io::oneDecimal(v.penalty) << ")\n";
         }
-        std::cout << "    Final mark:  " << io::oneDecimal(v.finalMark) << " / " << v.maxMark << '\n'
+        std::cout << "    Final mark:  " << io::oneDecimal(v.finalMark) << " / " << v.maxMark
+                  << '\n'
                   << "    Feedback:    " << v.mark->feedback() << '\n';
     }
 }

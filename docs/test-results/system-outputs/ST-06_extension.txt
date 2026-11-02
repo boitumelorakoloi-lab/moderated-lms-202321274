@@ -69,7 +69,7 @@ Choose an option:
 === My assignments ===
   ID   Course    Title                     Deadline            Max  State
   2    MATH-F4   Trigonometry homework     2099-01-01 10:00 *  20   Not submitted
-  1    MATH-F4   Algebra test 1            2026-10-27 19:23    50   Not submitted
+  1    MATH-F4   Algebra test 1            2026-10-27 23:43    50   Not submitted
   (* = your personal extended deadline)
 
 === Student menu - Palesa Mohapi ===

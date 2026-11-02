@@ -9,7 +9,8 @@ class EndToEnd : public LmsTest {};
 // IT-70: the full activity diagram, including a late submission, a return and an adjustment.
 TEST_F(EndToEnd, SubmissionToReleasedMark) {
     auto lect = auth.login("lect", kPassword, kNow - hours(48));
-    const int a = assignments.createAssignment(static_cast<Lecturer&>(*lect), course, "Essay", kNow, 50);
+    const int a =
+        assignments.createAssignment(static_cast<Lecturer&>(*lect), course, "Essay", kNow, 50);
 
     const int sub1 = submit().submit(s1(), a, goodFile, kNow - hours(1));   // on time
     const int sub2 = submit().submit(s2(), a, goodFile, kNow + hours(30));  // 2 days late

@@ -30,11 +30,8 @@ void Submission::transitionTo(SubmissionStatus next) {
 // Arrows of the state machine diagram (SDD Figure 3).
 bool Submission::canTransition(SubmissionStatus from, SubmissionStatus to) {
     switch (from) {
-        case SubmissionStatus::Submitted:
-            // resubmit before the deadline, or mark
-            return to == SubmissionStatus::Submitted || to == SubmissionStatus::Marked;
-        case SubmissionStatus::Late:
-            // an extension that covers the submission, or mark (no resubmit: BR-04)
+        case SubmissionStatus::Submitted:  // resubmit before the deadline, or mark
+        case SubmissionStatus::Late:  // an extension that covers it, or mark (BR-04: no resubmit)
             return to == SubmissionStatus::Submitted || to == SubmissionStatus::Marked;
         case SubmissionStatus::Marked:
             // change mark (reason), return, approve or adjust

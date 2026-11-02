@@ -26,8 +26,8 @@ public:
 
     int createAssignment(const Lecturer& l, int courseId, const std::string& title,
                          TimePoint deadline, int maxMark);
-    void grantExtension(const Lecturer& l, int assignmentId, int studentId,
-                        TimePoint newDeadline, const std::string& reason, TimePoint now);
+    void grantExtension(const Lecturer& l, int assignmentId, int studentId, TimePoint newDeadline,
+                        const std::string& reason, TimePoint now);
     std::vector<Assignment> listForStudent(const Student& s);
 
     // Added in Phase 4 for the list screens.

@@ -1,0 +1,9 @@
+src/main.cpp:25: style [constParameter] Parameter 'argv' can be declared as const array
+src/presentation/ConsoleIO.cpp:122: style [duplicateCondition] The if condition is the same as the previous if condition
+src/presentation/ConsoleIO.cpp:122: style [duplicateCondition] The if condition is the same as the previous if condition
+src/presentation/LecturerMenu.cpp:120: style [useStlAlgorithm] Consider using std::any_of, std::all_of, std::none_of algorithm instead of a raw loop.
+src/services/AdminService.cpp:95: style [useStlAlgorithm] Consider using std::find_if algorithm instead of a raw loop.
+src/services/AdminService.cpp:108: style [useStlAlgorithm] Consider using std::find_if algorithm instead of a raw loop.
+src/services/AdminService.cpp:142: style [useStlAlgorithm] Consider using std::find_if algorithm instead of a raw loop.
+src/services/ModerationService.cpp:34: style [useStlAlgorithm] Consider using std::transform algorithm instead of a raw loop.
+src/services/ModerationService.cpp:141: style [useStlAlgorithm] Consider using std::copy algorithm instead of a raw loop.

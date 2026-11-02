@@ -29,7 +29,8 @@ std::ostream& operator<<(std::ostream& out, const LateCase& c) {
 std::string caseName(const ::testing::TestParamInfo<LateCase>& info) {
     const long long s = info.param.offset.count();
     const std::string sign = s < 0 ? "minus" : "plus";
-    return sign + std::to_string(s < 0 ? -s : s) + "s_is_" + std::to_string(info.param.expectedDays) + "_days";
+    return sign + std::to_string(s < 0 ? -s : s) + "s_is_" +
+           std::to_string(info.param.expectedDays) + "_days";
 }
 
 class DaysLateBoundary : public ::testing::TestWithParam<LateCase> {};
@@ -43,17 +44,16 @@ TEST_P(DaysLateBoundary, CountsEachStarted24Hours) {
 
 INSTANTIATE_TEST_SUITE_P(
     PenaltyPolicy, DaysLateBoundary,
-    ::testing::Values(LateCase{-hours(48), 0},                // well before (EP: on time)
-                      LateCase{-seconds(1), 0},               // just before
-                      LateCase{seconds(0), 0},                // exactly at the deadline
-                      LateCase{seconds(1), 1},                // just after
-                      LateCase{minutes(1), 1},                // SRS example: 1 minute late
-                      LateCase{hours(24), 1},                 // end of day 1
-                      LateCase{hours(24) + seconds(1), 2},    // start of day 2
-                      LateCase{hours(48), 2},
-                      LateCase{hours(48) + seconds(1), 3},
-                      LateCase{hours(72), 3},                 // last moment of day 3
-                      LateCase{hours(72) + seconds(1), 4},    // EP: more than 3 days
+    ::testing::Values(LateCase{-hours(48), 0},              // well before (EP: on time)
+                      LateCase{-seconds(1), 0},             // just before
+                      LateCase{seconds(0), 0},              // exactly at the deadline
+                      LateCase{seconds(1), 1},              // just after
+                      LateCase{minutes(1), 1},              // SRS example: 1 minute late
+                      LateCase{hours(24), 1},               // end of day 1
+                      LateCase{hours(24) + seconds(1), 2},  // start of day 2
+                      LateCase{hours(48), 2}, LateCase{hours(48) + seconds(1), 3},
+                      LateCase{hours(72), 3},               // last moment of day 3
+                      LateCase{hours(72) + seconds(1), 4},  // EP: more than 3 days
                       LateCase{hours(24 * 30), 30}),
     caseName);
 

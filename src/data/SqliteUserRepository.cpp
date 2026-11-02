@@ -17,8 +17,7 @@ const char* const kSelectUser =
 
 std::unique_ptr<User> readUser(const Statement& st) {
     auto user = UserFactory::create(roleFromCode(st.getText(4)), st.getInt(0), st.getText(1),
-                                    st.getText(2), st.getText(3),
-                                    st.isNull(8) ? 0 : st.getInt(8));
+                                    st.getText(2), st.getText(3), st.isNull(8) ? 0 : st.getInt(8));
     user->setActive(st.getInt(5) == 1);
     user->setLoginState(st.getInt(6), st.getOptionalTime(7));
     return user;

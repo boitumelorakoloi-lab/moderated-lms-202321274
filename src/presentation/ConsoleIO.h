@@ -10,6 +10,9 @@
 
 namespace lms::io {
 
+// Largest ID a user can type at an "ID:" prompt.
+constexpr int kMaxId = 1000000000;
+
 // Thrown when the input stream ends (e.g. Ctrl+D / Ctrl+Z). ConsoleApp exits cleanly.
 class InputClosed : public std::runtime_error {
 public:
@@ -31,5 +34,6 @@ void error(const std::string& message);
 // Fixed-width text column, used by the list screens.
 std::string col(const std::string& text, std::size_t width);
 std::string oneDecimal(double value);
+std::string orDash(const std::optional<int>& value);  // "-" when there is no value
 
 }  // namespace lms::io

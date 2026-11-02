@@ -24,11 +24,16 @@ bool DemoData::seed(Services s, IUserRepository& users, const std::string& demoF
     auto adminUser = users.findById(adminId);
     const auto& admin = static_cast<const Administrator&>(*adminUser);
 
-    const int hod = s.admin.createUser(admin, Role::HeadOfDepartment, "hod.molapo", "Mrs P. Molapo", kPassword);
-    const int lect = s.admin.createUser(admin, Role::Lecturer, "lect.mokoena", "Mr T. Mokoena", kPassword);
-    const int st1 = s.admin.createUser(admin, Role::Student, "stu.thabo", "Thabo Nthako", kPassword);
-    const int st2 = s.admin.createUser(admin, Role::Student, "stu.lerato", "Lerato Sekhonyana", kPassword);
-    const int st3 = s.admin.createUser(admin, Role::Student, "stu.palesa", "Palesa Mohapi", kPassword);
+    const int hod =
+        s.admin.createUser(admin, Role::HeadOfDepartment, "hod.molapo", "Mrs P. Molapo", kPassword);
+    const int lect =
+        s.admin.createUser(admin, Role::Lecturer, "lect.mokoena", "Mr T. Mokoena", kPassword);
+    const int st1 =
+        s.admin.createUser(admin, Role::Student, "stu.thabo", "Thabo Nthako", kPassword);
+    const int st2 =
+        s.admin.createUser(admin, Role::Student, "stu.lerato", "Lerato Sekhonyana", kPassword);
+    const int st3 =
+        s.admin.createUser(admin, Role::Student, "stu.palesa", "Palesa Mohapi", kPassword);
 
     const int sciences = s.admin.createDepartment(admin, "Sciences", hod);
     s.admin.createDepartment(admin, "Languages", std::nullopt);

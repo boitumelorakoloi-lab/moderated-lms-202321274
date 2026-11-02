@@ -13,9 +13,9 @@ Username (blank to quit): Password:
   0. Exit this menu
 Choose an option: 
 === Submit an assignment ===
-Assignment ID: Path of your file (.pdf, .docx, .txt or .zip, max 10 MB): Your deadline: 2026-10-24 13:23
+Assignment ID: Path of your file (.pdf, .docx, .txt or .zip, max 10 MB): Your deadline: 2026-10-24 17:43
 WARNING: The deadline has passed. This work will be 2 day(s) late and will lose marks (10% of the maximum per day, 0 after 3 days).
-Hand in this file now? (y/n): Receipt: submission 1, version 1, handed in at 2026-10-25 19:23.
+Hand in this file now? (y/n): Receipt: submission 1, version 1, handed in at 2026-10-25 23:44.
 
 === Student menu - Thabo Nthako ===
   1. My courses and assignments
@@ -35,9 +35,9 @@ Username (blank to quit): Password:
   0. Exit this menu
 Choose an option: 
 === Submit an assignment ===
-Assignment ID: Path of your file (.pdf, .docx, .txt or .zip, max 10 MB): Your deadline: 2026-10-24 13:23
+Assignment ID: Path of your file (.pdf, .docx, .txt or .zip, max 10 MB): Your deadline: 2026-10-24 17:43
 WARNING: The deadline has passed. This work will be 2 day(s) late and will lose marks (10% of the maximum per day, 0 after 3 days).
-Hand in this file now? (y/n): Receipt: submission 2, version 1, handed in at 2026-10-25 19:23.
+Hand in this file now? (y/n): Receipt: submission 2, version 1, handed in at 2026-10-25 23:44.
 
 === Student menu - Lerato Sekhonyana ===
   1. My courses and assignments
@@ -60,8 +60,8 @@ Username (blank to quit): Password:
 Choose an option: 
 === Mark submissions ===
 Assignment ID:   Sub  Student  State      Late  Raw   Final  File
-  1    4        Late       2d    -     -      submissions/a2_s4_v1_1792948992.txt
-  2    5        Late       2d    -     -      submissions/a2_s5_v1_1792948992.txt
+  1    4        Late       2d    -     -      submissions/a2_s4_v1_1792964640.txt
+  2    5        Late       2d    -     -      submissions/a2_s5_v1_1792964640.txt
 Submission to mark (blank to go back): Raw mark (0-20): Feedback: Save this mark? (y/n): Saved. Final mark after any late penalty: 14.0 / 20.
 
 === Lecturer menu - Mr T. Mokoena ===
@@ -75,8 +75,8 @@ Submission to mark (blank to go back): Raw mark (0-20): Feedback: Save this mark
 Choose an option: 
 === Mark submissions ===
 Assignment ID:   Sub  Student  State      Late  Raw   Final  File
-  1    4        Marked     2d    18    14.0   submissions/a2_s4_v1_1792948992.txt
-  2    5        Late       2d    -     -      submissions/a2_s5_v1_1792948992.txt
+  1    4        Marked     2d    18    14.0   submissions/a2_s4_v1_1792964640.txt
+  2    5        Late       2d    -     -      submissions/a2_s5_v1_1792964640.txt
 Submission to mark (blank to go back): Raw mark (0-20): Feedback: Save this mark? (y/n): Saved. Final mark after any late penalty: 8.0 / 20.
 
 === Lecturer menu - Mr T. Mokoena ===
@@ -163,7 +163,7 @@ Username (blank to quit): Password:
 Choose an option: 
 === Mark submissions ===
 Assignment ID:   Sub  Student  State      Late  Raw   Final  File
-  2    5        Returned   2d    12    8.0    submissions/a2_s5_v1_1792948992.txt
+  2    5        Returned   2d    12    8.0    submissions/a2_s5_v1_1792964640.txt
         HoD comment: Please recheck Q2
 Submission to mark (blank to go back): Raw mark (0-20): Feedback: Reason for changing the mark: Save this mark? (y/n): Saved. Final mark after any late penalty: 10.0 / 20.
 
@@ -229,11 +229,11 @@ Assignment ID: Students will see these marks straight away. Release now? (y/n): 
 Choose an option: 
 === Audit log ===
 Submission ID:   When              Who       Action      Old  New  Reason
-  2026-10-25 19:23  User 3    MARK        -    12   
-  2026-10-25 19:23  User 2    RETURN      12   12   Please recheck Q2
-  2026-10-25 19:23  User 3    REMARK      12   14   Rechecked Q2
-  2026-10-25 19:23  User 2    HOD_ADJUST  14   16   Rubric misapplied
-  2026-10-25 19:23  User 2    RELEASE     16   16   
+  2026-10-25 23:44  User 3    MARK        -    12   
+  2026-10-25 23:44  User 2    RETURN      12   12   Please recheck Q2
+  2026-10-25 23:44  User 3    REMARK      12   14   Rechecked Q2
+  2026-10-25 23:44  User 2    HOD_ADJUST  14   16   Rubric misapplied
+  2026-10-25 23:44  User 2    RELEASE     16   16   
 
 === Head of Department menu - Mrs P. Molapo ===
   1. Assignments in my department

@@ -36,7 +36,8 @@ std::vector<Assignment> readAssignments(Statement& st) {
 }  // namespace
 
 std::optional<Course> SqliteCourseRepository::findCourse(int id) {
-    Statement st(db_, "SELECT course_id, code, title, department_id FROM course WHERE course_id = ?1");
+    Statement st(db_,
+                 "SELECT course_id, code, title, department_id FROM course WHERE course_id = ?1");
     st.bind(1, id);
     if (!st.step()) return std::nullopt;
     return readCourse(st);
@@ -44,7 +45,8 @@ std::optional<Course> SqliteCourseRepository::findCourse(int id) {
 
 std::optional<Assignment> SqliteCourseRepository::findAssignment(int id) {
     Statement st(db_, (std::string("SELECT ") + kAssignmentColumns +
-                       "FROM assignment a WHERE a.assignment_id = ?1").c_str());
+                       "FROM assignment a WHERE a.assignment_id = ?1")
+                          .c_str());
     st.bind(1, id);
     if (!st.step()) return std::nullopt;
     return readAssignment(st);
@@ -74,7 +76,8 @@ bool SqliteCourseRepository::teaches(int lecturerId, int courseId) {
 std::vector<Assignment> SqliteCourseRepository::listAssignmentsFor(int studentId) {
     Statement st(db_, (std::string("SELECT ") + kAssignmentColumns +
                        "FROM assignment a JOIN enrolment e ON e.course_id = a.course_id "
-                       "WHERE e.student_id = ?1 ORDER BY a.deadline").c_str());
+                       "WHERE e.student_id = ?1 ORDER BY a.deadline")
+                          .c_str());
     st.bind(1, studentId);
     return readAssignments(st);
 }
@@ -118,7 +121,8 @@ void SqliteCourseRepository::saveExtension(const Extension& e) {
 }
 
 void SqliteCourseRepository::enrol(int studentId, int courseId) {
-    Statement st(db_, "INSERT INTO enrolment (course_id, student_id, enrolled_at) VALUES (?1, ?2, ?3)");
+    Statement st(db_,
+                 "INSERT INTO enrolment (course_id, student_id, enrolled_at) VALUES (?1, ?2, ?3)");
     st.bind(1, courseId).bind(2, studentId).bindTime(3, std::chrono::system_clock::now());
     st.run();
 }
@@ -143,7 +147,8 @@ void SqliteCourseRepository::setDepartmentHod(int departmentId, int hodUserId) {
 }
 
 std::optional<Department> SqliteCourseRepository::findDepartment(int id) {
-    Statement st(db_, "SELECT department_id, name, hod_user_id FROM department WHERE department_id = ?1");
+    Statement st(
+        db_, "SELECT department_id, name, hod_user_id FROM department WHERE department_id = ?1");
     st.bind(1, id);
     if (!st.step()) return std::nullopt;
     return Department(st.getInt(0), st.getText(1), st.getOptionalInt(2));
@@ -183,7 +188,8 @@ std::vector<Course> SqliteCourseRepository::listCoursesForStudent(int studentId)
 
 std::vector<Assignment> SqliteCourseRepository::listAssignmentsForCourse(int courseId) {
     Statement st(db_, (std::string("SELECT ") + kAssignmentColumns +
-                       "FROM assignment a WHERE a.course_id = ?1 ORDER BY a.deadline").c_str());
+                       "FROM assignment a WHERE a.course_id = ?1 ORDER BY a.deadline")
+                          .c_str());
     st.bind(1, courseId);
     return readAssignments(st);
 }

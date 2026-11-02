@@ -19,9 +19,9 @@ protected:
 
 private:
     void listDepartmentAssignments();
-    void moderate();         // UC-11, UC-12, UC-13
-    void releaseMarks();     // UC-14
-    void viewAuditLog();     // UC-15
+    void moderate();      // UC-11, UC-12, UC-13
+    void releaseMarks();  // UC-14
+    void viewAuditLog();  // UC-15
     void openLecturerMenu();
     void printRows(const std::vector<MarkView>& rows) const;
 

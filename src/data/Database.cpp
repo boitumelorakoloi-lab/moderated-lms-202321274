@@ -48,8 +48,8 @@ void Database::configure() {
 }
 
 void Database::ensureSchema() {
-    Statement check(*this,
-                    "SELECT COUNT(*) FROM sqlite_master WHERE type = 'table' AND name = 'app_user'");
+    Statement check(
+        *this, "SELECT COUNT(*) FROM sqlite_master WHERE type = 'table' AND name = 'app_user'");
     check.step();
     if (check.getInt(0) == 0) {
         executeScript("BEGIN;");

@@ -25,6 +25,9 @@ public:
                 const std::optional<std::string>& reason, TimePoint now);
 
 private:
+    // The assignment, if this lecturer teaches its course (otherwise AccessDeniedException).
+    Assignment assignmentITeach(const Lecturer& l, int assignmentId);
+
     ICourseRepository& courses_;
     ISubmissionRepository& submissions_;
     IMarkRepository& marks_;

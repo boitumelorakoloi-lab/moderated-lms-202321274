@@ -34,12 +34,23 @@ void HodMenu::showOptions() const {
 
 bool HodMenu::handle(int choice) {
     switch (choice) {
-        case 1: listDepartmentAssignments(); return true;
-        case 2: moderate(); return true;
-        case 3: releaseMarks(); return true;
-        case 4: viewAuditLog(); return true;
-        case 5: openLecturerMenu(); return true;
-        default: return false;
+        case 1:
+            listDepartmentAssignments();
+            return true;
+        case 2:
+            moderate();
+            return true;
+        case 3:
+            releaseMarks();
+            return true;
+        case 4:
+            viewAuditLog();
+            return true;
+        case 5:
+            openLecturerMenu();
+            return true;
+        default:
+            return false;
     }
 }
 
@@ -54,14 +65,15 @@ void HodMenu::listDepartmentAssignments() {
               << "Released\n";
     for (const Assignment& a : list) {
         std::cout << "  " << io::col(std::to_string(a.id()), 5) << io::col(a.title(), 28)
-                  << io::col(formatTime(a.deadline()), 18) << (a.releasedAt().has_value() ? "Yes" : "No") << '\n';
+                  << io::col(formatTime(a.deadline()), 18)
+                  << (a.releasedAt().has_value() ? "Yes" : "No") << '\n';
     }
 }
 
 void HodMenu::printRows(const std::vector<MarkView>& rows) const {
     std::cout << "  " << io::col("Sub", 5) << io::col("Student", 9) << io::col("State", 11)
-              << io::col("Late", 6) << io::col("Raw", 5) << io::col("Pen.", 6) << io::col("Final", 7)
-              << "Extension\n";
+              << io::col("Late", 6) << io::col("Raw", 5) << io::col("Pen.", 6)
+              << io::col("Final", 7) << "Extension\n";
     for (const MarkView& v : rows) {
         std::cout << "  " << io::col(std::to_string(v.submission.id()), 5)
                   << io::col(std::to_string(v.submission.studentId()), 9)
@@ -82,7 +94,7 @@ void HodMenu::printRows(const std::vector<MarkView>& rows) const {
 
 void HodMenu::moderate() {
     io::heading("Moderate marks");
-    const int assignmentId = io::readInt("Assignment ID: ", 1, 1000000000);
+    const int assignmentId = io::readInt("Assignment ID: ", 1, io::kMaxId);
     while (true) {
         const auto rows = moderation.listForModeration(hod_, assignmentId);
         if (rows.empty()) {
@@ -104,11 +116,13 @@ void HodMenu::moderate() {
             io::info("Nothing is waiting for you - the rest is still with the lecturer.");
             return;
         }
-        const auto sub = io::readOptionalInt("Submission to review (blank to stop): ", 1, 1000000000);
+        const auto sub =
+            io::readOptionalInt("Submission to review (blank to stop): ", 1, io::kMaxId);
         if (!sub) {
             return;
         }
-        std::cout << "  1. Approve\n  2. Adjust the mark\n  3. Return to the lecturer\n  0. Cancel\n";
+        std::cout
+            << "  1. Approve\n  2. Adjust the mark\n  3. Return to the lecturer\n  0. Cancel\n";
         const int action = io::readInt("Action: ", 0, 3);
         const auto now = std::chrono::system_clock::now();
         try {
@@ -135,7 +149,7 @@ void HodMenu::moderate() {
 
 void HodMenu::releaseMarks() {
     io::heading("Release marks");
-    const int assignmentId = io::readInt("Assignment ID: ", 1, 1000000000);
+    const int assignmentId = io::readInt("Assignment ID: ", 1, io::kMaxId);
     if (!io::readYesNo("Students will see these marks straight away. Release now?")) {
         io::info("Nothing was released.");
         return;
@@ -146,7 +160,7 @@ void HodMenu::releaseMarks() {
 
 void HodMenu::viewAuditLog() {
     io::heading("Audit log");
-    const int sub = io::readInt("Submission ID: ", 1, 1000000000);
+    const int sub = io::readInt("Submission ID: ", 1, io::kMaxId);
     const auto entries = moderation.viewAuditLog(hod_, sub);
     if (entries.empty()) {
         io::info("There are no mark changes for this submission yet.");
@@ -155,10 +169,9 @@ void HodMenu::viewAuditLog() {
     std::cout << "  " << io::col("When", 18) << io::col("Who", 10) << io::col("Action", 12)
               << io::col("Old", 5) << io::col("New", 5) << "Reason\n";
     for (const AuditEntry& e : entries) {
-        std::cout << "  " << io::col(formatTime(e.changedAt()), 18) << io::col("User " + std::to_string(e.changedBy()), 10)
-                  << io::col(e.action(), 12)
-                  << io::col(e.oldMark() ? std::to_string(*e.oldMark()) : "-", 5)
-                  << io::col(e.newMark() ? std::to_string(*e.newMark()) : "-", 5)
+        std::cout << "  " << io::col(formatTime(e.changedAt()), 18)
+                  << io::col("User " + std::to_string(e.changedBy()), 10) << io::col(e.action(), 12)
+                  << io::col(io::orDash(e.oldMark()), 5) << io::col(io::orDash(e.newMark()), 5)
                   << e.reason().value_or("") << '\n';
     }
 }

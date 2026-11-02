@@ -28,21 +28,50 @@ void AdminMenu::showOptions() const {
 
 bool AdminMenu::handle(int choice) {
     switch (choice) {
-        case 1: listUsers(); return true;
-        case 2: createUser(); return true;
-        case 3: editUser(); return true;
-        case 4: resetPassword(); return true;
-        case 5: deactivateUser(); return true;
-        case 6: listDepartmentsAndCourses(); return true;
-        case 7: createDepartment(); return true;
-        case 8: setDepartmentHod(); return true;
-        case 9: createCourse(); return true;
-        case 10: assignLecturer(); return true;
-        case 11: enrolStudent(); return true;
-        case 12: viewAuditLog(); return true;
-        case 13: backup(); return true;
-        case 14: restore(); return true;
-        default: return false;
+        case 1:
+            listUsers();
+            return true;
+        case 2:
+            createUser();
+            return true;
+        case 3:
+            editUser();
+            return true;
+        case 4:
+            resetPassword();
+            return true;
+        case 5:
+            deactivateUser();
+            return true;
+        case 6:
+            listDepartmentsAndCourses();
+            return true;
+        case 7:
+            createDepartment();
+            return true;
+        case 8:
+            setDepartmentHod();
+            return true;
+        case 9:
+            createCourse();
+            return true;
+        case 10:
+            assignLecturer();
+            return true;
+        case 11:
+            enrolStudent();
+            return true;
+        case 12:
+            viewAuditLog();
+            return true;
+        case 13:
+            backup();
+            return true;
+        case 14:
+            restore();
+            return true;
+        default:
+            return false;
     }
 }
 
@@ -52,9 +81,12 @@ void AdminMenu::listUsers() {
               << io::col("Role", 20) << "Status\n";
     for (const auto& u : admin.listUsers(admin_)) {
         std::string status = u->isActive() ? "Active" : "Deactivated";
-        if (u->lockedUntil()) status += " (locked until " + formatTime(*u->lockedUntil()) + ")";
+        if (const auto& until = u->lockedUntil()) {
+            status += " (locked until " + formatTime(*until) + ")";
+        }
         std::cout << "  " << io::col(std::to_string(u->id()), 5) << io::col(u->username(), 18)
-                  << io::col(u->fullName(), 24) << io::col(roleName(u->role()), 20) << status << '\n';
+                  << io::col(u->fullName(), 24) << io::col(roleName(u->role()), 20) << status
+                  << '\n';
     }
 }
 
@@ -75,7 +107,7 @@ void AdminMenu::createUser() {
 
 void AdminMenu::editUser() {
     io::heading("Edit user's name");
-    const int id = io::readInt("User ID: ", 1, 1000000000);
+    const int id = io::readInt("User ID: ", 1, io::kMaxId);
     const std::string name = io::readNonEmpty("New full name: ");
     admin.editUser(admin_, id, name);
     io::info("Saved.");
@@ -83,7 +115,7 @@ void AdminMenu::editUser() {
 
 void AdminMenu::resetPassword() {
     io::heading("Reset a password");
-    const int id = io::readInt("User ID: ", 1, 1000000000);
+    const int id = io::readInt("User ID: ", 1, io::kMaxId);
     const std::string pw = io::readPassword("New password (at least 8 characters): ");
     admin.resetPassword(admin_, id, pw);
     io::info("Password reset. Any lock on the account has been removed.");
@@ -91,7 +123,7 @@ void AdminMenu::resetPassword() {
 
 void AdminMenu::deactivateUser() {
     io::heading("Deactivate user");
-    const int id = io::readInt("User ID: ", 1, 1000000000);
+    const int id = io::readInt("User ID: ", 1, io::kMaxId);
     admin.deactivateUser(admin_, id);
     io::info("The account is deactivated and cannot log in. Its records are kept.");
 }
@@ -103,8 +135,8 @@ void AdminMenu::listDepartmentsAndCourses() {
         hodNames[u->id()] = u->fullName();
     }
     for (const Department& d : admin.listDepartments(admin_)) {
-        std::cout << "  " << io::col(std::to_string(d.id()), 5) << io::col(d.name(), 22) << "HoD: "
-                  << (d.hodUserId() ? hodNames[*d.hodUserId()] : "(none)") << '\n';
+        std::cout << "  " << io::col(std::to_string(d.id()), 5) << io::col(d.name(), 22)
+                  << "HoD: " << (d.hodUserId() ? hodNames[*d.hodUserId()] : "(none)") << '\n';
     }
     io::heading("Courses");
     for (const Course& c : admin.listCourses(admin_)) {
@@ -116,15 +148,15 @@ void AdminMenu::listDepartmentsAndCourses() {
 void AdminMenu::createDepartment() {
     io::heading("Create department");
     const std::string name = io::readNonEmpty("Department name: ");
-    const auto hod = io::readOptionalInt("HoD user ID (blank for none yet): ", 1, 1000000000);
+    const auto hod = io::readOptionalInt("HoD user ID (blank for none yet): ", 1, io::kMaxId);
     const int id = admin.createDepartment(admin_, name, hod);
     io::info("Department created with ID " + std::to_string(id) + ".");
 }
 
 void AdminMenu::setDepartmentHod() {
     io::heading("Set department HoD");
-    const int dept = io::readInt("Department ID: ", 1, 1000000000);
-    const int hod = io::readInt("HoD user ID: ", 1, 1000000000);
+    const int dept = io::readInt("Department ID: ", 1, io::kMaxId);
+    const int hod = io::readInt("HoD user ID: ", 1, io::kMaxId);
     admin.setDepartmentHod(admin_, dept, hod);
     io::info("Saved.");
 }
@@ -133,30 +165,30 @@ void AdminMenu::createCourse() {
     io::heading("Create course");
     const std::string code = io::readNonEmpty("Course code (e.g. MATH-F4): ");
     const std::string title = io::readNonEmpty("Title: ");
-    const int dept = io::readInt("Department ID: ", 1, 1000000000);
+    const int dept = io::readInt("Department ID: ", 1, io::kMaxId);
     const int id = admin.createCourse(admin_, code, title, dept);
     io::info("Course created with ID " + std::to_string(id) + ".");
 }
 
 void AdminMenu::assignLecturer() {
     io::heading("Assign lecturer to course");
-    const int lecturer = io::readInt("Lecturer user ID: ", 1, 1000000000);
-    const int course = io::readInt("Course ID: ", 1, 1000000000);
+    const int lecturer = io::readInt("Lecturer user ID: ", 1, io::kMaxId);
+    const int course = io::readInt("Course ID: ", 1, io::kMaxId);
     admin.assignLecturer(admin_, lecturer, course);
     io::info("Saved.");
 }
 
 void AdminMenu::enrolStudent() {
     io::heading("Enrol student in course");
-    const int student = io::readInt("Student user ID: ", 1, 1000000000);
-    const int course = io::readInt("Course ID: ", 1, 1000000000);
+    const int student = io::readInt("Student user ID: ", 1, io::kMaxId);
+    const int course = io::readInt("Course ID: ", 1, io::kMaxId);
     admin.enrolStudent(admin_, student, course);
     io::info("Saved.");
 }
 
 void AdminMenu::viewAuditLog() {
     io::heading("Audit log");
-    const int sub = io::readInt("Submission ID: ", 1, 1000000000);
+    const int sub = io::readInt("Submission ID: ", 1, io::kMaxId);
     const auto entries = moderation_.viewAuditLog(admin_, sub);
     if (entries.empty()) {
         io::info("No entries.");
@@ -166,10 +198,9 @@ void AdminMenu::viewAuditLog() {
               << io::col("Action", 12) << io::col("Old", 5) << io::col("New", 5) << "Reason\n";
     for (const AuditEntry& e : entries) {
         std::cout << "  " << io::col(formatTime(e.changedAt()), 18)
-                  << io::col(std::to_string(e.submissionId()), 5) << io::col("User " + std::to_string(e.changedBy()), 10)
-                  << io::col(e.action(), 12)
-                  << io::col(e.oldMark() ? std::to_string(*e.oldMark()) : "-", 5)
-                  << io::col(e.newMark() ? std::to_string(*e.newMark()) : "-", 5)
+                  << io::col(std::to_string(e.submissionId()), 5)
+                  << io::col("User " + std::to_string(e.changedBy()), 10) << io::col(e.action(), 12)
+                  << io::col(io::orDash(e.oldMark()), 5) << io::col(io::orDash(e.newMark()), 5)
                   << e.reason().value_or("") << '\n';
     }
 }

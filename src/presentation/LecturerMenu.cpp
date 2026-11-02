@@ -1,6 +1,7 @@
 // LecturerMenu.cpp
 #include "presentation/LecturerMenu.h"
 
+#include <algorithm>
 #include <chrono>
 #include <iostream>
 
@@ -9,8 +10,8 @@
 
 namespace lms {
 
-LecturerMenu::LecturerMenu(Lecturer& lecturer, AuthService& auth, AssignmentService& assignmentService,
-                           MarkingService& markingService)
+LecturerMenu::LecturerMenu(Lecturer& lecturer, AuthService& auth,
+                           AssignmentService& assignmentService, MarkingService& markingService)
     : RoleMenu(lecturer, auth),
       lecturer_(lecturer),
       assignments(assignmentService),
@@ -27,12 +28,23 @@ void LecturerMenu::showOptions() const {
 
 bool LecturerMenu::handle(int choice) {
     switch (choice) {
-        case 1: listMyCourses(); return true;
-        case 2: createAssignment(); return true;
-        case 3: listAssignments(); return true;
-        case 4: grantExtension(); return true;
-        case 5: markSubmissions(); return true;
-        default: return false;
+        case 1:
+            listMyCourses();
+            return true;
+        case 2:
+            createAssignment();
+            return true;
+        case 3:
+            listAssignments();
+            return true;
+        case 4:
+            grantExtension();
+            return true;
+        case 5:
+            markSubmissions();
+            return true;
+        default:
+            return false;
     }
 }
 
@@ -45,14 +57,14 @@ void LecturerMenu::listMyCourses() {
     }
     std::cout << "  " << io::col("ID", 5) << io::col("Code", 12) << "Title\n";
     for (const Course& c : courses) {
-        std::cout << "  " << io::col(std::to_string(c.id()), 5) << io::col(c.code(), 12) << c.title()
-                  << '\n';
+        std::cout << "  " << io::col(std::to_string(c.id()), 5) << io::col(c.code(), 12)
+                  << c.title() << '\n';
     }
 }
 
 void LecturerMenu::createAssignment() {
     io::heading("Create an assignment");
-    const int courseId = io::readInt("Course ID: ", 1, 1000000000);
+    const int courseId = io::readInt("Course ID: ", 1, io::kMaxId);
     const std::string title = io::readNonEmpty("Title: ");
     const TimePoint deadline = io::readDateTime("Deadline");
     const int maxMark = io::readInt("Maximum mark (1-100): ", 1, 100);
@@ -62,7 +74,7 @@ void LecturerMenu::createAssignment() {
 
 void LecturerMenu::listAssignments() {
     io::heading("Assignments");
-    const int courseId = io::readInt("Course ID: ", 1, 1000000000);
+    const int courseId = io::readInt("Course ID: ", 1, io::kMaxId);
     const auto list = assignments.listForCourse(lecturer_, courseId);
     if (list.empty()) {
         io::info("No assignments for this course yet.");
@@ -72,15 +84,16 @@ void LecturerMenu::listAssignments() {
               << io::col("Max", 5) << "Released\n";
     for (const Assignment& a : list) {
         std::cout << "  " << io::col(std::to_string(a.id()), 5) << io::col(a.title(), 28)
-                  << io::col(formatTime(a.deadline()), 18) << io::col(std::to_string(a.maxMark()), 5)
+                  << io::col(formatTime(a.deadline()), 18)
+                  << io::col(std::to_string(a.maxMark()), 5)
                   << (a.releasedAt().has_value() ? "Yes" : "No") << '\n';
     }
 }
 
 void LecturerMenu::grantExtension() {
     io::heading("Give an extension");
-    const int assignmentId = io::readInt("Assignment ID: ", 1, 1000000000);
-    const int studentId = io::readInt("Student ID: ", 1, 1000000000);
+    const int assignmentId = io::readInt("Assignment ID: ", 1, io::kMaxId);
+    const int studentId = io::readInt("Student ID: ", 1, io::kMaxId);
     const TimePoint newDeadline = io::readDateTime("New deadline for this student");
     const std::string reason = io::readNonEmpty("Reason: ");
     assignments.grantExtension(lecturer_, assignmentId, studentId, newDeadline, reason,
@@ -90,7 +103,7 @@ void LecturerMenu::grantExtension() {
 
 void LecturerMenu::markSubmissions() {
     io::heading("Mark submissions");
-    const int assignmentId = io::readInt("Assignment ID: ", 1, 1000000000);
+    const int assignmentId = io::readInt("Assignment ID: ", 1, io::kMaxId);
     const auto rows = marking.listToMark(lecturer_, assignmentId);
     if (rows.empty()) {
         io::info("There is no work to mark for this assignment.");
@@ -106,25 +119,29 @@ void LecturerMenu::markSubmissions() {
                   << io::col(v.mark ? std::to_string(v.mark->rawMark()) : "-", 6)
                   << io::col(v.mark ? io::oneDecimal(v.finalMark) : "-", 7)
                   << v.submission.latest().storedPath() << '\n';
-        if (v.mark && v.mark->hodComment() && v.submission.status() == SubmissionStatus::Returned) {
-            std::cout << "        HoD comment: " << *v.mark->hodComment() << '\n';
+        if (v.mark && v.submission.status() == SubmissionStatus::Returned) {
+            if (const auto& comment = v.mark->hodComment()) {
+                std::cout << "        HoD comment: " << *comment << '\n';
+            }
         }
     }
 
-    const auto chosen = io::readOptionalInt("Submission to mark (blank to go back): ", 1, 1000000000);
+    const auto chosen =
+        io::readOptionalInt("Submission to mark (blank to go back): ", 1, io::kMaxId);
     if (!chosen) {
         return;
     }
-    const MarkView* picked = nullptr;
-    for (const MarkView& v : rows) {
-        if (v.submission.id() == *chosen) picked = &v;
-    }
-    if (picked == nullptr) {
+    const int submissionId = *chosen;
+    const auto found = std::find_if(rows.begin(), rows.end(), [submissionId](const MarkView& v) {
+        return v.submission.id() == submissionId;
+    });
+    if (found == rows.end()) {
         io::error("That submission is not in the list.");
         return;
     }
-    const int raw = io::readInt("Raw mark (0-" + std::to_string(picked->maxMark) + "): ", 0,
-                                picked->maxMark);
+    const MarkView* picked = &*found;
+    const int raw =
+        io::readInt("Raw mark (0-" + std::to_string(picked->maxMark) + "): ", 0, picked->maxMark);
     const std::string feedback = io::readNonEmpty("Feedback: ");
     std::optional<std::string> reason;
     if (picked->mark) {
@@ -137,7 +154,7 @@ void LecturerMenu::markSubmissions() {
         io::info("Nothing was saved.");
         return;
     }
-    const double finalMark = marking.mark(lecturer_, *chosen, raw, feedback, reason,
+    const double finalMark = marking.mark(lecturer_, submissionId, raw, feedback, reason,
                                           std::chrono::system_clock::now());
     io::info("Saved. Final mark after any late penalty: " + io::oneDecimal(finalMark) + " / " +
              std::to_string(picked->maxMark) + ".");

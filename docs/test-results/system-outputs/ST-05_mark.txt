@@ -13,9 +13,9 @@ Username (blank to quit): Password:
   0. Exit this menu
 Choose an option: 
 === Submit an assignment ===
-Assignment ID: Path of your file (.pdf, .docx, .txt or .zip, max 10 MB): Your deadline: 2026-10-24 13:23
+Assignment ID: Path of your file (.pdf, .docx, .txt or .zip, max 10 MB): Your deadline: 2026-10-24 17:43
 WARNING: The deadline has passed. This work will be 2 day(s) late and will lose marks (10% of the maximum per day, 0 after 3 days).
-Hand in this file now? (y/n): Receipt: submission 1, version 1, handed in at 2026-10-25 19:23.
+Hand in this file now? (y/n): Receipt: submission 1, version 1, handed in at 2026-10-25 23:43.
 
 === Student menu - Thabo Nthako ===
   1. My courses and assignments
@@ -38,7 +38,7 @@ Username (blank to quit): Password:
 Choose an option: 
 === Mark submissions ===
 Assignment ID:   Sub  Student  State      Late  Raw   Final  File
-  1    4        Late       2d    -     -      submissions/a2_s4_v1_1792948991.txt
+  1    4        Late       2d    -     -      submissions/a2_s4_v1_1792964638.txt
 Submission to mark (blank to go back): Raw mark (0-20): ERROR: Please enter a whole number from 0 to 20.
 Raw mark (0-20): Feedback: ERROR: This cannot be blank.
 Feedback: Save this mark? (y/n): Saved. Final mark after any late penalty: 14.0 / 20.
@@ -54,7 +54,7 @@ Feedback: Save this mark? (y/n): Saved. Final mark after any late penalty: 14.0 
 Choose an option: 
 === Mark submissions ===
 Assignment ID:   Sub  Student  State      Late  Raw   Final  File
-  1    4        Marked     2d    18    14.0   submissions/a2_s4_v1_1792948991.txt
+  1    4        Marked     2d    18    14.0   submissions/a2_s4_v1_1792964638.txt
 Submission to mark (blank to go back): Raw mark (0-20): Feedback: Reason for changing the mark: ERROR: This cannot be blank.
 Reason for changing the mark: Save this mark? (y/n): Saved. Final mark after any late penalty: 15.0 / 20.
 

@@ -24,7 +24,8 @@ TEST_F(SubmissionServiceTest, FileTypes) {
     for (const char* bad : {"a.exe", "b.doc", "c.jpg", "noextension", "d.pdf.exe"}) {
         EXPECT_THROW(submit().check(s1(), a, makeFile(bad, 10), kNow), ValidationException) << bad;
     }
-    EXPECT_THROW(submit().check(s1(), a, (folder / "missing.pdf").string(), kNow), ValidationException);
+    EXPECT_THROW(submit().check(s1(), a, (folder / "missing.pdf").string(), kNow),
+                 ValidationException);
     EXPECT_THROW(submit().check(s1(), a, "   ", kNow), ValidationException);
     EXPECT_THROW(submit().check(s1(), a, folder.string(), kNow), ValidationException);  // a folder
 }
@@ -71,7 +72,8 @@ TEST_F(SubmissionServiceTest, LateOneSecondAfter) {
 TEST_F(SubmissionServiceTest, NoResubmitAfterDeadline) {
     const int a = makeAssignment();
     submit().submit(s1(), a, goodFile, kNow - hours(1));
-    EXPECT_EQ(submit().check(s1(), a, goodFile, kNow + seconds(1)).result, SubmissionCheck::Rejected);
+    EXPECT_EQ(submit().check(s1(), a, goodFile, kNow + seconds(1)).result,
+              SubmissionCheck::Rejected);
     EXPECT_THROW(submit().submit(s1(), a, goodFile, kNow + seconds(1)), ValidationException);
 
     submit().submit(s2(), a, goodFile, kNow + hours(1));  // late, once
@@ -98,15 +100,17 @@ TEST_F(SubmissionServiceTest, Rejections) {
 
     const int a = makeAssignment();
     markedSubmission(a);
-    EXPECT_EQ(submit().check(s1(), a, goodFile, kNow - minutes(1)).result, SubmissionCheck::Rejected);
+    EXPECT_EQ(submit().check(s1(), a, goodFile, kNow - minutes(1)).result,
+              SubmissionCheck::Rejected);
 }
 
 // IT-38: E3 - if the database save fails, the copied file is deleted again.
 TEST_F(SubmissionServiceTest, FailedSaveRemovesCopiedFile) {
     const int a = makeAssignment();
     // Simulate a database failure: make every insert into submission fail.
-    db.executeScript("CREATE TRIGGER fail_insert BEFORE INSERT ON submission "
-                     "BEGIN SELECT RAISE(ABORT, 'disk error'); END;");
+    db.executeScript(
+        "CREATE TRIGGER fail_insert BEFORE INSERT ON submission "
+        "BEGIN SELECT RAISE(ABORT, 'disk error'); END;");
     EXPECT_THROW(submit().submit(s1(), a, goodFile, kNow), DatabaseException);
     EXPECT_FALSE(submissions.find(a, s1().id()).has_value());
     const fs::path store = folder / "store";
@@ -118,15 +122,15 @@ TEST_F(SubmissionServiceTest, FailedSaveRemovesCopiedFile) {
 TEST_F(SubmissionServiceTest, OnlyReleasedOwnResults) {
     const int a = makeAssignment();
     const int sub = markedSubmission(a, 40);
-    EXPECT_TRUE(submit().myResults(s1()).empty());           // marked, not released
+    EXPECT_TRUE(submit().myResults(s1()).empty());  // marked, not released
     moderation.approve(hod(), sub, kNow);
-    EXPECT_TRUE(submit().myResults(s1()).empty());           // moderated, not released
+    EXPECT_TRUE(submit().myResults(s1()).empty());  // moderated, not released
     moderation.release(hod(), a, kNow);
     const auto mine = submit().myResults(s1());
     ASSERT_EQ(mine.size(), 1u);
     EXPECT_DOUBLE_EQ(mine[0].view.finalMark, 40.0);
     EXPECT_EQ(mine[0].view.mark->feedback(), "Good work");
-    EXPECT_TRUE(submit().myResults(s2()).empty());           // not stu2's work
+    EXPECT_TRUE(submit().myResults(s2()).empty());  // not stu2's work
 }
 
 }  // namespace lms::test

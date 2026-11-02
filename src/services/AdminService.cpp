@@ -48,7 +48,8 @@ int AdminService::createUser(const Administrator& a, Role role, const std::strin
     if (users_.findByUsername(name)) {
         throw ValidationException("The username '" + name + "' is already taken.");
     }
-    auto user = UserFactory::create(role, 0, name, trim(fullName), AuthService::hashPassword(password));
+    auto user =
+        UserFactory::create(role, 0, name, trim(fullName), AuthService::hashPassword(password));
     return users_.add(*user);
 }
 
@@ -62,7 +63,8 @@ void AdminService::editUser(const Administrator& a, int userId, const std::strin
     users_.update(*user);
 }
 
-void AdminService::resetPassword(const Administrator& a, int userId, const std::string& newPassword) {
+void AdminService::resetPassword(const Administrator& a, int userId,
+                                 const std::string& newPassword) {
     require(a, Permission::ManageUsers);
     auto user = getUser(userId);
     user->setPasswordHash(AuthService::hashPassword(newPassword));
@@ -91,10 +93,13 @@ void AdminService::checkHodCandidate(int hodUserId) {
         throw ValidationException(user->fullName() + " does not have the Head of Department role.");
     }
     // One department per HoD (department.hod_user_id is UNIQUE).
-    for (const Department& d : courses_.listDepartments()) {
-        if (d.hodUserId() == hodUserId) {
-            throw ValidationException(user->fullName() + " is already HoD of " + d.name() + ".");
-        }
+    const auto departments = courses_.listDepartments();
+    const auto existing =
+        std::find_if(departments.begin(), departments.end(),
+                     [hodUserId](const Department& d) { return d.hodUserId() == hodUserId; });
+    if (existing != departments.end()) {
+        throw ValidationException(user->fullName() + " is already HoD of " + existing->name() +
+                                  ".");
     }
 }
 
@@ -104,10 +109,11 @@ int AdminService::createDepartment(const Administrator& a, const std::string& na
     if (isBlank(name)) {
         throw ValidationException("The department name cannot be blank.");
     }
-    for (const Department& d : courses_.listDepartments()) {
-        if (d.name() == trim(name)) {
-            throw ValidationException("A department called '" + d.name() + "' already exists.");
-        }
+    const std::string cleanName = trim(name);
+    const auto departments = courses_.listDepartments();
+    if (std::any_of(departments.begin(), departments.end(),
+                    [&cleanName](const Department& d) { return d.name() == cleanName; })) {
+        throw ValidationException("A department called '" + cleanName + "' already exists.");
     }
     if (hodUserId.has_value()) {
         checkHodCandidate(*hodUserId);
@@ -118,7 +124,8 @@ int AdminService::createDepartment(const Administrator& a, const std::string& na
 void AdminService::setDepartmentHod(const Administrator& a, int departmentId, int hodUserId) {
     require(a, Permission::ManageCourses);
     if (!courses_.findDepartment(departmentId)) {
-        throw ValidationException("There is no department with ID " + std::to_string(departmentId) + ".");
+        throw ValidationException("There is no department with ID " + std::to_string(departmentId) +
+                                  ".");
     }
     checkHodCandidate(hodUserId);
     courses_.setDepartmentHod(departmentId, hodUserId);
@@ -136,12 +143,14 @@ int AdminService::createCourse(const Administrator& a, const std::string& code,
         throw ValidationException("The course code and title cannot be blank.");
     }
     if (!courses_.findDepartment(departmentId)) {
-        throw ValidationException("There is no department with ID " + std::to_string(departmentId) + ".");
+        throw ValidationException("There is no department with ID " + std::to_string(departmentId) +
+                                  ".");
     }
-    for (const Course& c : courses_.listCourses()) {
-        if (c.code() == trim(code)) {
-            throw ValidationException("A course with code '" + c.code() + "' already exists.");
-        }
+    const std::string cleanCode = trim(code);
+    const auto allCourses = courses_.listCourses();
+    if (std::any_of(allCourses.begin(), allCourses.end(),
+                    [&cleanCode](const Course& c) { return c.code() == cleanCode; })) {
+        throw ValidationException("A course with code '" + cleanCode + "' already exists.");
     }
     return courses_.addCourse(Course(0, trim(code), trim(title), departmentId));
 }
